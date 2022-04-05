@@ -11,5 +11,7 @@ namespace AirStar.Models
         public int CountyID { get; set; }
         public string City { get; set; }
         public int TimeZone { get; set; }
+
+        public Country Country { get; set; }
     }
 }

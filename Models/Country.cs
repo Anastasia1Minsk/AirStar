@@ -8,5 +8,7 @@ namespace AirStar.Models
     public class Country : BaseModel
     {
         public string Name { get; set; }
+
+        public ICollection<Airport> Airports { get; set; }
     }
 }

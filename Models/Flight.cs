@@ -13,5 +13,9 @@ namespace AirStar.Models
         public DateTime ArrivalDate { get; set; }
         public bool Food { get; set; }
         public bool Luggage { get; set; }
+
+        public Aircraft Aircraft { get; set; }
+        public Route Route { get; set; }
+        public ICollection<Rate> Rates { get; set; }
     }
 }

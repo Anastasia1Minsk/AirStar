@@ -15,5 +15,7 @@ namespace AirStar.Models
         public AgeСategories AgeStatus { get; set; }
         public bool Food { get; set; }
         public bool Luggage { get; set; }
+
+        public Reservation Reservation { get; set; }
     }
 }

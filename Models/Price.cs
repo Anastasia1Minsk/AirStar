@@ -10,7 +10,9 @@ namespace AirStar.Models
     {
         public int ReservationID { get; set; }
         public RateTypes RateType { get; set; }
-        /*public  Cost { get; set; }*/
+        public decimal Cost { get; set; }
         public int Amount { get; set; }
+
+        public Reservation Reservation { get; set; }
     }
 }

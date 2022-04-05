@@ -11,8 +11,10 @@ namespace AirStar.Models
         public string Brand { get; set; }
         public int YearOfBuild { get; set; }
         public int EconomyClassSeats { get; set; }
-        public int BusinessClassSeats { get; set; }
-        public int FirstClassSeats { get; set; }
+        public int? BusinessClassSeats { get; set; }
+        public int? FirstClassSeats { get; set; }
         public int MaxFlightRange { get; set; }
+
+        public ICollection<Flight> Flights { get; set; }
     }
 }

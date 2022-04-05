@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AirStar.Models.Enums;
 
 namespace AirStar.Models
 {
@@ -9,6 +10,8 @@ namespace AirStar.Models
     {
         public string Email { get; set; }
         public string Password { get; set; }
-        public int RoleType { get; set; }
+        public RoleTypes RoleType { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }
