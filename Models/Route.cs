@@ -12,5 +12,7 @@ namespace AirStar.Models
         public int Distance { get; set; }
 
         public ICollection<Flight> Flights { get; set; }
+        public Airport DepartureAirport { get; set; }
+        public Airport ArrivalAirport { get; set; }
     }
 }

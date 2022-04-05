@@ -12,6 +12,6 @@ namespace AirStar.Models
         public RateTypes RateType { get; set; }
         public decimal Price { get; set; }
 
-        public Reservation Reservation { get; set; }
+        public Flight Flight { get; set; }
     }
 }

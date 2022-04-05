@@ -17,5 +17,6 @@ namespace AirStar.Models
         public Aircraft Aircraft { get; set; }
         public Route Route { get; set; }
         public ICollection<Rate> Rates { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

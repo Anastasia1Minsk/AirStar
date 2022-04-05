@@ -13,5 +13,6 @@ namespace AirStar.Models
         public int TimeZone { get; set; }
 
         public Country Country { get; set; }
+        public ICollection<Route> Routes { get; set; }
     }
 }

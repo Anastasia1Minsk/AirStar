@@ -14,5 +14,6 @@ namespace AirStar.Models
         public ICollection<Passenger> Passengers { get; set; }
         public User User { get; set; }
         public ICollection<Price> Prices { get; set; }
+        public Flight Flight { get; set; }
     }
 }
