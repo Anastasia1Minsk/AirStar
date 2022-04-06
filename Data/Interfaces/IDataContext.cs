@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace AirStar.Data
+namespace AirStar.Data.Interfaces
 {
     public interface IDataContext : IDisposable
     {
