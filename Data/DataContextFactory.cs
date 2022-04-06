@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AirStar.Data
 {
-    public class DatContextFactory
+    public class DataContextFactory
     {
     }
 }
