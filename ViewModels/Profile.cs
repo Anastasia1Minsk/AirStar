@@ -10,7 +10,7 @@ namespace AirStar.ViewModels
     {
         public Profile()
         {
-            CreateMap<AircraftViewModel, Aircraft>();
+            /*CreateMap<AircraftViewModel, Aircraft>();
             CreateMap<AirportViewModel, Airport>();
             CreateMap<CountryViewModel, Country>();
             CreateMap<FlightViewModel, Flight>();
@@ -18,7 +18,7 @@ namespace AirStar.ViewModels
             CreateMap<PriceViewModel, Price>();
             CreateMap<RateViewModel, Rate>();
             CreateMap<ReservationViewModel, Reservation>();
-            CreateMap<RouteViewModel, Route>();
+            CreateMap<RouteViewModel, Route>();*/
             CreateMap<RegistrationViewModel, User>();
             CreateMap<LogInViewModel, User>();
         }
