@@ -28,6 +28,9 @@ namespace AirStar
         {
             services.ConfigureCompositionModules(Configuration);
 
+            services.AddAutoMapper(typeof(Models.Profile));
+            services.AddAutoMapper(typeof(ViewModels.Profile));
+
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
 
