@@ -14,6 +14,7 @@ namespace AirStar.Models
         public int? BusinessClassSeats { get; set; }
         public int? FirstClassSeats { get; set; }
         public int MaxFlightRange { get; set; }
+        public string Picture { get; set; }
 
         public ICollection<Flight> Flights { get; set; }
     }

@@ -15,7 +15,6 @@ namespace AirStar.Validations
                 EmailAddress().
                 WithMessage("Please fill out the Email field");
             RuleFor(x => x.Password).NotEmpty().
-                Length(5, 50).
                 WithMessage("Please fill out the Password field");
         }
     }

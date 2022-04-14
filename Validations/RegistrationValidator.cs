@@ -15,11 +15,11 @@ namespace AirStar.Validations
                 EmailAddress().
                 WithMessage("Please fill out the Email field");
             RuleFor(x => x.Password).NotEmpty().
-                Length(5,50).
-                WithMessage("Please fill out the Password field");
+                Length(5,50)
+                .Matches(@"(?= (.*[0 - 9]))(?=.*[a - z])(?= (.*[A - Z])).{ 5,}")
+                .WithMessage("Please fill out the Password field");
             RuleFor(x => x.ConfirmPassword).NotEmpty()
                 .Equal(x => x.Password)
-                .Length(5, 50)
                 .WithMessage("Please fill out the Confirm password field");
         }
     }
