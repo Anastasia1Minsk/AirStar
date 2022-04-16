@@ -9,5 +9,6 @@ namespace AirStar.Business.Interfaces
 {
     public interface IUserService : IServiceBase<User>
     {
+        Task<User> GetByEmailAsync(string email);
     }
 }

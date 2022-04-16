@@ -1,1 +1,26 @@
-﻿<h1>registration</h1>
+﻿@model AirStar.ViewModels.RegistrationViewModel
+
+<h1>registration</h1>
+
+<form action="/Auth/Registration" method="post">
+    <div>
+        Email @Html.TextBoxFor(x => x.Email)
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        Password @Html.TextBoxFor(x => x.Password)
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        Confirm password @Html.TextBoxFor(x => x.ConfirmPassword, new { @type = "password" })
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <div>
+        <input type="submit" value="RegistrationAsync" />
+    </div>
+</form>
+
+<div>
+    Already a user? 
+    <a href="/Auth/LogIn">Log in</a>
+</div>

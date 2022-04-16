@@ -1,14 +1,25 @@
-﻿<!--<form action="/User/Login" method="post">-->
-    @*@Html.HiddenFor(x => x.ReturnUrl)*@
-    <!--<div>
-        Login:--> @*@Html.TextBoxFor(x => x.Login)*@
-    <!--</div>
-    <div>
-        Password:--> @*@Html.TextBoxFor(x => x.Password, new { @type = "password" })*@
-    <!--</div>
-    <div>
-        <input type="submit" value="Login" />
-    </div>
-</form>-->
+﻿@model AirStar.ViewModels.LogInViewModel
 
 <h1>login</h1>
+
+<form action="/Auth/LogIn" method="post">
+    <div>
+        Email @Html.TextBoxFor(x => x.Email)
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        Password @Html.TextBoxFor(x => x.Password, new { @type = "password" })
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        <input type="submit" value="Log in" />
+    </div>
+</form>
+
+<div>
+    Need an account?
+    <a href="/Auth/Registration">Register now</a>
+</div>
