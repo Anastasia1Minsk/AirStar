@@ -7,6 +7,7 @@ using AirStar.Infrastructure.Extension;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,16 +29,7 @@ namespace AirStar
         {
             services.ConfigureCompositionModules(Configuration);
 
-            /*services.ConfigureValidators();*/
-
-            /*services.AddAutoMapper(typeof(Models.Profile), typeof(ViewModels.Profile));*/
-            
-            // установка конфигурации подключения
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => //CookieAuthenticationOptions
-                {
-                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Auth/LogIn");
-                });
+            services.ConfigureValidators();
 
             services.AddControllersWithViews();
         }
@@ -56,6 +48,11 @@ namespace AirStar
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict,
+            });
 
             app.UseAuthentication();    // аутентификация/кто пользователь
             app.UseAuthorization();     // авторизация/какие права в системе имеет пользователь

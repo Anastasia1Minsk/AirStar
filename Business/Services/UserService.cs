@@ -16,5 +16,10 @@ namespace AirStar.Business.Services
         {
             _repository = repository;
         }
+
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _repository.SelectOneAsync(x => x.Email == email);
+        }
     }
 }

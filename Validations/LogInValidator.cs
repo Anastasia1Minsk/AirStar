@@ -11,11 +11,14 @@ namespace AirStar.Validations
     {
         public LogInValidator()
         {
-            RuleFor(x => x.Email).NotEmpty().
-                EmailAddress().
-                WithMessage("Please fill out the Email field");
-            RuleFor(x => x.Password).NotEmpty().
-                WithMessage("Please fill out the Password field");
+            RuleFor(x => x.Email)
+                .NotEmpty()
+                .WithMessage("Please fill out the Password field")
+                .EmailAddress()
+                .WithMessage("Please fill out the Email field correctly");
+            RuleFor(x => x.Password)
+                .NotEmpty()
+                .WithMessage("Please fill out the Password field");
         }
     }
 }

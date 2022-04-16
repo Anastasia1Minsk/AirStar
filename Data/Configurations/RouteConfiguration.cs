@@ -15,9 +15,9 @@ namespace AirStar.Data.Configurations
 
             entityBuilder.ToTable("Routes");
 
-            entityBuilder.HasOne(x => x.DepartureAirport).WithMany(x => x.Routes);
-            entityBuilder.HasOne(x => x.ArrivalAirport).WithMany(x => x.Routes);
-            entityBuilder.HasMany(x => x.Flights).WithOne(x => x.Route);            
+            /*entityBuilder.HasOne(x => x.DepartureAirport).WithMany(x => x.Routes);
+            entityBuilder.HasOne(x => x.ArrivalAirport).WithMany(x => x.Routes);*/
+            entityBuilder.HasMany(x => x.Flights).WithOne(x => x.Route);
         }
     }
 }
