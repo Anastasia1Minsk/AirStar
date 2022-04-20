@@ -87,5 +87,6 @@ namespace AirStar.Business.Services
                 await _httpContextAccessor.HttpContext.SignOutAsync();
             }
         }
+        
     }
 }

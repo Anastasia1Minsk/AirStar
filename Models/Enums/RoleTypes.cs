@@ -8,9 +8,9 @@ namespace AirStar.Models.Enums
 {
     public enum RoleTypes
     {
-        [Description("User with this role is a admin")]
-        Admin = 0,
         [Description("User with this role is a customer")]
-        Customer = 1
+        Customer = 0,
+        [Description("User with this role is a admin")]
+        Admin = 1
     }
 }

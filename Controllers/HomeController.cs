@@ -24,12 +24,7 @@ namespace AirStar.Controllers
             return View();
         }
 
-        [Authorize]
-        public IActionResult Private()
-        {
-            return View();
-        }
-        public IActionResult Public()
+        public IActionResult Test()
         {
             return View();
         }
