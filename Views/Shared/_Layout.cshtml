@@ -36,9 +36,19 @@
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <li class="nav-item">
-                            @Html.ActionLink("Test-Home", "test", "Home", null, new { @class = "nav-link" })
-                        </li>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Catalogues
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li class="nav-item">
+                                    @Html.ActionLink("Countries", "List", "Country", null, new { @class = "nav-link" })
+                                </li>
+                            </ul>
+                        </div>
+
+                        
                     }
 
                     <li class="nav-item">
