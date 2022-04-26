@@ -33,7 +33,7 @@ namespace AirStar.Business.Services
             var aircraft = _mapper.Map<Aircraft>(aircraftViewModel);
             
             var filePath = await SavingPicture(aircraftViewModel);
-            aircraft.Picture = "\\" + filePath;
+            aircraft.Picture = $"\\{filePath}";
 
             return await InsertAsync(aircraft);
         }
@@ -48,7 +48,7 @@ namespace AirStar.Business.Services
                 File.Delete(filePath);
 
                 filePath = await SavingPicture(aircraftViewModel);
-                aircraft.Picture = "\\" + filePath;
+                aircraft.Picture = $"\\{filePath}";
             } 
 
             return await UpdateAsync(aircraft);
