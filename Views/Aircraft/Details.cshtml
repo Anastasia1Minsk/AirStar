@@ -1,0 +1,64 @@
+﻿@model Aircraft
+
+<h1>Details</h1>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Model)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Model)
+</dd>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Brand)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Brand)
+</dd>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.YearOfBuild)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.YearOfBuild)
+</dd>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.EconomyClassSeats)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.EconomyClassSeats)
+</dd>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.BusinessClassSeats)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.BusinessClassSeats)
+</dd>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.FirstClassSeats)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.FirstClassSeats)
+</dd>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.MaxFlightRange)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.MaxFlightRange)
+</dd>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Picture)
+</dt>
+<dd class="col-sm-10">
+    <img src="@Model.Picture">
+</dd>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", "Aircraft", new { id = Model.Id }) |
+    @Html.ActionLink("Back to list", "List", "Aircraft")
+</div>

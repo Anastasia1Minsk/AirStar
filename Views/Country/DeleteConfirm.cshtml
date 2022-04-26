@@ -1,0 +1,30 @@
+﻿@model Country
+
+<h1>Delete</h1>
+<h3>Are you sure you want to delete this?</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Delete", "Delete", "Country", new { id = Model.Id }) 
+</div>
+
+<div>
+    @Html.ActionLink("Back to list", "List", "Country")
+</div>
