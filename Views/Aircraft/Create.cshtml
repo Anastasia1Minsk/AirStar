@@ -14,27 +14,26 @@
     </div>
     <div>
         Year Of Build @Html.TextBoxFor(x => x.YearOfBuild)
-        @*<span asp-validation-for="YearOfBuild"></span>*@
+        <span asp-validation-for="YearOfBuild"></span>
     </div>
     <div>
         Economy Class Seats @Html.TextBoxFor(x => x.EconomyClassSeats)
-        @*<span asp-validation-for="EconomyClassSeats"></span>*@
+        <span asp-validation-for="EconomyClassSeats"></span>
     </div>
     <div>
         Business Class Seats @Html.TextBoxFor(x => x.BusinessClassSeats)
-        @*<span asp-validation-for="BusinessClassSeats"></span>*@
+        <span asp-validation-for="BusinessClassSeats"></span>
     </div>
     <div>
         First Class Seats @Html.TextBoxFor(x => x.FirstClassSeats)
-        @*<span asp-validation-for="FirstClassSeats"></span>*@
+        <span asp-validation-for="FirstClassSeats"></span>
     </div>
     <div>
         Maximum Flight Range @Html.TextBoxFor(x => x.MaxFlightRange)
-        @*<span asp-validation-for="MaxFlightRange"></span>*@
+        <span asp-validation-for="MaxFlightRange"></span>
     </div>
     <div>
         Picture URL <input type="file" name="@nameof(AircraftViewModel.PictureFile)" class="file" />
-        @*<span asp-validation-for="Picture"></span>*@
     </div>
     <div>
         <input type="submit" value="Create" />
