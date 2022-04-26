@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
-namespace AirStar.Models
+namespace AirStar.ViewModels
 {
-    public class Aircraft : BaseModel
+    public class AircraftViewModel
     {
+        public int Id { get; set; }
         public string Model { get; set; }
         public string Brand { get; set; }
+
         [Display(Name = "Year Of Build")]
         public int YearOfBuild { get; set; }
 
@@ -24,8 +27,7 @@ namespace AirStar.Models
 
         [Display(Name = "Maximum Flight Range")]
         public int MaxFlightRange { get; set; }
+        public IFormFile PictureFile { get; set; }
         public string Picture { get; set; }
-
-        public ICollection<Flight> Flights { get; set; }
     }
 }

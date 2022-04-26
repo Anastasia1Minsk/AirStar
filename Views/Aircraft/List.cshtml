@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AirStar.Models.Aircraft>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Aircraft")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Details", "Details", "Aircraft", new { id = item.Id }) |
+                    @Html.ActionLink("Edit", "Edit", "Aircraft", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteConfirm", "Aircraft", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

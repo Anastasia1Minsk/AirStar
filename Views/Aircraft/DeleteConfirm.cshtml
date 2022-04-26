@@ -1,0 +1,69 @@
+﻿@model AirStar.Models.Aircraft
+
+<h1>Delete</h1>
+<h3>Are you sure you want to delete this?</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfBuild)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EconomyClassSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessClassSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstClassSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxFlightRange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.YearOfBuild)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.EconomyClassSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.BusinessClassSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.FirstClassSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MaxFlightRange)
+            </td>
+            <td>
+                <img src="@Model.Picture">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Delete", "Delete", "Aircraft", new { id = Model.Id }) |
+    @Html.ActionLink("Back to list", "List", "Aircraft")
+</div>

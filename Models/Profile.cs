@@ -13,6 +13,7 @@ namespace AirStar.Models
         {
             CreateMap<User, RegistrationViewModel>();
             CreateMap<User, LogInViewModel>();
+            CreateMap<Aircraft, AircraftViewModel>();
         }
     }
 }
