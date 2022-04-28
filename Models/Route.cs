@@ -7,8 +7,8 @@ namespace AirStar.Models
 {
     public class Route : BaseModel
     {
-        public string DepartureAirport_IATA { get; set; }
-        public string ArrivalAirport_IATA { get; set; }
+        public int DepartureAirport_ID { get; set; }
+        public int ArrivalAirport_ID { get; set; }
         public int Distance { get; set; }
 
         public ICollection<Flight> Flights { get; set; }
