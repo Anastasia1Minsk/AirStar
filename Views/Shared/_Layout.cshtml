@@ -15,6 +15,7 @@
         <div class="container-fluid">
         @Html.ActionLink("AirStar", "Index", "Home", null, new { @class = "navbar-brand" })
 
+        @Html.ActionLink("Search flight", "SearchForm", "Search", null, new { @class = "nav-link" })
 
             <ul class="nav justify-content-end">
                 @if (!User.Identity.IsAuthenticated)
@@ -48,9 +49,9 @@
                                 <li class="nav-item">
                                     @Html.ActionLink("Countries", "List", "Country", null, new { @class = "nav-link" })
                                 </li>
-                                <li class="nav-item">
+                                @*<li class="nav-item">
                                     @Html.ActionLink("DB", "Index", "Seed", null, new { @class = "nav-link" })
-                                </li>
+                                </li>*@
                             </ul>
                         </div>
 

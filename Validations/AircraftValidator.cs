@@ -50,12 +50,5 @@ namespace AirStar.Validations
                 .GreaterThan(0)
                 .WithMessage("Impossible to create such aircraft");
         }
-/*
-        private bool BeAValidDate(int year)
-        {
-            int currentYear = DateTime.Now.Year;
-            return (year <= currentYear) ? true : false;
-            *//*return !date.Equals(default(DateTime));*//*
-        }*/
     }
 }

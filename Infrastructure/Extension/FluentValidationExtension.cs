@@ -21,6 +21,7 @@ namespace AirStar.Infrastructure.Extension
             services.AddTransient<IValidator<LogInViewModel>, LogInValidator>();
             services.AddTransient<IValidator<Country>, CountryValidator>();
             services.AddTransient<IValidator<AircraftViewModel>, AircraftValidator>();
+            services.AddTransient<IValidator<SearchViewModel>, SearchValidator>();
         }
     }
 }

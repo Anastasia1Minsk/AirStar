@@ -1,0 +1,26 @@
+﻿@model SearchViewModel
+
+<h1>Search</h1>
+
+<form action="/Search/SearchForm" method="post">
+    <div>
+        Departure city @Html.DropDownListFor(x => x.DepartureCityID, (SelectList)ViewBag.CountryNames, "Journey begins in")
+        <span asp-validation-for="DepartureCityID"></span>
+    </div>
+    <div>
+        Arrival city @Html.DropDownListFor(x => x.ArrivalCityID, (SelectList)ViewBag.CountryNames, "Journey finishes in")
+        <span asp-validation-for="ArrivalCityID"></span>
+    </div>
+    <div>
+        Number of passengers @Html.TextBoxFor(x => x.NumberOfPassengers)
+        <span asp-validation-for="NumberOfPassengers"></span>
+    </div>
+    <div>
+        Departure date @Html.TextBoxFor(x => x.DepartureDate)
+        <span asp-validation-for="DepartureDate"></span>
+    </div>
+    <div>
+        <input type="submit" value="Search Flight" />
+    </div>
+</form>
+
