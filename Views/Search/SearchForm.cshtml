@@ -1,8 +1,12 @@
 ﻿@model SearchViewModel
 
+@section Scripts{
+    <script src="~/js/calendar.js"></script>
+}
+
 <h1>Search</h1>
 
-<form action="/Search/SearchForm" method="post">
+<form action="/Search/SearchForm" method="post" autocomplete="off">
     <div>
         Departure city @Html.DropDownListFor(x => x.DepartureCityID, (SelectList)ViewBag.CountryNames, "Journey begins in")
         <span asp-validation-for="DepartureCityID"></span>
@@ -15,12 +19,29 @@
         Number of passengers @Html.TextBoxFor(x => x.NumberOfPassengers)
         <span asp-validation-for="NumberOfPassengers"></span>
     </div>
-    <div>
-        Departure date @Html.TextBoxFor(x => x.DepartureDate)
-        <span asp-validation-for="DepartureDate"></span>
+
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="input_from">Departure Date</label>
+            <input type="text" class="form-control" id="input">
+        </div>
     </div>
+
+    <!--<div>
+        Departure date-->
+    @*@Html.TextBoxFor(x => x.DepartureDate)*@
+    <!--<span asp-validation-for="DepartureDate"></span>
+    </div>-->
+
+    <br />
+    <br />
+
+
     <div>
         <input type="submit" value="Search Flight" />
     </div>
 </form>
 
+<script>
+    rome(input, { time: false });
+</script>

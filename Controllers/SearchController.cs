@@ -31,6 +31,10 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> SearchForm(SearchViewModel searchViewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(searchViewModel);
+            }
 
             return View();
         }
