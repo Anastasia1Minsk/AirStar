@@ -1,0 +1,35 @@
+﻿@model SearchViewModel
+
+@section Scripts{
+    <script src="~/js/calendar.js"></script>
+}
+
+<h1>Search</h1>
+
+<form action="/Search/SearchForm" method="post" autocomplete="off">
+    <div>
+        Departure airport @Html.DropDownListFor(x => x.DepartureAirportID, (SelectList)ViewBag.CityNames, "Journey begins in")
+        <span asp-validation-for="DepartureAirportID"></span>
+    </div>
+    <div>
+        Arrival airport @Html.DropDownListFor(x => x.ArrivalAirportID, (SelectList)ViewBag.CityNames, "Journey finishes in")
+        <span asp-validation-for="ArrivalAirportID"></span>
+    </div>
+    <div>
+        Number of passengers @Html.TextBoxFor(x => x.NumberOfPassengers)
+        <span asp-validation-for="NumberOfPassengers"></span>
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="input_from">Departure Date</label>
+            <input type="text" class="form-control" id="DepartureDate" name ="DepartureDate">
+        </div>
+        <span asp-validation-for="DepartureDate"></span>
+    </div>
+    
+    <div>
+        <input type="submit" value="Search Flight" />
+    </div>
+</form>
+

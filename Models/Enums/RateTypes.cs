@@ -8,11 +8,11 @@ namespace AirStar.Models.Enums
 {
     public enum RateTypes
     {
-        [Description("Flight price for economy class passenger")]
+        [Description("Economy class passenger")]
         AdultEconomyFlight = 0,
-        [Description("Flight price for business class passenger")]
+        [Description("Business class passenger")]
         AdultBusinessFlight = 1,
-        [Description("Flight price for first class passenger")]
+        [Description("First class passenger")]
         AdultFirstFlight = 2,
 
         /*[Description("Flight price for economy class passenger(child)")]

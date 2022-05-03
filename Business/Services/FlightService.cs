@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
 using AirStar.Data.Interfaces;
 using AirStar.Infrastructure.Bases;
+using AirStar.Infrastructure.Bases.Interfaces;
 using AirStar.Models;
+using AirStar.ViewModels;
 
 namespace AirStar.Business.Services
 {
@@ -15,6 +17,19 @@ namespace AirStar.Business.Services
         public FlightService(IFlightRepository repository) : base(repository)
         {
             _repository = repository;
+        }
+
+        public async Task<IPagedList<Flight>> FlightSearch(SearchViewModel searchViewModel, int page)
+        {
+            var suitableFlights = await SelectPageAsync(
+                predicate: flight => flight.Route.DepartureAirport.Id == searchViewModel.DepartureAirportID
+                                     && flight.Route.ArrivalAirport.Id == searchViewModel.ArrivalAirportID
+                                     && flight.DepartureDate.Date == searchViewModel.DepartureDate
+                                     && ((flight.Aircraft.EconomyClassSeats >= searchViewModel.NumberOfPassengers)
+                                          || (flight.Aircraft.BusinessClassSeats >= searchViewModel.NumberOfPassengers)
+                                          || (flight.Aircraft.FirstClassSeats >= searchViewModel.NumberOfPassengers)),
+                includes: (new List<string>() { "Aircraft", "Rates", "Route", "Route.DepartureAirport", "Route.ArrivalAirport" }));
+            return suitableFlights;
         }
     }
 }

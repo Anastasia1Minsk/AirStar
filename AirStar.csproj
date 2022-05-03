@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\fonts\icomoon\" />
     <Folder Include="wwwroot\images\aircrafts\" />
     <Folder Include="wwwroot\lib\bootstrap5\" />
   </ItemGroup>

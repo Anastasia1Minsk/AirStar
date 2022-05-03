@@ -32,7 +32,7 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            return View(new AircraftViewModel());
+            return View();
         }
 
         [HttpPost]
