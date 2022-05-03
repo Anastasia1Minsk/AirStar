@@ -1,7 +1,7 @@
 ﻿$(document).ready(function() {
     $(function () {
 
-        rome(input, { time: false });
+        rome(DepartureDate, { time: false });
 
     });
 });

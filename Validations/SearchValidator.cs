@@ -11,10 +11,10 @@ namespace AirStar.Validations
     {
         public SearchValidator()
         {
-            RuleFor(x => x.DepartureCityID)
+            RuleFor(x => x.DepartureAirportID)
                 .NotEmpty()
                 .WithMessage("Please fill out the Departure City field");
-            RuleFor(x => x.ArrivalCityID)
+            RuleFor(x => x.ArrivalAirportID)
                 .NotEmpty()
                 .WithMessage("Please fill out the Arrival City field");
             RuleFor(x => x.NumberOfPassengers)

@@ -8,12 +8,12 @@
 
 <form action="/Search/SearchForm" method="post" autocomplete="off">
     <div>
-        Departure city @Html.DropDownListFor(x => x.DepartureCityID, (SelectList)ViewBag.CountryNames, "Journey begins in")
-        <span asp-validation-for="DepartureCityID"></span>
+        Departure airport @Html.DropDownListFor(x => x.DepartureAirportID, (SelectList)ViewBag.CityNames, "Journey begins in")
+        <span asp-validation-for="DepartureAirportID"></span>
     </div>
     <div>
-        Arrival city @Html.DropDownListFor(x => x.ArrivalCityID, (SelectList)ViewBag.CountryNames, "Journey finishes in")
-        <span asp-validation-for="ArrivalCityID"></span>
+        Arrival airport @Html.DropDownListFor(x => x.ArrivalAirportID, (SelectList)ViewBag.CityNames, "Journey finishes in")
+        <span asp-validation-for="ArrivalAirportID"></span>
     </div>
     <div>
         Number of passengers @Html.TextBoxFor(x => x.NumberOfPassengers)
@@ -23,25 +23,13 @@
     <div class="col-md-12">
         <div class="form-group">
             <label for="input_from">Departure Date</label>
-            <input type="text" class="form-control" id="input">
+            <input type="text" class="form-control" id="DepartureDate" name ="DepartureDate">
         </div>
+        <span asp-validation-for="DepartureDate"></span>
     </div>
-
-    <!--<div>
-        Departure date-->
-    @*@Html.TextBoxFor(x => x.DepartureDate)*@
-    <!--<span asp-validation-for="DepartureDate"></span>
-    </div>-->
-
-    <br />
-    <br />
-
-
+    
     <div>
         <input type="submit" value="Search Flight" />
     </div>
 </form>
 
-<script>
-    rome(input, { time: false });
-</script>

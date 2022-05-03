@@ -1,0 +1,90 @@
+﻿@model IPagedList<FlightViewModel>
+
+<h1>flights page</h1>
+
+<div>
+    @{
+        var flight = Model.Data.FirstOrDefault();
+        var departureCityAndAirport = flight?.DepartureAirport;
+        var arrivalCityAndAirport = flight?.ArrivalAirport;
+    }
+    
+    <div>
+        Departure City & Airport: @departureCityAndAirport
+    </div>
+    <div>
+        Arrival City & Airport: @arrivalCityAndAirport
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Departure Date
+            </th>
+            <th>
+                Arrival Date
+            </th>
+            <th>
+                Duration
+            </th>
+            <th>
+                Distance
+            </th>
+            <th>
+                Aircraft Model
+            </th>
+            <th>
+                Brand
+            </th>
+            <th>
+                Flight price for 1:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model.Data) 
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AircraftModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AircraftBrand)
+            </td>
+            
+            <td>
+                @foreach (var rate in item.Rates)
+                {
+                    <div>
+                        @Html.DisplayFor(modelItem => rate.RateTypeName)
+                        @Html.DisplayFor(modelItem => rate.Price)
+                    </div>
+                }
+            </td>
+            
+            <td>
+               @* @Html.ActionLink("Book tickets", "PassengerInformation", "Reservation", new { id = item.Id })*@
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@*@Html.ActionLink("Back to search form", "SearchForm", "Search") |
+@Html.ActionLink("Book ticket", "PassengerInformation", "Reservation", new { id = item.Id })*@

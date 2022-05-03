@@ -7,9 +7,9 @@ namespace AirStar.ViewModels
 {
     public class SearchViewModel
     {
-        public int DepartureCityID { get; set; }
-        public int ArrivalCityID { get; set; }
+        public int DepartureAirportID { get; set; }
+        public int ArrivalAirportID { get; set; }
         public int NumberOfPassengers { get; set; }
         public DateTime DepartureDate { get; set; }
-}
+    }
 }
