@@ -73,13 +73,17 @@ namespace AirStar.Controllers
 
             var suitableFlights = await _flightService.FlightSearch(searchViewModel, page);
 
-            var result = new PagedList<FlightViewModel>()
+            var result = new SelectedFlightsViewModel()
             {
-                CurrentPage = suitableFlights.CurrentPage,
-                PageSize = suitableFlights.PageSize,
-                TotalCount = suitableFlights.TotalCount,
-                TotalPages = suitableFlights.TotalPages,
-                Data = _mapper.Map<List<FlightViewModel>>(suitableFlights.Data)
+                SearchViewModel = searchViewModel,
+                Flights = new PagedList<FlightViewModel>()
+                    {
+                        CurrentPage = suitableFlights.CurrentPage,
+                        PageSize = suitableFlights.PageSize,
+                        TotalCount = suitableFlights.TotalCount,
+                        TotalPages = suitableFlights.TotalPages,
+                        Data = _mapper.Map<List<FlightViewModel>>(suitableFlights.Data)
+                    }
             };
 
             return View(result);

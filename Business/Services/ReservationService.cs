@@ -12,9 +12,14 @@ namespace AirStar.Business.Services
     public class ReservationService : ServiceBase<Reservation>, IReservationService
     {
         private readonly IReservationRepository _repository;
-        public ReservationService(IReservationRepository repository) : base(repository)
+        private readonly IPassengerService _passengerService;
+        private readonly IPriceService _priceService;
+        public ReservationService(IReservationRepository repository, IPassengerService passengerService,
+            IPriceService priceService) : base(repository)
         {
             _repository = repository;
+            _passengerService = passengerService;
+            _priceService = priceService;
         }
     }
 }
