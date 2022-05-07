@@ -14,7 +14,6 @@ namespace AirStar.Business.Services
     public class FlightService : ServiceBase<Flight>, IFlightService
     {
         private readonly IFlightRepository _repository;
-
         public FlightService(IFlightRepository repository) : base(repository)
         {
             _repository = repository;

@@ -16,5 +16,12 @@ namespace AirStar.Business.Services
         {
             _repository = repository;
         }
+
+        public async Task<IEnumerable<Rate>> GetRatesByFlightAsync(int flightId)
+        {
+            var result = await SelectAsync(predicate: rates => rates.FlightID == flightId);
+
+            return result;
+        }
     }
 }

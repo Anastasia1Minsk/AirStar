@@ -28,6 +28,8 @@ namespace AirStar.Infrastructure.Extension
             services.AddTransient<IValidator<PassengerInformationViewModel>, PassengerInformationValidator>();
             services.AddTransient<IValidator<ReservationViewModel>, ReservationValidator>();
             services.AddTransient<IValidator<Passenger>, PassengerValidator>();
+
+            services.AddTransient<IValidator<PaymentViewModel>, PaymentValidator>();
         }
     }
 }
