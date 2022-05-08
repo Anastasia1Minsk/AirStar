@@ -8,6 +8,7 @@ namespace AirStar.ViewModels
 {
     public class FlightViewModel
     {
+        public int Id { get; set; }
         public string DepartureAirport { get; set; }
         public string ArrivalAirport { get; set; }
         public int Distance { get; set; }

@@ -1,0 +1,77 @@
+﻿@model PassengerInformationViewModel
+
+<h1>Information about flight</h1>
+
+<div>
+    <div>
+        Departure City & Airport: @Model.Flight.DepartureAirport
+    </div>
+    <div>
+        Departure Time: @Model.Flight.DepartureDate
+    </div>
+    <br />
+
+    <div>
+        Duration: @Model.Flight.Duration
+    </div>
+    <br />
+
+    <div>
+        Arrival City & Airport: @Model.Flight.ArrivalAirport
+    </div>
+    <div>
+        Arrival Time: @Model.Flight.ArrivalDate
+    </div>
+    <br />
+
+    <div>
+        Aircraft: @Model.Flight.AircraftBrand @Model.Flight.AircraftModel
+    </div>
+    <br />
+</div>
+
+<h3>Total cost</h3>
+
+
+<h3>Passenger Information</h3>
+
+<form action="/Reservation/PassengerInformation" method="post" autocomplete="off">
+    @Html.HiddenFor(x => x.Flight.Id)
+    @Html.HiddenFor(x => x.Reservation.ClassId)
+    @Html.HiddenFor(x => x.Reservation.NumberOfPassengers)
+
+    @for (int i = 0; i < @Model.Reservation.NumberOfPassengers; i++)
+    {
+        <h5>Passenger @(i+1)</h5>
+
+        <div>
+            Last name @Html.TextBoxFor(x => x.Reservation.Passengers[i].LastName)
+            <span asp-validation-for="Reservation.Passengers[i].LastName"></span>
+        </div>
+        <div>
+            First name @Html.TextBoxFor(x => x.Reservation.Passengers[i].FirstName)
+            <span asp-validation-for="Reservation.Passengers[i].FirstName"></span>
+        </div>
+        <div>
+            Middle name @Html.TextBoxFor(x => x.Reservation.Passengers[i].MiddleName)
+            <span asp-validation-for="Reservation.Passengers[i].MiddleName"></span>
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Food, new { id = $"food_{i}" })
+            <label for="food_@i">Food during the flight</label>
+        </div>
+        <div>
+            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Luggage, new {id = $"luggage_{i}"})
+            <label for="luggage_@i">Book luggage</label>
+        </div>
+
+
+        <br/>
+        <br/>
+    }
+
+    <div>
+        <input type="submit" value="Continue"/>
+    </div>
+</form>

@@ -19,9 +19,17 @@ namespace AirStar.Infrastructure.Extension
 
             services.AddTransient<IValidator<RegistrationViewModel>, RegistrationValidator>();
             services.AddTransient<IValidator<LogInViewModel>, LogInValidator>();
+
             services.AddTransient<IValidator<Country>, CountryValidator>();
             services.AddTransient<IValidator<AircraftViewModel>, AircraftValidator>();
+
             services.AddTransient<IValidator<SearchViewModel>, SearchValidator>();
+
+            services.AddTransient<IValidator<PassengerInformationViewModel>, PassengerInformationValidator>();
+            services.AddTransient<IValidator<ReservationViewModel>, ReservationValidator>();
+            services.AddTransient<IValidator<Passenger>, PassengerValidator>();
+
+            services.AddTransient<IValidator<PaymentViewModel>, PaymentValidator>();
         }
     }
 }

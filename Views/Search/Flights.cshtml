@@ -1,10 +1,11 @@
-﻿@model IPagedList<FlightViewModel>
+﻿@using AirStar.Models.Enums
+@model SelectedFlightsViewModel
 
 <h1>flights page</h1>
 
 <div>
     @{
-        var flight = Model.Data.FirstOrDefault();
+        var flight = Model.Flights.Data.FirstOrDefault();
         var departureCityAndAirport = flight?.DepartureAirport;
         var arrivalCityAndAirport = flight?.ArrivalAirport;
     }
@@ -46,7 +47,7 @@
     </thead>
 
     <tbody>
-    @foreach (var item in Model.Data) 
+    @foreach (var item in Model.Flights.Data) 
     {
         <tr>
             <td>
@@ -67,7 +68,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AircraftBrand)
             </td>
-            
+
+
             <td>
                 @foreach (var rate in item.Rates)
                 {
@@ -79,12 +81,20 @@
             </td>
             
             <td>
-               @* @Html.ActionLink("Book tickets", "PassengerInformation", "Reservation", new { id = item.Id })*@
+                @foreach (var rate in item.Rates)
+                {
+                    @if (rate.RateType != RateTypes.Food && rate.RateType != RateTypes.Luggage)
+                    {
+                        <div>
+                            @Html.ActionLink("Book tickets", "PassengerInformation", "Reservation", 
+                                new { flightId = item.Id, classId = rate.Id, numberOfPassengers = Model.SearchViewModel.NumberOfPassengers })
+                        </div>
+                    }
+                }
             </td>
         </tr>
     }
     </tbody>
 </table>
 
-@*@Html.ActionLink("Back to search form", "SearchForm", "Search") |
-@Html.ActionLink("Book ticket", "PassengerInformation", "Reservation", new { id = item.Id })*@
+@*@Html.ActionLink("Back to search form", "SearchForm", "Search")*@

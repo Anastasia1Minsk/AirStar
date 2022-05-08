@@ -1,0 +1,30 @@
+﻿@model PaymentViewModel
+
+<h1>Payment</h1>
+
+<form action="/Reservation/Payment" method="post" autocomplete="off">
+    @Html.HiddenFor(x => x.ReservationId)
+    <div>
+        Person name @Html.TextBoxFor(x => x.PersonName)
+        <span asp-validation-for="PersonName"></span>
+    </div>
+    <div>
+        Credit card number @Html.TextBoxFor(x => x.CreditCardNumber)
+        <span asp-validation-for="CreditCardNumber"></span>
+    </div>
+    <div>
+        CVV/CVC @Html.TextBoxFor(x => x.CVV)
+        <span asp-validation-for="CVV"></span>
+    </div>
+    <div>
+        Expiration date @Html.TextBoxFor(x => x.ExpirationDateMonth)
+        <span asp-validation-for="ExpirationDateMonth"></span>
+        @Html.TextBoxFor(x => x.ExpirationDateYear)
+        <span asp-validation-for="ExpirationDateYear"></span>
+    </div>
+
+    <div>
+        <input type="submit" value="Pay"/>
+    </div>
+</form>
+

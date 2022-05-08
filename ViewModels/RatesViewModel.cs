@@ -9,6 +9,7 @@ namespace AirStar.ViewModels
 {
     public class RatesViewModel
     {
+        public int Id { get; set; }
         public RateTypes RateType { get; set; }
         public decimal Price { get; set; }
         public string RateTypeName => EnumHelper.GetEnumDescription(RateType);

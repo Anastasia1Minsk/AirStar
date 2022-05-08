@@ -26,7 +26,7 @@ namespace AirStar.Validations
                 .WithMessage("You can book for a maximum of 10 passengers");
             RuleFor(x => x.DepartureDate)
                 .NotEmpty()
-                .WithMessage("Please fill out the Number Of Departure Date field")
+                .WithMessage("Please fill out the Departure Date field")
                 .GreaterThanOrEqualTo(DateTime.Now)
                 .WithMessage("Non-existing date"); 
         }

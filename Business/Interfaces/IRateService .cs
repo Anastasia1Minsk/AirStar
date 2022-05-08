@@ -9,5 +9,6 @@ namespace AirStar.Business.Interfaces
 {
     public interface IRateService : IServiceBase<Rate>
     {
+        public Task<IEnumerable<Rate>> GetRatesByFlightAsync(int flightId);
     }
 }
