@@ -42,7 +42,6 @@
             <th>
                 Flight price for 1:
             </th>
-            <th></th>
         </tr>
     </thead>
 
@@ -83,30 +82,6 @@
                     </div>
                 }
             </td>
-            
-
-            @*<td>
-            @foreach (var rate in item.Rates)
-            {
-                <div>
-                    @Html.DisplayFor(modelItem => rate.RateTypeName)
-                    @Html.DisplayFor(modelItem => rate.Price)
-                </div>
-            }
-        </td>
-
-        <td>
-            @foreach (var rate in item.Rates)
-            {
-                @if (rate.RateType != RateTypes.Food && rate.RateType != RateTypes.Luggage)
-                {
-                    <div>
-                        @Html.ActionLink("Book tickets", "PassengerInformation", "Reservation",
-                            new { flightId = item.Id, classId = rate.Id, numberOfPassengers = Model.SearchViewModel.NumberOfPassengers })
-                    </div>
-                }
-            }
-        </td>*@
         </tr>
     }
     </tbody>

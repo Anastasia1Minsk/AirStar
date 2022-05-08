@@ -11,5 +11,6 @@ namespace AirStar.Business.Interfaces
     public interface IReservationService : IServiceBase<Reservation>
     {
         public Task<int> CreateReservation(PassengerInformationViewModel passengerInformationViewModel);
+        public Task<IEnumerable<Reservation>> GetReservationByUser();
     }
 }
