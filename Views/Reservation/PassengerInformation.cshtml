@@ -1,5 +1,9 @@
 ﻿@model PassengerInformationViewModel
 
+@section Scripts{
+    <script src="~/js/AjaxPassengerInfo.js"></script>
+}
+
 <h1>Information about flight</h1>
 
 <div>
@@ -31,13 +35,23 @@
 </div>
 
 <h3>Total cost</h3>
+<div id="total-render"></div>
+<br/>
 
+<div>Ticket cost:</div>
+<div id="ticket-render"></div>
+
+<div>Food cost:</div>
+<div id="food-render"></div>
+
+<div>Luggage cost:</div>
+<div id="luggage-render"></div>
 
 <h3>Passenger Information</h3>
 
 <form action="/Reservation/PassengerInformation" method="post" autocomplete="off">
-    @Html.HiddenFor(x => x.Flight.Id)
-    @Html.HiddenFor(x => x.Reservation.ClassId)
+    @Html.HiddenFor(x => x.Flight.Id, new { id = "flightId" })
+    @Html.HiddenFor(x => x.Reservation.ClassId, new { id = "classId" })
     @Html.HiddenFor(x => x.Reservation.NumberOfPassengers)
 
     @for (int i = 0; i < @Model.Reservation.NumberOfPassengers; i++)
@@ -58,20 +72,22 @@
         </div>
 
         <div>
-            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Food, new { id = $"food_{i}" })
+            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Food,
+                new { id = $"food_{i}", @class = "addFood" })
             <label for="food_@i">Food during the flight</label>
         </div>
         <div>
-            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Luggage, new {id = $"luggage_{i}"})
+            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Luggage,
+                new { id = $"luggage_{i}", @class = "addLuggage" })
             <label for="luggage_@i">Book luggage</label>
         </div>
 
 
-        <br/>
-        <br/>
+        <br />
+        <br />
     }
 
     <div>
-        <input type="submit" value="Continue"/>
+        <input type="submit" value="Continue" id="submitButton" />
     </div>
 </form>
