@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
 using AirStar.Models;
+using AirStar.Models.Enums;
 using AirStar.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -17,12 +18,17 @@ namespace AirStar.Controllers
     {
         private readonly IFlightService _flightService;
         private readonly IReservationService _reservationService;
+        private readonly IRateService _rateService;
+        private readonly IPriceService _priceService;
         private readonly IMapper _mapper;
 
-        public ReservationController(IFlightService flightService, IReservationService reservationService, IMapper mapper)
+        public ReservationController(IFlightService flightService, IReservationService reservationService, IRateService rateService,
+            IPriceService priceService, IMapper mapper)
         {
             _flightService = flightService;
             _reservationService = reservationService;
+            _rateService = rateService;
+            _priceService = priceService;
             _mapper = mapper;
         }
 
@@ -51,14 +57,15 @@ namespace AirStar.Controllers
             return View(result);
         }
 
-        /*public async Task<IActionResult> AjaxPassengerInformation(int flightId, int classId, int numberOfPassengers)
+        public async Task<JsonResult> JsonPassengerInformation(int flightId, int classId)
         {
-            var chosenFlight = await _flightService.SelectOneAsync(
-                predicate: flight => flight.Id == flightId,
-                includes: (new List<string>() { "Aircraft", "Rates", "Route", "Route.DepartureAirport", "Route.ArrivalAirport" }),
-                );
-        }*/
+            var rates = (await _rateService.GetRatesByFlightAsync(flightId)).ToList();
+            rates = rates.Where(x =>
+                x.RateType == RateTypes.Food || x.RateType == RateTypes.Luggage || x.Id == classId).ToList();
 
+            return Json(rates);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> PassengerInformation(PassengerInformationViewModel passengerInformationViewModel)
         {
@@ -85,14 +92,14 @@ namespace AirStar.Controllers
                     predicate: flight => flight.Id == flightId,
                     includes: (new List<string>() { "Aircraft", "Rates", "Route", "Route.DepartureAirport", "Route.ArrivalAirport" }));
         }
-        
 
         [HttpGet]
         public async Task<IActionResult> Payment(int reservationId)
         {
             var result = new PaymentViewModel()
             {
-                ReservationId = reservationId
+                ReservationId = reservationId,
+                TotalCost = await _priceService.GetTotalByReservationAsync(reservationId)
             };
 
             return View(result);

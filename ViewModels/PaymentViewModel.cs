@@ -13,5 +13,6 @@ namespace AirStar.ViewModels
         public string CVV { get; set; }
         public int ExpirationDateMonth { get; set; }
         public int ExpirationDateYear { get; set; }
+        public decimal TotalCost { get; set; }
     }
 }

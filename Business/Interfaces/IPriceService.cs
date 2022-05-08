@@ -9,5 +9,6 @@ namespace AirStar.Business.Interfaces
 {
     public interface IPriceService : IServiceBase<Price>
     {
+        public Task<decimal> GetTotalByReservationAsync(int reservationId);
     }
 }

@@ -16,5 +16,13 @@ namespace AirStar.Business.Services
         {
             _repository = repository;
         }
+
+        public async Task<decimal> GetTotalByReservationAsync(int reservationId)
+        {
+            var list = await SelectAsync(predicate: x => x.ReservationID == reservationId);
+            var total = list.Sum(x => x.Amount * x.Cost);
+
+            return total;
+        }
     }
 }
