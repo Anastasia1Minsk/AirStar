@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Reservation>
+
+<h1>My reservation</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Departure city
+        </th>
+        <th>
+            Departure date
+        </th>
+        <th>
+            Arrival city
+        </th>
+        <th>
+            Arrival date
+        </th>
+        <th>
+            Aircraft
+        </th>
+        <th>
+            Paid
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.Route.DepartureAirport.City)
+                @Html.DisplayFor(modelItem => item.Flight.Route.DepartureAirport.Code_IATA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.DepartureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.Route.ArrivalAirport.City)
+                @Html.DisplayFor(modelItem => item.Flight.Route.ArrivalAirport.Code_IATA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.ArrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.Aircraft.Brand)
+                @Html.DisplayFor(modelItem => item.Flight.Aircraft.Model)
+            </td>
+            <td>
+                @if(item.Paid)
+                {
+                    <div>
+                        Paid
+                    </div>
+                }
+                else
+                {
+                @Html.ActionLink("Pay", "Payment", "Reservation", new { reservationId = item.Id })
+                }
+            </td>
+
+                
+        </tr>
+    }
+    </tbody>
+</table>
+    
+<div>
+    @Html.ActionLink("Back to the main page", "Index", "Home")
+</div>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
 using AirStar.Data.Interfaces;
 using AirStar.Infrastructure.Bases;
+using AirStar.Infrastructure.Bases.Interfaces;
 using AirStar.Models;
 using AirStar.Models.Enums;
 using AirStar.ViewModels;
@@ -38,12 +39,14 @@ namespace AirStar.Business.Services
             var reservation = new Reservation();
             reservation.FlightID = passengerInformationViewModel.Flight.Id;
 
-            var userEmail = _httpContextAccessor.HttpContext.User.Identity.Name;
-            var user = await _userService.SelectOneAsync(predicate: user => user.Email == userEmail);
+           /* var userEmail = _httpContextAccessor.HttpContext.User.Identity.Name;
+            var user = await _userService.SelectOneAsync(predicate: user => user.Email == userEmail);*/
+
+            var user = await GetCurrentUser();
             reservation.UserID = user.Id;
 
             await InsertAsync(reservation);
-            
+
             var passengers = new List<Passenger>();
             for (int i = 0; i < passengerInformationViewModel.Reservation.NumberOfPassengers; i++)
             {
@@ -111,6 +114,25 @@ namespace AirStar.Business.Services
             await _priceService.InsertAsync(prices);
 
             return reservation.Id;
+        }
+
+        private async Task<User> GetCurrentUser ()
+        {
+            var userEmail = _httpContextAccessor.HttpContext.User.Identity.Name;
+            var user = await _userService.SelectOneAsync(predicate: user => user.Email == userEmail);
+            return user;
+        }
+
+        public async Task<IEnumerable<Reservation>> GetReservationByUser()
+        {
+            var user = await GetCurrentUser();
+
+            var result = await SelectAsync(
+                predicate: x => x.UserID == user.Id,
+                includes: (new List<string>() { "Passengers", "Prices", "Flight", "Flight.Aircraft", "Flight.Route",
+                    "Flight.Route.DepartureAirport", "Flight.Route.ArrivalAirport" }));
+
+            return result;
         }
     }
 }

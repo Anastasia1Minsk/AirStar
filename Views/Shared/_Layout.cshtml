@@ -39,6 +39,10 @@
                         </span>
                     </li>
 
+                    <li class="nav-item">
+                        @Html.ActionLink("My reservations", "Reservations", "User", null, new { @class = "nav-link" })
+                    </li>
+
                     @if (User.IsInRole("Admin"))
                     {
                         <div class="dropdown">
@@ -54,12 +58,12 @@
                                     @Html.ActionLink("Countries", "List", "Country", null, new { @class = "nav-link" })
                                 </li>
                                 @*<li class="nav-item">
-                                    @Html.ActionLink("DB", "Index", "Seed", null, new { @class = "nav-link" })
-                                </li>*@
+                            @Html.ActionLink("DB", "Index", "Seed", null, new { @class = "nav-link" })
+                        </li>*@
                             </ul>
                         </div>
 
-                        
+
                     }
 
                     <li class="nav-item">
