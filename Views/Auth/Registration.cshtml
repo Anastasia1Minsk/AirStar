@@ -6,12 +6,12 @@
 
 @section Scripts{
     @*<script src="~/js/galleryCarousel.js"></script>*@
-    <link rel="stylesheet" href="~/css/registration.css" />
+    <link rel="stylesheet" href="~/css/registrationLogin.css" />
 }
 
 <div class="full-page-container">
-    <div class="registration">
-        <div class="registration-container centering">
+    <div class="registration-login">
+        <div class="registration-login-container centering">
             <form action="/Auth/Registration" method="post" autocomplete="off" class="centering">
                 <h1 class="work-text">
                     Create account
@@ -58,33 +58,8 @@
             </p>
             <p></p>
             <p>
-                @Html.ActionLink("Log in", "Index", "Home", null, new { @class = "button-on-page button-on-decor" })
+                @Html.ActionLink("Go to the main page", "Index", "Home", null, new { @class = "button-on-page button-on-decor" })
             </p>
         </div>
     </div>
 </div>
-
-@*<h1>registration</h1>
-
-    <form action="/Auth/Registration" method="post">
-        <div>
-            Email @Html.TextBoxFor(x => x.Email)
-            <span asp-validation-for="Email"></span>
-        </div>
-        <div>
-            Password @Html.TextBoxFor(x => x.Password)
-            <span asp-validation-for="Password"></span>
-        </div>
-        <div>
-            Confirm password @Html.TextBoxFor(x => x.ConfirmPassword, new { @type = "password" })
-            <span asp-validation-for="ConfirmPassword"></span>
-        </div>
-        <div>
-            <input type="submit" value="Registration" />
-        </div>
-    </form>
-
-    <div>
-        Already a user?
-        <a href="/Auth/LogIn">Log in</a>
-    </div>*@

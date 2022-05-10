@@ -8,7 +8,7 @@
     margin-top: 100px;
 }
 
-.registration {
+.registration-login {
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -22,7 +22,7 @@
     min-height: 300px;
 }
 
-.registration-container {
+.registration-login-container {
     background-color: #ECF0F1;
 }
 
@@ -97,3 +97,7 @@ h1.work-text {
     background-color: transparent;
     border-color: #FFFFFF;
 }
+
+    .button-on-decor:hover {
+        color: #30394A;
+    }
