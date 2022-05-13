@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
@@ -7,9 +8,11 @@ using AirStar.Models;
 using AirStar.Models.Enums;
 using AirStar.ViewModels;
 using AutoMapper;
+using iText.Html2pdf;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Razor.Templating.Core;
 
 namespace AirStar.Controllers
 {
@@ -117,13 +120,28 @@ namespace AirStar.Controllers
             reservation.Paid = true;
             await _reservationService.UpdateAsync(reservation);
 
-            return RedirectToAction("PrintTicket", "Reservation");
+            var routeValues = new RouteValueDictionary {
+                { "id", reservation.Id}
+            };
+
+            return RedirectToAction("PrintTicket", "Reservation", routeValues);
         }
 
         [HttpGet]
-        public async Task<IActionResult> PrintTicket()
+        public async Task<IActionResult> PrintTicket(int id)
         {
-            return View();
+            var reservation = await _reservationService.SelectOneAsync(x => x.Id == id, new List<string>()
+                {"Passengers", "Prices", "Flight", "Flight.Route", "Flight.Route.DepartureAirport", "Flight.Route.ArrivalAirport"});
+
+            var html = await RazorTemplateEngine.RenderAsync("/Views/Reservation/PrintTicket.cshtml", reservation);
+
+            using (var stream = new MemoryStream())
+            {
+                ConverterProperties converterProperties = new ConverterProperties();
+                HtmlConverter.ConvertToPdf(html, stream, converterProperties);
+
+                return new FileContentResult(stream.ToArray(), "application/pdf");
+            }
         }
     }
 }

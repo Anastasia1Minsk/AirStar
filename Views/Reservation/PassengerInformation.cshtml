@@ -4,90 +4,147 @@
     <script src="~/js/AjaxPassengerInfo.js"></script>
 }
 
-<h1>Information about flight</h1>
-
-<div>
-    <div>
-        Departure City & Airport: @Model.Flight.DepartureAirport
+<div class="card mb-3">
+    <h3 class="card-header">
+        Information about flight
+    </h3>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-1">
+                <span class="material-symbols-outlined">
+                    flight_takeoff
+                </span>
+            </div>
+            <div class="col-5">
+                <div>Departure City & Airport: <strong>@Model.Flight.DepartureAirport</strong></div>
+                <div>Departure Time: <strong>@Model.Flight.DepartureDate</strong></div>
+            </div>
+            <div class="col-1">
+                <span class="material-symbols-outlined">
+                    flight_land
+                </span>
+            </div>
+            <div class="col-5">
+                <div>Arrival City & Airport: <strong>@Model.Flight.ArrivalAirport</strong></div>
+                <div>Arrival Time: <strong>@Model.Flight.ArrivalDate</strong></div>
+            </div>
+            <div class="col-12 text-center pt-3">
+                <span class="material-symbols-outlined align-middle">
+                    update
+                </span>
+                Duration: <strong>@Model.Flight.Duration</strong>
+            </div>
+        </div>
     </div>
-    <div>
-        Departure Time: @Model.Flight.DepartureDate
-    </div>
-    <br />
-
-    <div>
-        Duration: @Model.Flight.Duration
-    </div>
-    <br />
-
-    <div>
-        Arrival City & Airport: @Model.Flight.ArrivalAirport
-    </div>
-    <div>
-        Arrival Time: @Model.Flight.ArrivalDate
-    </div>
-    <br />
-
-    <div>
-        Aircraft: @Model.Flight.AircraftBrand @Model.Flight.AircraftModel
-    </div>
-    <br />
 </div>
 
-<h3>Total cost</h3>
-<div id="total-render"></div>
-<br/>
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
 
-<div>Ticket cost:</div>
-<div id="ticket-render"></div>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p id="total-render"></p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        <cite title="Source Title">Total cost</cite>
+                    </figcaption>
+                </figure>
 
-<div>Food cost:</div>
-<div id="food-render"></div>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p id="ticket-render"></p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        <cite title="Source Title">Ticket costTotal cost</cite>
+                    </figcaption>
+                </figure>
 
-<div>Luggage cost:</div>
-<div id="luggage-render"></div>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p id="food-render"></p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        <cite title="Source Title">Food cost</cite>
+                    </figcaption>
+                </figure>
 
-<h3>Passenger Information</h3>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p id="luggage-render"></p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        <cite title="Source Title">Luggage cost</cite>
+                    </figcaption>
+                </figure>
 
-<form action="/Reservation/PassengerInformation" method="post" autocomplete="off">
-    @Html.HiddenFor(x => x.Flight.Id, new { id = "flightId" })
-    @Html.HiddenFor(x => x.Reservation.ClassId, new { id = "classId" })
-    @Html.HiddenFor(x => x.Reservation.NumberOfPassengers)
-
-    @for (int i = 0; i < @Model.Reservation.NumberOfPassengers; i++)
-    {
-        <h5>Passenger @(i+1)</h5>
-
-        <div>
-            Last name @Html.TextBoxFor(x => x.Reservation.Passengers[i].LastName)
-            <span asp-validation-for="Reservation.Passengers[i].LastName"></span>
+            </div>
         </div>
-        <div>
-            First name @Html.TextBoxFor(x => x.Reservation.Passengers[i].FirstName)
-            <span asp-validation-for="Reservation.Passengers[i].FirstName"></span>
-        </div>
-        <div>
-            Middle name @Html.TextBoxFor(x => x.Reservation.Passengers[i].MiddleName)
-            <span asp-validation-for="Reservation.Passengers[i].MiddleName"></span>
-        </div>
-
-        <div>
-            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Food,
-                new { id = $"food_{i}", @class = "addFood" })
-            <label for="food_@i">Food during the flight</label>
-        </div>
-        <div>
-            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Luggage,
-                new { id = $"luggage_{i}", @class = "addLuggage" })
-            <label for="luggage_@i">Book luggage</label>
-        </div>
-
-
-        <br />
-        <br />
-    }
-
-    <div>
-        <input type="submit" value="Continue" id="submitButton" />
     </div>
-</form>
+
+    <div class="col-9">
+        <div class="card mb-5">
+            <h4 class="card-header">
+                <span class="material-symbols-outlined align-middle">
+                    confirmation_number
+                </span>
+                Passenger Information
+            </h4>
+            <div class="card-body">
+                <form action="/Reservation/PassengerInformation" method="post" autocomplete="off">
+                    @Html.HiddenFor(x => x.Flight.Id, new { id = "flightId" })
+                    @Html.HiddenFor(x => x.Reservation.ClassId, new { id = "classId" })
+                    @Html.HiddenFor(x => x.Reservation.NumberOfPassengers)
+
+                    @for (int i = 0; i < @Model.Reservation.NumberOfPassengers; i++)
+                    {
+                        <h5>Passenger @(i+1)</h5>
+
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <label class="form-label">Last name</label>
+                                @Html.TextBoxFor(x => x.Reservation.Passengers[i].LastName, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="Reservation.Passengers[i].LastName"></span>
+                            </div>
+                            <div class="col-4 mb-3">
+                                <label class="form-label">First name</label>
+                                @Html.TextBoxFor(x => x.Reservation.Passengers[i].FirstName, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="Reservation.Passengers[i].FirstName"></span>
+                            </div>
+                            <div class="col-4 mb-3">
+                                <label class="form-label">Middle name</label>
+                                @Html.TextBoxFor(x => x.Reservation.Passengers[i].MiddleName, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger"  asp-validation-for="Reservation.Passengers[i].MiddleName"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Food, new { id = $"food_{i}", @class = "addFood form-check-input" })
+                            <label class="form-check-label" for="food_@i">
+                                <span class="material-symbols-outlined align-middle">
+                                    restaurant
+                                </span>
+                                Food during the flight
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            @Html.CheckBoxFor(x => x.Reservation.Passengers[i].Luggage, new { id = $"luggage_{i}", @class = "addLuggage form-check-input" })
+                            <label class="form-check-label" for="luggage_@i">
+                                <span class="material-symbols-outlined align-middle">
+                                    luggage
+                                </span>
+                                Book luggage
+                            </label>
+                        </div>
+                    }
+
+                    <div class="col text-center">
+                        <button class="btn btn-primary" type="submit">Continue</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

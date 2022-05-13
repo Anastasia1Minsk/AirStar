@@ -1,46 +1,63 @@
 ﻿@model AircraftViewModel
 
-<h1>Edit</h1>
+<div class="card">
+    <h3 class="card-header">
+        Edit
+    </h3>
+    <div class="card-body">
+        <form action="/Aircraft/Edit" method="post" enctype="multipart/form-data">
+            @Html.HiddenFor(x => x.Id)
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label class="form-label">Model</label>
+                    @Html.TextBoxFor(x => x.Model, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="Model"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">Brand</label>
+                    @Html.TextBoxFor(x => x.Brand, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="Brand"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">Year Of Build</label>
+                    @Html.TextBoxFor(x => x.YearOfBuild, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="YearOfBuild"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label class="form-label">Economy Class Seats</label>
+                    @Html.TextBoxFor(x => x.EconomyClassSeats, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="EconomyClassSeats"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">Business Class Seats</label>
+                    @Html.TextBoxFor(x => x.BusinessClassSeats, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="BusinessClassSeats"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">First Class Seats</label>
+                    @Html.TextBoxFor(x => x.FirstClassSeats, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="FirstClassSeats"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label class="form-label">Maximum Flight Range</label>
+                    @Html.TextBoxFor(x => x.MaxFlightRange, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="MaxFlightRange"></span>
+                </div>
+                <div class="col-8 mb-3">
+                    <label class="form-label">Picture</label>
+                    <input type="file" name="@nameof(AircraftViewModel.PictureFile)" class="form-control" />
+                </div>
+            </div>
 
-<form action="/Aircraft/Edit" method="post" enctype="multipart/form-data">
-    <div>
-        @Html.HiddenFor(x => x.Id)
-        Model @Html.TextBoxFor(x => x.Model)
-        <span asp-validation-for="Model"></span>
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">Edit</button>
+                @Html.ActionLink("Back to list", "List", "Aircraft", htmlAttributes: new { @class = "btn btn-outline-primary" })
+            </div>
+        </form>
     </div>
-    <div>
-        Brand @Html.TextBoxFor(x => x.Brand)
-        <span asp-validation-for="Brand"></span>
-    </div>
-    <div>
-        Year Of Build @Html.TextBoxFor(x => x.YearOfBuild)
-        <span asp-validation-for="YearOfBuild"></span>
-    </div>
-    <div>
-        Economy Class Seats @Html.TextBoxFor(x => x.EconomyClassSeats)
-        <span asp-validation-for="EconomyClassSeats"></span>
-    </div>
-    <div>
-        Business Class Seats @Html.TextBoxFor(x => x.BusinessClassSeats)
-        <span asp-validation-for="BusinessClassSeats"></span>
-    </div>
-    <div>
-        First Class Seats @Html.TextBoxFor(x => x.FirstClassSeats)
-        <span asp-validation-for="FirstClassSeats"></span>
-    </div>
-    <div>
-        Maximum Flight Range @Html.TextBoxFor(x => x.MaxFlightRange)
-        <span asp-validation-for="MaxFlightRange"></span>
-    </div>
-    <div>
-        @Html.HiddenFor(x => x.Picture)
-        Picture URL <input type="file" name="@nameof(AircraftViewModel.PictureFile)" class="file" />
-    </div>
-    <div>
-        <input type="submit" value="Edit" />
-    </div>
-</form>
-
-<div>
-    @Html.ActionLink("Back to list", "List", "Aircraft")
 </div>
+
