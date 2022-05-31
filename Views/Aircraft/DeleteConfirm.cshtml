@@ -1,69 +1,57 @@
 ﻿@model Aircraft
 
-<h1>Delete</h1>
-<h3>Are you sure you want to delete this?</h3>
+<div class="card mb-5">
+    <h3 class="card-header">
+        Delete
+    </h3>
+    <div class="card-body">
+        <div class="alert alert-danger" role="alert">
+            Are you sure you want to delete this?
+        </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearOfBuild)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EconomyClassSeats)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessClassSeats)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstClassSeats)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaxFlightRange)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-        </tr>
-    </thead>
+            <div class="col text-center">
+                @Html.ActionLink("Delete", "Delete", "Aircraft",new {id = Model.Id}, htmlAttributes: new {@class = "btn btn-primary"})
+                @Html.ActionLink("Back to list", "List", "Aircraft", htmlAttributes: new {@class = "btn btn-outline-primary"})
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label class="form-label">Model</label>
+                    @Html.TextBoxFor(x => x.Model, htmlAttributes: new {@class = "form-control-plaintext", @readonly = "readonly"})
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">Brand</label>
+                    @Html.TextBoxFor(x => x.Brand, htmlAttributes: new {@class = "form-control-plaintext", @readonly = "readonly"})
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">Year Of Build</label>
+                    @Html.TextBoxFor(x => x.YearOfBuild, htmlAttributes: new {@class = "form-control-plaintext", @readonly = "readonly"})
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label class="form-label">Economy Class Seats</label>
+                    @Html.TextBoxFor(x => x.EconomyClassSeats, htmlAttributes: new {@class = "form-control-plaintext", @readonly = "readonly"})
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">Business Class Seats</label>
+                    @Html.TextBoxFor(x => x.BusinessClassSeats, htmlAttributes: new {@class = "form-control-plaintext", @readonly = "readonly"})
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">First Class Seats</label>
+                    @Html.TextBoxFor(x => x.FirstClassSeats, htmlAttributes: new {@class = "form-control-plaintext", @readonly = "readonly"})
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label class="form-label">Maximum Flight Range</label>
+                    @Html.TextBoxFor(x => x.MaxFlightRange, htmlAttributes: new {@class = "form-control-plaintext", @readonly = "readonly"})
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <img src="@Model.Picture" class="img-fluid shadow">
+                </div>
+            </div>
 
-    <tbody>
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.YearOfBuild)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.EconomyClassSeats)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.BusinessClassSeats)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.FirstClassSeats)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.MaxFlightRange)
-            </td>
-            <td>
-                <img src="@Model.Picture">
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<div>
-    @Html.ActionLink("Delete", "Delete", "Aircraft", new { id = Model.Id }) |
-    @Html.ActionLink("Back to list", "List", "Aircraft")
+    </div>
 </div>

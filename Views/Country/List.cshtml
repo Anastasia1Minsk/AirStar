@@ -1,31 +1,39 @@
 ﻿@model IEnumerable<Country>
 
-<p>
-    @Html.ActionLink("Create New", "Create", "Country")
-</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model) 
-        {
+<div class="card">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+                @Html.ActionLink("Create New", "Create", "Country", htmlAttributes: new { @class = "nav-link active" })
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "Country", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "DeleteConfirm", "Country", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+            </thead>
+
+            <tbody>
+            @foreach (var item in Model) 
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="align-middle text-end">
+                        @Html.ActionLink("Edit", "Edit", "Country", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                        @Html.ActionLink("Delete", "DeleteConfirm", "Country", new { id = item.Id }, new { @class = "btn btn-link" })
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,11 +1,15 @@
-﻿@{
+﻿@section Scripts{
+    <link rel="stylesheet" href="~/css/registrationLogin.css" />
+}
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>    
+    <h1 class="display-4">Welcome</h1>
 </div>
 
-<div>
-    @Html.ActionLink("Search flight", "SearchForm", "Search")
+<div class="text-center">
+    @Html.ActionLink("Search flight", "SearchForm", "Search", null,new { @class = "button-on-page" })
 </div>

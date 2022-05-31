@@ -1,3 +1,54 @@
-﻿@*@model PaymentViewModel*@
+﻿@model Reservation
 
-<h1>Print ticket</h1>
+@{
+    Layout = "_EmptyLayout";
+    var duration = Model.Flight.ArrivalDate - Model.Flight.DepartureDate;
+    var total = Model.Prices.Sum(x => x.Amount * x.Cost);
+}
+
+<style>
+    .tiket-body {
+        border: 1px solid gray;
+        font-family: Geneva, Arial, Helvetica, sans-serif;
+        padding: 15px;
+    }
+
+    .tiket-body .section {
+        margin-bottom: 10px;
+    }
+
+</style>
+
+<div class="tiket-body">
+    <h4>Reservation # @Model.Id</h4>
+
+    <div class="section">
+        <div>Departure City & Airport: <strong>@Model.Flight.Route.DepartureAirport.City @Model.Flight.Route.DepartureAirport.Code_IATA</strong></div>
+        <div>Departure Time: <strong>@Model.Flight.DepartureDate</strong></div>
+    </div>
+
+    <div class="section">
+        <div>Arrival City & Airport: <strong>@Model.Flight.Route.ArrivalAirport.City @Model.Flight.Route.ArrivalAirport.Code_IATA</strong></div>
+        <div>Arrival Time: <strong>@Model.Flight.ArrivalDate</strong></div>
+    </div>
+
+    <div class="section">
+        Duration: <strong>@duration</strong>
+    </div>
+    
+    
+    @foreach (var pax in Model.Passengers)
+    {
+        <div>
+            <span>@pax.FirstName</span>&nbsp;
+            <span>@pax.LastName</span>&nbsp;
+            <span>@pax.MiddleName</span>
+        </div>
+    }
+
+    <div class="section"></div>
+
+    <div class="section">
+        Total: <strong>@total</strong>
+    </div>
+</div>

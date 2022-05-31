@@ -4,32 +4,50 @@
     <script src="~/js/calendar.js"></script>
 }
 
-<h1>Search</h1>
+<div class="card">
+    <h3 class="card-header">
+        <i class="bi bi-search"></i>
+        Search
+    </h3>
+    <div class="card-body">
+        <form action="/Search/SearchForm" method="post" autocomplete="off">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="DepartureAirportID" class="col-form-label">Departure airport</label>
+                        @Html.DropDownListFor(x => x.DepartureAirportID, (SelectList) ViewBag.CityNames, "Journey begins in", new {@class = "form-select"})
+                        <span class="text-danger" asp-validation-for="DepartureAirportID"></span>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="ArrivalAirportID" class="col-form-label">Arrival airport</label>
+                        @Html.DropDownListFor(x => x.ArrivalAirportID, (SelectList) ViewBag.CityNames, "Journey finishes in", new {@class = "form-select"})
+                        <span class="text-danger" asp-validation-for="ArrivalAirportID"></span>
+                    </div>
+                 </div>
+            </div>
 
-<form action="/Search/SearchForm" method="post" autocomplete="off">
-    <div>
-        Departure airport @Html.DropDownListFor(x => x.DepartureAirportID, (SelectList)ViewBag.CityNames, "Journey begins in")
-        <span asp-validation-for="DepartureAirportID"></span>
-    </div>
-    <div>
-        Arrival airport @Html.DropDownListFor(x => x.ArrivalAirportID, (SelectList)ViewBag.CityNames, "Journey finishes in")
-        <span asp-validation-for="ArrivalAirportID"></span>
-    </div>
-    <div>
-        Number of passengers @Html.TextBoxFor(x => x.NumberOfPassengers)
-        <span asp-validation-for="NumberOfPassengers"></span>
-    </div>
+            <div class="mb-3 row">
+                <label for="NumberOfPassengers" class="col-sm-2 col-form-label">Number of passengers</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.NumberOfPassengers, htmlAttributes: new {@class = "form-control"})
+                    <span class="text-danger" asp-validation-for="NumberOfPassengers"></span>
+                </div>
+            </div>
 
-    <div class="col-md-12">
-        <div class="form-group">
-            <label for="input_from">Departure Date</label>
-            <input type="text" class="form-control" id="DepartureDate" name ="DepartureDate">
-        </div>
-        <span asp-validation-for="DepartureDate"></span>
-    </div>
-    
-    <div>
-        <input type="submit" value="Search Flight" />
-    </div>
-</form>
+            <div class="mb-3 row">
+                <label for="DepartureDate" class="col-sm-2 col-form-label">Departure Date</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="DepartureDate" name="DepartureDate">
+                    <span class="text-danger" asp-validation-for="DepartureDate"></span>
+                </div>
+            </div>
 
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">Search Flight</button>
+            </div>
+        </form>
+    </div>
+</div>

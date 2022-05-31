@@ -1,90 +1,117 @@
 ﻿@using AirStar.Models.Enums
 @model SelectedFlightsViewModel
 
-<h1>flights page</h1>
-
-<div>
-    @{
-        var flight = Model.Flights.Data.FirstOrDefault();
-        var departureCityAndAirport = flight?.DepartureAirport;
-        var arrivalCityAndAirport = flight?.ArrivalAirport;
-    }
+<div class="card">
+    <h3 class="card-header">
+        <span class="material-symbols-outlined">
+            connecting_airports
+        </span>
+        Flights
+    </h3>
+    <div class="card-body">
+        <div class="row">
+            @{
+                var flight = Model.Flights.Data.FirstOrDefault();
+                var departureCityAndAirport = flight?.DepartureAirport;
+                var arrivalCityAndAirport = flight?.ArrivalAirport;
+            }
     
-    <div>
-        Departure City & Airport: @departureCityAndAirport
-    </div>
-    <div>
-        Arrival City & Airport: @arrivalCityAndAirport
+            <div class="col">
+                <span class="material-symbols-outlined">
+                    flight_takeoff
+                </span>
+                &nbsp;
+                <span class="lead">
+                    Departure City & Airport: <strong>@departureCityAndAirport</strong>
+                </span>
+            </div>
+            <div class="col">
+                <span class="material-symbols-outlined">
+                    flight_land
+                </span>
+                &nbsp;
+                <span class="lead">
+                    Arrival City & Airport: <strong>@arrivalCityAndAirport</strong>
+                </span>
+            </div>
+        </div>
+        
+        <hr/>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    Departure Date
+                </th>
+                <th>
+                    Arrival Date
+                </th>
+                <th>
+                    Duration
+                </th>
+                <th>
+                    Distance
+                </th>
+                <th>
+                    Aircraft Model
+                </th>
+                <th>
+                    Brand
+                </th>
+                <th>
+                    Flight price for 1:
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (var item in Model.Flights.Data) 
+            {
+                <tr>
+                    <td rowspan="6" class="align-middle">
+                        @Html.DisplayFor(modelItem => item.DepartureDate)
+                    </td>
+                    <td rowspan="6" class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ArrivalDate)
+                    </td>
+                    <td rowspan="6" class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    <td rowspan="6" class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Distance)
+                    </td>
+                    <td rowspan="6" class="align-middle">
+                        @Html.DisplayFor(modelItem => item.AircraftModel)
+                    </td>
+                    <td rowspan="6" class="align-middle">
+                        @Html.DisplayFor(modelItem => item.AircraftBrand)
+                    </td>
+                </tr>
+
+                    @foreach (var rate in item.Rates)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => rate.RateTypeName)
+                                    <strong>@Html.DisplayFor(modelItem => rate.Price)</strong>
+                                                    
+                                    @if (rate.RateType != RateTypes.Food && rate.RateType != RateTypes.Luggage)
+                                    {
+                                        @Html.ActionLink("Book tickets", "PassengerInformation", "Reservation",
+                                            new { flightId = item.Id, classId = rate.Id, numberOfPassengers = Model.SearchViewModel.NumberOfPassengers },
+                                            new { @class = "btn btn-primary btn-sm float-end" })
+                                    }
+                                </td>
+                            </tr>
+                        }
+                
+            }
+            </tbody>
+        </table>
     </div>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Departure Date
-            </th>
-            <th>
-                Arrival Date
-            </th>
-            <th>
-                Duration
-            </th>
-            <th>
-                Distance
-            </th>
-            <th>
-                Aircraft Model
-            </th>
-            <th>
-                Brand
-            </th>
-            <th>
-                Flight price for 1:
-            </th>
-        </tr>
-    </thead>
 
-    <tbody>
-    @foreach (var item in Model.Flights.Data) 
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartureDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArrivalDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Distance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AircraftModel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AircraftBrand)
-            </td>
 
-            <td>
-                @foreach (var rate in item.Rates)
-                {
-                    <div>
-                        @Html.DisplayFor(modelItem => rate.RateTypeName)
-                        @Html.DisplayFor(modelItem => rate.Price)
-                        @if (rate.RateType != RateTypes.Food && rate.RateType != RateTypes.Luggage)
-                        {
-                            @Html.ActionLink("Book tickets", "PassengerInformation", "Reservation",
-                                new { flightId = item.Id, classId = rate.Id, numberOfPassengers = Model.SearchViewModel.NumberOfPassengers })
-                        }
-                    </div>
-                }
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
 
-@*@Html.ActionLink("Back to search form", "SearchForm", "Search")*@

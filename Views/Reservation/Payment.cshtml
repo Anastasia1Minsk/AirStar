@@ -1,35 +1,61 @@
 ﻿@model PaymentViewModel
 
-<h1>Payment</h1>
+<div class="card mb-3">
+    <h3 class="card-header">
+        Payment
+    </h3>
+    <div class="card-body">
+        <div class="row">
+            <div class="col text-center">
+                <h3>Total cost @Html.DisplayFor(x => x.TotalCost)</h3>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card">
+                    <form action="/Reservation/Payment" method="post" autocomplete="off">
+                        @Html.HiddenFor(x => x.ReservationId)
+                        @Html.HiddenFor(x => x.TotalCost)
+                        <div class="row p-3">
+                            <div class="col-12">
+                                <label class="form-label text-uppercase">Person name</label>
+                                @Html.TextBoxFor(x => x.PersonName, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="PersonName"></span>
+                            </div>
 
-<form action="/Reservation/Payment" method="post" autocomplete="off">
-    @Html.HiddenFor(x => x.ReservationId)
-    
-    <div>
-        Total cost @Html.DisplayFor(x => x.TotalCost)
-    </div>
+                            <div class="col-10 mb-3">
+                                <label class="form-label text-uppercase">Credit card number</label>
+                                @Html.TextBoxFor(x => x.CreditCardNumber, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="CreditCardNumber"></span>
+                            </div>
 
-    <div>
-        Person name @Html.TextBoxFor(x => x.PersonName)
-        <span asp-validation-for="PersonName"></span>
-    </div>
-    <div>
-        Credit card number @Html.TextBoxFor(x => x.CreditCardNumber)
-        <span asp-validation-for="CreditCardNumber"></span>
-    </div>
-    <div>
-        CVV/CVC @Html.TextBoxFor(x => x.CVV)
-        <span asp-validation-for="CVV"></span>
-    </div>
-    <div>
-        Expiration date @Html.TextBoxFor(x => x.ExpirationDateMonth)
-        <span asp-validation-for="ExpirationDateMonth"></span>
-        @Html.TextBoxFor(x => x.ExpirationDateYear)
-        <span asp-validation-for="ExpirationDateYear"></span>
-    </div>
+                            <div class="col-2 mb-3">
+                                <label class="form-label text-uppercase">CVV/CVC</label>
+                                @Html.TextBoxFor(x => x.CVV, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="CVV"></span>
+                            </div>
 
-    <div>
-        <input type="submit" value="Pay"/>
+                            <div class="col-6 mb-3">
+                                <label class="form-label text-uppercase">Expiration date</label>
+                                @Html.TextBoxFor(x => x.ExpirationDateMonth, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="ExpirationDateMonth"></span>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label class="form-label text-uppercase">&nbsp;</label>
+                                @Html.TextBoxFor(x => x.ExpirationDateYear, htmlAttributes: new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="ExpirationDateYear"></span>
+                            </div>
+
+                            <div class="col text-center">
+                                <button class="btn btn-info" type="submit">Pay</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</div>
 

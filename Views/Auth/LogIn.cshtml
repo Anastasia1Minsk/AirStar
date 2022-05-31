@@ -1,5 +1,113 @@
 ﻿@model AirStar.ViewModels.LogInViewModel
 
+@{
+    Layout = "_EmptyLayout";
+}
+
+@section Scripts{
+    <link rel="stylesheet" href="~/css/registrationLogin.css" />
+}
+
+
+
+
+<div class="full-page-container">
+    <div class="registration-login">
+        
+        <div class="decor-container centering">
+            <h1 class="decor-text">
+                Need an account?
+            </h1>
+            <p class="decor-text">
+                Start journey with us!
+            </p>
+            <p class="decor-text">
+                Enter your personal details
+            </p>
+            <p>
+                @Html.ActionLink("Registration", "Registration", "Auth", null, new { @class = "button-on-page button-on-decor" })
+            </p>
+            <p></p>
+            <p>
+                @Html.ActionLink("Go to the main page", "Index", "Home", null, new { @class = "button-on-page button-on-decor" })
+            </p>
+        </div>
+
+        <div class="registration-login-container centering">
+            <form action="/Auth/LogIn" method="post" autocomplete="off" class="centering">
+                <h1 class="work-text">
+                    Log in
+                </h1>
+                <div>
+                    @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @class = "work-input" })
+                </div>
+                <span class="work-text validation-text" asp-validation-for="Email"></span>
+                <div>
+                    @Html.TextBoxFor(x => x.Password, new
+                             {
+                                 @type = "password",
+                                 placeholder = "Password",
+                                 @class = "work-input"
+                             })
+                </div>
+                <span class="work-text validation-text" asp-validation-for="Password"></span>
+                <div>
+                    <input type="submit" value="Log in" class="button-on-page"/>
+                </div>
+            </form>
+            
+            
+            
+
+            @*<form action="/Auth/Registration" method="post" autocomplete="off" class="centering">
+                <h1 class="work-text">
+                    Create account
+                </h1>
+                <p class="work-text">
+                    Use your email for registration
+                </p>
+                <div>
+                    @Html.TextBoxFor(x => x.Email, new {placeholder = "Email", @class = "work-input"})
+                </div>
+                <span class="work-text validation-text" asp-validation-for="Email"></span>
+                <div>
+                    @Html.TextBoxFor(x => x.Password, new {placeholder = "Password", @class = "work-input"})
+                </div>
+                <span class="work-text validation-text" asp-validation-for="Password"></span>
+                <div>
+                    @Html.TextBoxFor(x => x.ConfirmPassword, new
+                    {
+                        @type = "password",
+                        placeholder = "Confirm password",
+                        @class = "work-input"
+                    })
+                </div>
+                <span class="work-text validation-text" asp-validation-for="ConfirmPassword"></span>
+                <div>
+                    <input type="submit" value="Registration" class="button-on-page"/>
+                </div>
+            </form>*@
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
 <h1>login</h1>
 
 <form action="/Auth/LogIn" method="post">
@@ -23,3 +131,4 @@
     Need an account?
     <a href="/Auth/Registration">Register now</a>
 </div>
+*@
