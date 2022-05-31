@@ -23,12 +23,12 @@
     <h4>Reservation # @Model.Id</h4>
 
     <div class="section">
-        <div>Departure City & Airport: <strong>@Model.Flight.Route.DepartureAirport</strong></div>
+        <div>Departure City & Airport: <strong>@Model.Flight.Route.DepartureAirport.City @Model.Flight.Route.DepartureAirport.Code_IATA</strong></div>
         <div>Departure Time: <strong>@Model.Flight.DepartureDate</strong></div>
     </div>
 
     <div class="section">
-        <div>Arrival City & Airport: <strong>@Model.Flight.Route.ArrivalAirport</strong></div>
+        <div>Arrival City & Airport: <strong>@Model.Flight.Route.ArrivalAirport.City @Model.Flight.Route.ArrivalAirport.Code_IATA</strong></div>
         <div>Arrival Time: <strong>@Model.Flight.ArrivalDate</strong></div>
     </div>
 
