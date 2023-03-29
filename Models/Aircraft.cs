@@ -9,7 +9,9 @@ namespace AirStar.Models
     public class Aircraft : BaseModel
     {
         public string Model { get; set; }
+
         public string Brand { get; set; }
+
         [Display(Name = "Year Of Build")]
         public int YearOfBuild { get; set; }
 
@@ -24,6 +26,7 @@ namespace AirStar.Models
 
         [Display(Name = "Maximum Flight Range")]
         public int MaxFlightRange { get; set; }
+
         public string Picture { get; set; }
 
         public ICollection<Flight> Flights { get; set; }
