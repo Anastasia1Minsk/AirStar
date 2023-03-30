@@ -50,7 +50,7 @@
                     {
                         <div class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Catalogues
+                                Dictionaries
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -59,6 +59,9 @@
                                 </li>
                                 <li class="nav-item">
                                     @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link"})
+                                </li>
+                                <li lass="nav-item">
+                                    @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link" })
                                 </li>
 
                                 @*<li class="nav-item">

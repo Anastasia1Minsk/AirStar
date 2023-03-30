@@ -9,5 +9,6 @@ namespace AirStar.Business.Interfaces
 {
     public interface IAirportService : IServiceBase<Airport>
     {
+        public Task<IEnumerable<Airport>> SelectWithCountiesAsync();
     }
 }
