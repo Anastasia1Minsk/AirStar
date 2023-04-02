@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using AirStar.Infrastructure.Bases.Interfaces;
 using AirStar.Models;
+using AirStar.ViewModels;
 
 namespace AirStar.Business.Interfaces
 {
     public interface IAirportService : IServiceBase<Airport>
     {
         public Task<IEnumerable<Airport>> SelectWithCountiesAsync();
+        public Task<bool> IsCodeExistsInDB(string code);
     }
 }

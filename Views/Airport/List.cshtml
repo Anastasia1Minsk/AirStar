@@ -4,7 +4,7 @@
     <div class="card-header">
         <ul class="nav nav-pills card-header-pills">
             <li class="nav-item">
-                @Html.ActionLink("Create New", "Create", "Airports", htmlAttributes: new { @class = "nav-link active" })
+                @Html.ActionLink("Add new airport", "Create", "Airport", htmlAttributes: new { @class = "nav-link active" })
             </li>
         </ul>
     </div>
@@ -46,9 +46,9 @@
                     </td>
 
                     @*<td class="align-middle text-end">
-                        @Html.ActionLink("Details", "Details", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" }) |
-                        @Html.ActionLink("Edit", "Edit", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" }) |
-                        @Html.ActionLink("Delete", "DeleteConfirm", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" })
+                        @Html.ActionLink("Details", "Details", "Airport", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                        @Html.ActionLink("Edit", "Edit", "Airport", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                        @Html.ActionLink("Delete", "DeleteConfirm", "Airport", new { id = item.Id }, new { @class = "btn btn-link" })
                     </td>*@
                 </tr>
                 }

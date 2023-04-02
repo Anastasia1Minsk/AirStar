@@ -13,6 +13,10 @@ namespace AirStar.ViewModels
             CreateMap<RegistrationViewModel, User>();
             CreateMap<LogInViewModel, User>();
             CreateMap<AircraftViewModel, Aircraft>();
+            CreateMap<AirportViewModel, Airport>()
+                .ForMember(dest => dest.TimeZone,
+                    opt => opt
+                        .MapFrom(src => int.Parse(src.TimeZone)));
         }
     }
 }
