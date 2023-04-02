@@ -60,12 +60,37 @@ namespace AirStar.Controllers
             return RedirectToAction("List", "Airport");
         }
 
-        public async Task<SelectList> ListOfCountries()
+        private async Task<SelectList> ListOfCountries()
         {
             var countries = await _countryService.SelectAsync();
             var countriesNames = new SelectList(countries.Select(x => new { x.Id, x.Name }),
                 "Id", "Name");
             return countriesNames;
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var airport = await _airportService.SelectOneWithCountiesAsync(id);
+            var result = _mapper.Map<AirportViewModel>(airport);
+            return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var airport = await _airportService.SelectOneWithCountiesAsync(id);
+            var result = _mapper.Map<AirportViewModel>(airport);
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(AirportViewModel airportViewModel)
+        {
+            
+
+            //await _service.UpdateAsync(aircraftViewModel);
+
+            return RedirectToAction("List", "Aircraft");
         }
     }
 }

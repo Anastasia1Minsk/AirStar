@@ -11,6 +11,7 @@ namespace AirStar.Business.Interfaces
     public interface IAirportService : IServiceBase<Airport>
     {
         public Task<IEnumerable<Airport>> SelectWithCountiesAsync();
+        public Task<Airport> SelectOneWithCountiesAsync(int id);
         public Task<bool> IsCodeExistsInDB(string code);
     }
 }

@@ -24,6 +24,12 @@ namespace AirStar.Business.Services
             return await SelectAsync(includes: new List<string>() { "Country" });
         }
 
+        public async Task<Airport> SelectOneWithCountiesAsync(int id)
+        {
+            return await SelectOneAsync(predicate: x => x.Id == id,
+                includes: new List<string>() { "Country" });
+        }
+
         public async Task<bool> IsCodeExistsInDB(string code)
         {
             var result = await SelectOneAsync(predicate: airport => airport.Code_IATA == code);

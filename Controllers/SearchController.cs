@@ -54,7 +54,7 @@ namespace AirStar.Controllers
         private async Task<SelectList> ListOfCities()
         {
             var airports = await _airportService.SelectAsync();
-            SelectList cityNames = new SelectList(airports.Select(x => new { x.Id, Name = $"{x.City}, {x.Code_IATA}"}),
+            var cityNames = new SelectList(airports.Select(x => new { x.Id, Name = $"{x.City}, {x.Code_IATA}"}),
                                                     "Id", "Name");
             return cityNames;
         }
