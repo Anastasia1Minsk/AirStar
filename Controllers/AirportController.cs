@@ -47,7 +47,7 @@ namespace AirStar.Controllers
                 return View(airportViewModel);
             }
 
-            if (await _airportService.IsCodeExistsInDB(airportViewModel.Code_IATA))
+            if (await _airportService.IsCodeExists(airportViewModel.Code_IATA))
             {
                 ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
                 ViewBag.CountryNames = await ListOfCountries();
@@ -78,6 +78,8 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
+            ViewBag.CountryNames = await ListOfCountries();
+
             var airport = await _airportService.SelectOneWithCountiesAsync(id);
             var result = _mapper.Map<AirportViewModel>(airport);
             return View(result);
@@ -86,11 +88,23 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(AirportViewModel airportViewModel)
         {
-            
+            if (!ModelState.IsValid)
+            {
+                ViewBag.CountryNames = await ListOfCountries();
+                return View(airportViewModel);
+            }
 
-            //await _service.UpdateAsync(aircraftViewModel);
+            if (await _airportService.IsCodeUpdate(airportViewModel.Id, airportViewModel.Code_IATA))
+            {
+                ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
+                ViewBag.CountryNames = await ListOfCountries();
+                return View(airportViewModel);
+            }
 
-            return RedirectToAction("List", "Aircraft");
+            var airport = _mapper.Map<Airport>(airportViewModel);
+            await _airportService.UpdateAsync(airport);
+
+            return RedirectToAction("List", "Airport");
         }
     }
 }

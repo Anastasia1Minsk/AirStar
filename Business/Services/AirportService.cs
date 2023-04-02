@@ -30,9 +30,15 @@ namespace AirStar.Business.Services
                 includes: new List<string>() { "Country" });
         }
 
-        public async Task<bool> IsCodeExistsInDB(string code)
+        public async Task<bool> IsCodeExists(string code)
         {
             var result = await SelectOneAsync(predicate: airport => airport.Code_IATA == code);
+            return result != null;
+        }
+
+        public async Task<bool> IsCodeUpdate(int airportId, string code)
+        {
+            var result = await SelectOneAsync(predicate: airport => airport.Code_IATA == code && airport.Id != airportId);
             return result != null;
         }
     }

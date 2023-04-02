@@ -12,6 +12,7 @@ namespace AirStar.Business.Interfaces
     {
         public Task<IEnumerable<Airport>> SelectWithCountiesAsync();
         public Task<Airport> SelectOneWithCountiesAsync(int id);
-        public Task<bool> IsCodeExistsInDB(string code);
+        public Task<bool> IsCodeExists(string code);
+        public Task<bool> IsCodeUpdate(int airportId, string code);
     }
 }

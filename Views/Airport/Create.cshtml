@@ -8,24 +8,24 @@
         <form action="/Airport/Create" method="post">
             <div class="row">
                 <div class="col-4 mb-3">
-                    <label class="form-label">Code IATA</label>
+                    @Html.DisplayNameFor(x => x.Code_IATA)
                     @Html.TextBoxFor(x => x.Code_IATA, htmlAttributes: new { @class = "form-control" })
                     <span class="text-danger" asp-validation-for="Code_IATA"></span>
                 </div>
                 <div class="col-4 mb-3">
-                    <label class="form-label">City</label>
+                    @Html.DisplayNameFor(x => x.City)
                     @Html.TextBoxFor(x => x.City, htmlAttributes: new { @class = "form-control" })
                     <span class="text-danger" asp-validation-for="City"></span>
                 </div>
                 <div class="col-4 mb-3">
-                    <label class="form-label">Country</label>
-                    @Html.DropDownListFor(x => x.CountryId, (SelectList) ViewBag.CountryNames, " ", new {@class = "form-select"})
+                    @Html.DisplayNameFor(x => x.Country)
+                    @Html.DropDownListFor(x => x.CountryId, (SelectList)ViewBag.CountryNames, " ", new { @class = "form-select" })
                     <span class="text-danger" asp-validation-for="CountryId"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 mb-3">
-                    <label class="form-label">Time zone</label>
+                    @Html.DisplayNameFor(x => x.TimeZone)
                     @Html.TextBoxFor(x => x.TimeZone, htmlAttributes: new { @class = "form-control" })
                     <span class="text-danger" asp-validation-for="TimeZone"></span>
                 </div>
