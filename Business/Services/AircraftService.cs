@@ -44,7 +44,7 @@ namespace AirStar.Business.Services
 
             if (aircraftViewModel.PictureFile != null)
             {
-                var filePath = Path.Combine(_hostEnvironment.WebRootPath, "images", "aircrafts", Path.GetFileName(aircraftViewModel.Picture));
+                var filePath = Path.Combine(_hostEnvironment.WebRootPath, "images", "aircrafts", Path.GetFileName(aircraftViewModel.PictureFile.Name));
                 File.Delete(filePath);
 
                 filePath = await SavingPicture(aircraftViewModel);
