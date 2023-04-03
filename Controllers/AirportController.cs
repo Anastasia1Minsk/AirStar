@@ -106,5 +106,22 @@ namespace AirStar.Controllers
 
             return RedirectToAction("List", "Airport");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            ViewBag.CountryNames = await ListOfCountries();
+
+            var airport = await _airportService.SelectOneWithCountiesAsync(id);
+            var result = _mapper.Map<AirportViewModel>(airport);
+            return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _airportService.DeleteAsync(id);
+            return RedirectToAction("List", "Airport");
+        }
     }
 }
