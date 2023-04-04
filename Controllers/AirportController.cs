@@ -47,7 +47,7 @@ namespace AirStar.Controllers
                 return View(airportViewModel);
             }
 
-            if (await _airportService.IsCodeExists(airportViewModel.Code_IATA))
+            if (await _airportService.IsCodeExistsAsync(airportViewModel.Code_IATA))
             {
                 ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
                 ViewBag.CountryNames = await ListOfCountries();
@@ -94,7 +94,7 @@ namespace AirStar.Controllers
                 return View(airportViewModel);
             }
 
-            if (await _airportService.IsCodeUpdate(airportViewModel.Id, airportViewModel.Code_IATA))
+            if (await _airportService.IsCodeUpdateAsync(airportViewModel.Id, airportViewModel.Code_IATA))
             {
                 ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
                 ViewBag.CountryNames = await ListOfCountries();
