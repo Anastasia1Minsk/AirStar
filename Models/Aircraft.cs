@@ -12,19 +12,19 @@ namespace AirStar.Models
 
         public string Brand { get; set; }
 
-        [Display(Name = "Year Of Build")]
+        [Display(Name = "Year of build")]
         public int YearOfBuild { get; set; }
 
-        [Display(Name = "Economy Class Seats")]
+        [Display(Name = "Economy class seats")]
         public int EconomyClassSeats { get; set; }
 
-        [Display(Name = "Business Class Seats")]
+        [Display(Name = "Business class seats")]
         public int? BusinessClassSeats { get; set; }
 
-        [Display(Name = "First Class Seats")]
+        [Display(Name = "First class seats")]
         public int? FirstClassSeats { get; set; }
 
-        [Display(Name = "Maximum Flight Range")]
+        [Display(Name = "Maximum flight range")]
         public int MaxFlightRange { get; set; }
 
         public string Picture { get; set; }
