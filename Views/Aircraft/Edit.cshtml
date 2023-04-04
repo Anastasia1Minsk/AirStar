@@ -48,8 +48,9 @@
                     <span class="text-danger" asp-validation-for="MaxFlightRange"></span>
                 </div>
                 <div class="col-8 mb-3">
-                    @Html.DisplayNameFor(x => x.Picture)
+                    @Html.DisplayNameFor(x => x.PictureFile)
                     <input type="file" name="@nameof(AircraftViewModel.PictureFile)" class="form-control" />
+                    <span class="text-danger" asp-validation-for="PictureFile"></span>
                 </div>
             </div>
 

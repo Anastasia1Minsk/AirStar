@@ -42,15 +42,13 @@ namespace AirStar.Business.Services
         {
             var aircraft = _mapper.Map<Aircraft>(aircraftViewModel);
 
-            if (aircraftViewModel.PictureFile != null)
-            {
-                var filePath = Path.Combine(_hostEnvironment.WebRootPath, "images", "aircrafts", Path.GetFileName(aircraftViewModel.PictureFile.Name));
-                File.Delete(filePath);
+            var oldAircraftVersion = await SelectOneAsync(x => x.Id == aircraftViewModel.Id);
+            var filePath = Path.Combine(_hostEnvironment.WebRootPath, "images", "aircrafts", Path.GetFileName(oldAircraftVersion.Picture));
+            File.Delete(filePath);
 
-                filePath = await SavingPicture(aircraftViewModel);
-                aircraft.Picture = $"\\{filePath}";
-            } 
+            filePath = await SavingPicture(aircraftViewModel);
 
+            aircraft.Picture = $"\\{filePath}";
             return await UpdateAsync(aircraft);
         }
 
@@ -67,9 +65,9 @@ namespace AirStar.Business.Services
             return Path.Combine("images", "aircrafts", fileName);
         }
 
-        public async Task<bool> DeletePicruteAsync(AircraftViewModel aircraftViewModel)
+        public async Task<bool> DeletePicruteAsync(Aircraft aircraft)
         {
-            var filePath = Path.Combine(_hostEnvironment.WebRootPath, "images", "aircrafts", Path.GetFileName(aircraftViewModel.Picture));
+            var filePath = Path.Combine(_hostEnvironment.WebRootPath, "images", "aircrafts", Path.GetFileName(aircraft.Picture));
             File.Delete(filePath);
 
             return true;

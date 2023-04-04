@@ -12,6 +12,6 @@ namespace AirStar.Business.Interfaces
     {
         public Task<int> InsertAsync(AircraftViewModel aircraftViewModel);
         public Task<bool> UpdateAsync(AircraftViewModel aircraftViewModel);
-        public Task<bool> DeletePicruteAsync(AircraftViewModel aircraftViewModel);
+        public Task<bool> DeletePicruteAsync(Aircraft aircraft);
     }
 }

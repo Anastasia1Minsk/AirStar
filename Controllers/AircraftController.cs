@@ -87,9 +87,7 @@ namespace AirStar.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var aircraft = await _service.GetByIdAsync(id);
-            var aircraftViewModel = _mapper.Map<AircraftViewModel>(aircraft);
-
-            await _service.DeletePicruteAsync(aircraftViewModel);
+            await _service.DeletePicruteAsync(aircraft);
             await _service.DeleteAsync(aircraft);
 
             return RedirectToAction("List", "Aircraft");
