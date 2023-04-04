@@ -43,10 +43,9 @@ namespace AirStar.Business.Services
             var aircraft = _mapper.Map<Aircraft>(aircraftViewModel);
 
             var oldAircraftVersion = await SelectOneAsync(x => x.Id == aircraftViewModel.Id);
-            var filePath = Path.Combine(_hostEnvironment.WebRootPath, "images", "aircrafts", Path.GetFileName(oldAircraftVersion.Picture));
-            File.Delete(filePath);
+            await DeletePicruteAsync(oldAircraftVersion);
 
-            filePath = await SavingPicture(aircraftViewModel);
+            var filePath = await SavingPicture(aircraftViewModel);
 
             aircraft.Picture = $"\\{filePath}";
             return await UpdateAsync(aircraft);
