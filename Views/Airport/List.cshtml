@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AirportViewModel>
+
+<div class="card">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+                @Html.ActionLink("Add new airport", "Create", "Airport", htmlAttributes: new { @class = "nav-link active" })
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Code_IATA)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TimeZone)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Code_IATA)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Country) 
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.TimeZone) GMT
+                    </td>
+
+                    <td class="align-middle text-end">
+                        @Html.ActionLink("Details", "Details", "Airport", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                        @Html.ActionLink("Edit", "Edit", "Airport", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                        @Html.ActionLink("Delete", "DeleteConfirm", "Airport", new { id = item.Id }, new { @class = "btn btn-link" })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

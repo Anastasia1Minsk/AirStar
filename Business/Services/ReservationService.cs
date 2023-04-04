@@ -39,9 +39,6 @@ namespace AirStar.Business.Services
             var reservation = new Reservation();
             reservation.FlightID = passengerInformationViewModel.Flight.Id;
 
-           /* var userEmail = _httpContextAccessor.HttpContext.User.Identity.Name;
-            var user = await _userService.SelectOneAsync(predicate: user => user.Email == userEmail);*/
-
             var user = await GetCurrentUser();
             reservation.UserID = user.Id;
 
@@ -119,7 +116,7 @@ namespace AirStar.Business.Services
         private async Task<User> GetCurrentUser ()
         {
             var userEmail = _httpContextAccessor.HttpContext.User.Identity.Name;
-            var user = await _userService.SelectOneAsync(predicate: user => user.Email == userEmail);
+            var user = await _userService.GetByEmailAsync(userEmail);
             return user;
         }
 

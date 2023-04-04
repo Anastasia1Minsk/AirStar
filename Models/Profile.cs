@@ -25,6 +25,13 @@ namespace AirStar.Models
                     opt => opt
                         .MapFrom(src => src.Route.Distance));
             CreateMap<Rate, RatesViewModel>();
+            CreateMap<Airport, AirportViewModel>()
+                .ForMember(dest => dest.TimeZone,
+                    opt => opt
+                        .MapFrom(src => src.TimeZone > 0 ? $"+{src.TimeZone}" : src.TimeZone.ToString()))
+                .ForMember(dest => dest.Country,
+                    opt => opt
+                        .MapFrom(src => src.Country.Name));
         }
     }
 }

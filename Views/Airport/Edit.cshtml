@@ -1,0 +1,43 @@
+﻿@model AirportViewModel
+
+<div class="card">
+    <h3 class="card-header">
+        Edit
+    </h3>
+    <div class="card-body">
+        <form action="/Airport/Edit" method="post" enctype="multipart/form-data">
+            @Html.HiddenFor(x => x.Id)
+            <div class="row">
+                <div class="col-4 mb-3">
+                    @Html.DisplayNameFor(x => x.Code_IATA)
+                    @Html.TextBoxFor(x => x.Code_IATA, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="Code_IATA"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    @Html.DisplayNameFor(x => x.City)
+                    @Html.TextBoxFor(x => x.City, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="City"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    @Html.DisplayNameFor(x => x.Country)
+                    @Html.DropDownListFor(x => x.CountryId, (SelectList)ViewBag.CountryNames, " ", new { @class = "form-select" })
+                    <span class="text-danger" asp-validation-for="CountryId"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    @Html.DisplayNameFor(x => x.TimeZone)
+                    @Html.TextBoxFor(x => x.TimeZone, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="TimeZone"></span>
+                </div>
+            </div>
+            
+
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">Edit</button>
+                @Html.ActionLink("Back to list", "List", "Airport", htmlAttributes: new { @class = "btn btn-outline-primary" })
+            </div>
+        </form>
+    </div>
+</div>
+

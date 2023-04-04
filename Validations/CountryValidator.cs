@@ -17,7 +17,7 @@ namespace AirStar.Validations
                 .WithMessage("Please fill out the Name field")
                 .Length(2, 50)
                 .WithMessage("Lenght should be between 2 to 50")
-                .Matches(@"^[a-zA-Z -]*$")
+                .Matches(@"^[a-zA-Z -']*$")
                 .WithMessage("Name shouldn't contain special characters");
         }
     }
