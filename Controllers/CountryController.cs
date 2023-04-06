@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
 using AirStar.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AirStar.Controllers
 {
+    [Authorize]
     public class CountryController : Controller
     {
         private readonly ICountryService _service;

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Route>
+
+<div class="card">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+                @Html.ActionLink("Add new route", "Create", "Route", htmlAttributes: new { @class = "nav-link active" })
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Departure airport
+                        @Html.DisplayNameFor(model => model.DepartureAirport.Code_IATA)
+                    </th>
+                    <th>
+                        Arrival airport
+                        @Html.DisplayNameFor(model => model.ArrivalAirport.Code_IATA)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.DepartureAirport.Code_IATA)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.ArrivalAirport.Code_IATA)
+                        </td>
+
+                        <td class="align-middle text-end">
+                            @Html.ActionLink("Details", "Details", "Route", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                            @Html.ActionLink("Edit", "Edit", "Route", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                            @Html.ActionLink("Delete", "DeleteConfirm", "Route", new { id = item.Id }, new { @class = "btn btn-link" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

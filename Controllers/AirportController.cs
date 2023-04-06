@@ -7,10 +7,12 @@ using AirStar.Business.Interfaces;
 using AirStar.Models;
 using AirStar.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AirStar.Controllers
 {
+    [Authorize]
     public class AirportController : Controller
     {
         private readonly IAirportService _airportService;
@@ -94,7 +96,7 @@ namespace AirStar.Controllers
                 return View(airportViewModel);
             }
 
-            if (await _airportService.IsCodeUpdateAsync(airportViewModel.Id, airportViewModel.Code_IATA))
+            if (await _airportService.IsCodeUpdatesAsync(airportViewModel.Id, airportViewModel.Code_IATA))
             {
                 ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
                 ViewBag.CountryNames = await ListOfCountries();
@@ -110,8 +112,6 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            ViewBag.CountryNames = await ListOfCountries();
-
             var airport = await _airportService.SelectOneWithCountiesAsync(id);
             var result = _mapper.Map<AirportViewModel>(airport);
             return View(result);
