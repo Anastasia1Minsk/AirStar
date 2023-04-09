@@ -16,5 +16,17 @@ namespace AirStar.Business.Services
         {
             _repository = repository;
         }
+
+        public async Task<bool> IsCountryExistsAsync(string name)
+        {
+            var result = await SelectOneAsync(predicate: x => x.Name == name);
+            return result != null;
+        }
+
+        public async Task<bool> IsCountryUpdatesAsync(string name, int id)
+        {
+            var result = await SelectOneAsync(x => x.Name == name && x.Id != id);
+            return result != null;
+        }
     }
 }

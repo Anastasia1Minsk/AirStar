@@ -40,6 +40,12 @@ namespace AirStar.Controllers
                 return View(country);
             }
 
+            if (await _service.IsCountryExistsAsync(country.Name))
+            {
+                ModelState.AddModelError("Name", "Such country exists");
+                return View(country);
+            }
+
             await _service.InsertAsync(country);
 
             return RedirectToAction("List", "Country");
@@ -57,6 +63,12 @@ namespace AirStar.Controllers
         {
             if (!ModelState.IsValid)
             {
+                return View(country);
+            }
+
+            if (await _service.IsCountryUpdatesAsync(country.Name, country.Id))
+            {
+                ModelState.AddModelError("Name", "Such country exists");
                 return View(country);
             }
 
