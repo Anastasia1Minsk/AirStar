@@ -7,11 +7,13 @@ using AirStar.Business.Interfaces;
 using AirStar.Models;
 using AirStar.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AirStar.Controllers
 {
+    [Authorize]
     public class AircraftController : Controller
     {
         private readonly IAircraftService _service;

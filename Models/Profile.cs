@@ -32,6 +32,29 @@ namespace AirStar.Models
                 .ForMember(dest => dest.Country,
                     opt => opt
                         .MapFrom(src => src.Country.Name));
+            CreateMap<Route, RouteViewModel>()
+                .ForMember(dest => dest.DepartureAirport_IATA,
+                    opt => opt
+                        .MapFrom(src => src.DepartureAirport.Code_IATA))
+                .ForMember(dest => dest.DepartureAirport_Country,
+                    opt => opt
+                        .MapFrom(src => src.DepartureAirport.Country.Name))
+                .ForMember(dest => dest.DepartureAirport_TimeZone,
+                    opt => opt
+                        .MapFrom(src => src.DepartureAirport.TimeZone > 0
+                            ? $"+{src.DepartureAirport.TimeZone}"
+                            : src.DepartureAirport.TimeZone.ToString()))
+                .ForMember(dest => dest.ArrivalAirport_IATA,
+                    opt => opt
+                        .MapFrom(src => src.ArrivalAirport.Code_IATA))
+                .ForMember(dest => dest.ArrivalAirport_Country,
+                    opt => opt
+                        .MapFrom(src => src.ArrivalAirport.Country.Name))
+                .ForMember(dest => dest.ArrivalAirport_TimeZone,
+                    opt => opt
+                        .MapFrom(src => src.ArrivalAirport.TimeZone > 0
+                            ? $"+{src.ArrivalAirport.TimeZone}"
+                            : src.ArrivalAirport.TimeZone.ToString()));
         }
     }
 }

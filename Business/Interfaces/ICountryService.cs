@@ -9,5 +9,7 @@ namespace AirStar.Business.Interfaces
 {
     public interface ICountryService : IServiceBase<Country>
     {
+        public Task<bool> IsCountryExistsAsync(string name);
+        public Task<bool> IsCountryUpdatesAsync(string name, int id);
     }
 }

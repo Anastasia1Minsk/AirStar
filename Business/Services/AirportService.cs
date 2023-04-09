@@ -36,7 +36,7 @@ namespace AirStar.Business.Services
             return result != null;
         }
 
-        public async Task<bool> IsCodeUpdateAsync(int airportId, string code)
+        public async Task<bool> IsCodeUpdatesAsync(int airportId, string code)
         {
             var result = await SelectOneAsync(predicate: airport => airport.Code_IATA == code && airport.Id != airportId);
             return result != null;

@@ -1,0 +1,41 @@
+﻿@model Route
+
+<div class="card">
+    <h3 class="card-header">
+        Create
+    </h3>
+    <div class="card-body">
+        <form action="/Route/Create" method="post" autocomplete="off">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.DepartureAirport_ID)
+                        @Html.DropDownListFor(x => x.DepartureAirport_ID, (SelectList)ViewBag.Airports, "From", new { @class = "form-select" })
+                        <span class="text-danger" asp-validation-for="DepartureAirport_ID"></span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.ArrivalAirport_ID)
+                        @Html.DropDownListFor(x => x.ArrivalAirport_ID, (SelectList)ViewBag.Airports, "To", new { @class = "form-select" })
+                        <span class="text-danger" asp-validation-for="ArrivalAirport_ID"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                @Html.DisplayNameFor(x => x.Distance)
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.Distance, htmlAttributes: new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="Distance"></span>
+                </div>
+            </div>
+            
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">Create</button>
+                @Html.ActionLink("Back to list", "List", "Route", htmlAttributes: new { @class = "btn btn-outline-primary" })
+            </div>
+        </form>
+    </div>
+</div>
