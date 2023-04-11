@@ -17,13 +17,16 @@ namespace AirStar.Models
             CreateMap<Flight, FlightViewModel>()
                 .ForMember(dest => dest.DepartureAirport, 
                     opt => opt
-                        .MapFrom(src => $"{src.Route.DepartureAirport.City}, {src.Route.DepartureAirport.Code_IATA}"))
+                        .MapFrom(src => $"{src.Route.DepartureAirport.Code_IATA}, {src.Route.DepartureAirport.City}"))
                 .ForMember(dest => dest.ArrivalAirport,
                     opt => opt
-                        .MapFrom(src => $"{src.Route.ArrivalAirport.City}, {src.Route.ArrivalAirport.Code_IATA}"))
+                        .MapFrom(src => $"{src.Route.ArrivalAirport.Code_IATA}, {src.Route.ArrivalAirport.City}"))
                 .ForMember(dest => dest.Distance,
                     opt => opt
-                        .MapFrom(src => src.Route.Distance));
+                        .MapFrom(src => src.Route.Distance))
+                .ForMember(dest => dest.Aircraft,
+                    opt => opt
+                        .MapFrom(src => $"{src.Aircraft.Brand} {src.Aircraft.Model}"));
             CreateMap<Rate, RatesViewModel>();
             CreateMap<Airport, AirportViewModel>()
                 .ForMember(dest => dest.TimeZone,

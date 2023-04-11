@@ -21,7 +21,6 @@ namespace AirStar.Business
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IScheduleService, ScheduleService>();
         }
     }
 }

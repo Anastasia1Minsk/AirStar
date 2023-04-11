@@ -31,5 +31,11 @@ namespace AirStar.Business.Services
                 includes: (new List<string>() { "Aircraft", "Rates", "Route", "Route.DepartureAirport", "Route.ArrivalAirport" }));
             return suitableFlights;
         }
+
+        public async Task<IEnumerable<Flight>> SelectFlightsListAsync()
+        {
+            return await SelectAsync(includes: new List<string>() { "Aircraft", "Route",
+                "Route.DepartureAirport", "Route.ArrivalAirport" });
+        }
     }
 }

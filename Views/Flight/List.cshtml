@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FlightViewModel>
+
+<div class="card">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            @*<li class="nav-item">
+                @Html.ActionLink("Add new flight", "Create", "Flight", htmlAttributes: new { @class = "nav-link active" })
+            </li>*@
+        </ul>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartureAirport)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ArrivalAirport)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Aircraft)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartureDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ArrivalDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.DepartureAirport)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ArrivalAirport)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Aircraft)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.DepartureDate)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ArrivalDate)
+                    </td>
+
+                    @*<td class="align-middle text-end">
+            @Html.ActionLink("Details", "Details", "Flight", new { id = item.Id }, new { @class = "btn btn-link" }) |
+            @Html.ActionLink("Edit", "Edit", "Flight", new { id = item.Id }, new { @class = "btn btn-link" }) |
+            @Html.ActionLink("Delete", "DeleteConfirm", "Flight", new { id = item.Id }, new { @class = "btn btn-link" })
+        </td>*@
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
