@@ -71,7 +71,7 @@ namespace AirStar.Controllers
                 DepartureDate = departureDate
             };
 
-            var suitableFlights = await _flightService.FlightSearch(searchViewModel, page);
+            var suitableFlights = await _flightService.FlightSearchAsync(searchViewModel, page);
 
             var result = new SelectedFlightsViewModel()
             {

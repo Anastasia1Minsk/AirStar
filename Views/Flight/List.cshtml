@@ -51,11 +51,11 @@
                         @Html.DisplayFor(modelItem => item.ArrivalDate)
                     </td>
 
-                    @*<td class="align-middle text-end">
-            @Html.ActionLink("Details", "Details", "Flight", new { id = item.Id }, new { @class = "btn btn-link" }) |
-            @Html.ActionLink("Edit", "Edit", "Flight", new { id = item.Id }, new { @class = "btn btn-link" }) |
-            @Html.ActionLink("Delete", "DeleteConfirm", "Flight", new { id = item.Id }, new { @class = "btn btn-link" })
-        </td>*@
+                    <td class="align-middle text-end">
+                        @Html.ActionLink("Details", "Details", "Flight", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                       @* @Html.ActionLink("Edit", "Edit", "Flight", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                        @Html.ActionLink("Delete", "DeleteConfirm", "Flight", new { id = item.Id }, new { @class = "btn btn-link" })
+                    *@</td>
                 </tr>
                 }
             </tbody>

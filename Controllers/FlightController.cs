@@ -30,5 +30,12 @@ namespace AirStar.Controllers
             var result = _mapper.Map<List<FlightViewModel>>(flights);
             return View(result);
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var flight = await _flightService.SelectOneFlightListAsync(id);
+            var result = _mapper.Map<FlightViewModel>(flight);
+            return View(result);
+        }
     }
 }

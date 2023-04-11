@@ -10,7 +10,8 @@ namespace AirStar.Business.Interfaces
 {
     public interface IFlightService : IServiceBase<Flight>
     {
-        public Task<IPagedList<Flight>> FlightSearch(SearchViewModel searchViewModel, int page);
+        public Task<IPagedList<Flight>> FlightSearchAsync(SearchViewModel searchViewModel, int page);
         public Task<IEnumerable<Flight>> SelectFlightsListAsync();
+        public Task<Flight> SelectOneFlightListAsync(int id);
     }
 }

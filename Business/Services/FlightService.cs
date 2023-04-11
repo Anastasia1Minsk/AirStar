@@ -19,7 +19,7 @@ namespace AirStar.Business.Services
             _repository = repository;
         }
 
-        public async Task<IPagedList<Flight>> FlightSearch(SearchViewModel searchViewModel, int page)
+        public async Task<IPagedList<Flight>> FlightSearchAsync(SearchViewModel searchViewModel, int page)
         {
             var suitableFlights = await SelectPageAsync(
                 predicate: flight => flight.Route.DepartureAirport.Id == searchViewModel.DepartureAirportID
@@ -36,6 +36,12 @@ namespace AirStar.Business.Services
         {
             return await SelectAsync(includes: new List<string>() { "Aircraft", "Route",
                 "Route.DepartureAirport", "Route.ArrivalAirport" });
+        }
+
+        public async Task<Flight> SelectOneFlightListAsync(int id)
+        {
+            return await SelectOneAsync(predicate: x => x.Id == id,
+                    includes: new List<string>() { "Aircraft", "Rates" , "Route", "Route.DepartureAirport", "Route.ArrivalAirport"});
         }
     }
 }
