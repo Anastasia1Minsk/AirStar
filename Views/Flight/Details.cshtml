@@ -49,20 +49,23 @@
             </div>
         </div>
 
-        @*<div class="row">
-            <div class="col-4 mb-3">
-                @Html.DisplayNameFor(x => x.Rates.)
-                @Html.TextBoxFor(x => x.Distance, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-            </div>
-            <div class="col-4 mb-3">
-                @Html.DisplayNameFor(x => x.Food)
-                @Html.TextBoxFor(x => x.Food, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-            </div>
-            <div class="col-4 mb-3">
-                @Html.DisplayNameFor(x => x.Luggage)
-                @Html.TextBoxFor(x => x.Luggage, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-            </div>
-        </div>*@
+        <div class="row">
+            <table class="table">
+                <tbody>
+                    @foreach (var item in Model.Rates)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.RateTypeName)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
         <div class="col text-center">
             @*@Html.ActionLink("Edit", "Edit", "Flight", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })*@

@@ -19,7 +19,7 @@ namespace AirStar.Business.Services
 
         public async Task<IEnumerable<Route>> SelectWithAirportsAsync()
         {
-            return await SelectAsync(includes: new List<string>() { "DepartureAirport", "ArrivalAirport" });
+            return await SelectAsync(includes: new List<string>() { "DepartureAirport", "ArrivalAirport", "DepartureAirport.Country", "ArrivalAirport.Country" });
         }
 
         public async Task<Route> SelectOneWithAirportsAsync(int id)

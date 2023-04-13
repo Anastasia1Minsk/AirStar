@@ -1,0 +1,49 @@
+﻿@model FlightViewModel
+
+@section Scripts{
+    <script src="~/js/CreateFlight.js"></script>
+}
+
+<div class="card">
+    <h3 class="card-header">
+        Create
+    </h3>
+    <div class="card-body">
+        <form action="/Flight/Create" method="post" autocomplete="off">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.RouteId)
+                        @Html.DropDownListFor(x => x.RouteId, (SelectList)ViewBag.Routes, " ", new { @class = "form-select" })
+                        <span class="text-danger" asp-validation-for="RouteId"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.AircraftId)
+                        @Html.DropDownListFor(x => x.AircraftId, (SelectList)ViewBag.Aircrafts, " ", new { id = "aircraftId", @class = "form-select" })
+                        <span class="text-danger" asp-validation-for="AircraftId"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @for (int i = 0; i < @Model.Rates.Count; i++)
+                {
+                    <div id="rate_@(i)" class="col" >
+                        <div class="mb-3">
+                            @Html.DisplayFor(x => x.Rates[i].RateTypeName, new {id = $"rateTypeName_{i}"})
+                            @Html.TextBoxFor(x => x.Rates[i].Price, htmlAttributes: new {id = $"price_{i}", @class = "form-control"})
+                            <span class="text-danger" asp-validation-for="RouteId"></span>
+                        </div>
+                        </div>
+                }
+            </div>
+
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">Create</button>
+                @Html.ActionLink("Back to list", "List", "Flight", htmlAttributes: new { @class = "btn btn-outline-primary" })
+            </div>
+        </form>
+    </div>
+</div>

@@ -15,6 +15,9 @@ namespace AirStar.Models
             CreateMap<User, LogInViewModel>();
             CreateMap<Aircraft, AircraftViewModel>();
             CreateMap<Flight, FlightViewModel>()
+                .ForMember(dest => dest.RouteId,
+                    opt => opt
+                        .MapFrom(src => src.Route.Id))
                 .ForMember(dest => dest.DepartureAirport, 
                     opt => opt
                         .MapFrom(src => $"{src.Route.DepartureAirport.Code_IATA}, {src.Route.DepartureAirport.City}"))
@@ -24,6 +27,9 @@ namespace AirStar.Models
                 .ForMember(dest => dest.Distance,
                     opt => opt
                         .MapFrom(src => src.Route.Distance))
+                .ForMember(dest => dest.AircraftId,
+                    opt => opt
+                        .MapFrom(src => src.Aircraft.Id))
                 .ForMember(dest => dest.Aircraft,
                     opt => opt
                         .MapFrom(src => $"{src.Aircraft.Brand} {src.Aircraft.Model}"));

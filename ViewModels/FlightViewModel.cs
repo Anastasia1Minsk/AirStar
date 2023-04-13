@@ -11,11 +11,17 @@ namespace AirStar.ViewModels
     {
         public int Id { get; set; }
 
+        [Display(Name = "Route")]
+        public int RouteId { get; set; }
+
         [Display(Name = "Departure airport")]
         public string DepartureAirport { get; set; }
 
         [Display(Name = "Arrival airport")]
         public string ArrivalAirport { get; set; }
+
+        [Display(Name = "Aircraft")]
+        public int AircraftId { get; set; }
         public string Aircraft { get; set; }
         public int Distance { get; set; }
 
