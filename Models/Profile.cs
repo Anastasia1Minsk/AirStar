@@ -33,7 +33,7 @@ namespace AirStar.Models
                 .ForMember(dest => dest.Aircraft,
                     opt => opt
                         .MapFrom(src => $"{src.Aircraft.Brand} {src.Aircraft.Model}"));
-            CreateMap<Rate, RatesViewModel>();
+            CreateMap<Rate, RateViewModel>();
             CreateMap<Airport, AirportViewModel>()
                 .ForMember(dest => dest.TimeZone,
                     opt => opt

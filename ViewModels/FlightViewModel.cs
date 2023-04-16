@@ -36,7 +36,7 @@ namespace AirStar.ViewModels
         public TimeSpan Duration => ArrivalDate - DepartureDate;
 
 
-        public List<RatesViewModel> Rates { get; set; }
+        public List<RateViewModel> Rates { get; set; }
 
     }
 }

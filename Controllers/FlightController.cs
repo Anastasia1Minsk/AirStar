@@ -44,25 +44,32 @@ namespace AirStar.Controllers
             ViewBag.Aircrafts = await ListOfAircrafts();
 
             var flight = new FlightViewModel();
-            flight.Rates = new List<RatesViewModel>();
-            flight.Rates.AddRange(new List<RatesViewModel>{
-                new RatesViewModel{RateType = RateTypes.AdultEconomyFlight},
-                new RatesViewModel{ RateType = RateTypes.AdultBusinessFlight },
-                new RatesViewModel{ RateType = RateTypes.AdultFirstFlight }});
+            flight.Rates = new List<RateViewModel>();
+            flight.Rates.AddRange(new List<RateViewModel>{
+                new RateViewModel{RateType = RateTypes.AdultEconomyFlight},
+                new RateViewModel{RateType = RateTypes.AdultBusinessFlight},
+                new RateViewModel{RateType = RateTypes.AdultFirstFlight},
+                new RateViewModel{RateType = RateTypes.Luggage},
+                new RateViewModel{RateType = RateTypes.Food}
+            });
             
             return View(flight);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(AirportViewModel airportViewModel)
+        public async Task<IActionResult> Create(FlightViewModel flightViewModel)
         {
-            /*if (!ModelState.IsValid)
+            var a = flightViewModel;
+
+            if (!ModelState.IsValid)
             {
-                ViewBag.CountryNames = await ListOfCountries();
-                return View(airportViewModel);
+                ViewBag.Routes = await ListOfRoutes();
+                ViewBag.Aircrafts = await ListOfAircrafts();
+                return View(flightViewModel);
             }
 
-            if (await _airportService.IsCodeExistsAsync(airportViewModel.Code_IATA))
+
+            /*if (await _airportService.IsCodeExistsAsync(airportViewModel.Code_IATA))
             {
                 ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
                 ViewBag.CountryNames = await ListOfCountries();
@@ -71,7 +78,7 @@ namespace AirStar.Controllers
 
             var airport = _mapper.Map<Airport>(airportViewModel);
             await _airportService.InsertAsync(airport);*/
-
+            
             return RedirectToAction("List", "Flight");
         }
 
@@ -79,7 +86,7 @@ namespace AirStar.Controllers
         {
             var routes = await _routeService.SelectWithAirportsAsync();
             var routesNames = new SelectList(routes.Select(x => new { x.Id, 
-                    Name = $"{x.DepartureAirport.Code_IATA}|{x.DepartureAirport.City}|{x.DepartureAirport.Country.Name} to {x.ArrivalAirport.Code_IATA}|{x.ArrivalAirport.City}|{x.ArrivalAirport.Country.Name}" }),
+                    Name = $"{x.DepartureAirport.Code_IATA}|{x.DepartureAirport.City}|{x.DepartureAirport.Country.Name} => {x.ArrivalAirport.Code_IATA}|{x.ArrivalAirport.City}|{x.ArrivalAirport.Country.Name}" }),
                 "Id", "Name");
             return routesNames;
         }

@@ -17,6 +17,18 @@ namespace AirStar.Validations
             RuleFor(x => x.AircraftId)
                 .NotEmpty()
                 .WithMessage("Please fill out the \"Aircraft\" field");
+            RuleFor(x => x.DepartureDate)
+                .NotEmpty()
+                .WithMessage("Please fill out the \"Departure date\" field")
+                .GreaterThanOrEqualTo(DateTime.Now)
+                .WithMessage("Non-existing date");
+            RuleFor(x => x.ArrivalDate)
+                .NotEmpty()
+                .WithMessage("Please fill out the \"Arrival date\" field")
+                .GreaterThanOrEqualTo(DateTime.Now)
+                .WithMessage("Non-existing date")
+                .GreaterThan(d => d.DepartureDate)
+                .WithMessage("Less that \"Departure date\"?");
         }
     }
 }
