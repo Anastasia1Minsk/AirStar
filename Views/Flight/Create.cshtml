@@ -38,7 +38,7 @@
                 <div class="col">
                     <div class="mb-3">
                         @Html.DisplayNameFor(x => x.ArrivalDate)
-                        @Html.TextBoxFor(x => x.DepartureDate, new { id = "ArrivalDate" })
+                        @Html.TextBoxFor(x => x.ArrivalDate, new { id = "ArrivalDate" })
                         <span class="text-danger" asp-validation-for="ArrivalDate"></span>
                     </div>
                 </div>
@@ -47,6 +47,7 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
+                        @Html.HiddenFor(x => x.Rates[3].RateType)
                         @Html.CheckBoxFor(x => x.Luggage, new { id = "luggage", @class = "form-check-input" })
                         @Html.DisplayNameFor(x => x.Luggage)
                         <div id="rate_3">
@@ -57,6 +58,7 @@
                 </div>
                 <div class="col">
                     <div class="mb-3">
+                        @Html.HiddenFor(x => x.Rates[4].RateType)
                         @Html.CheckBoxFor(x => x.Food, new { id = "food", @class = "form-check-input" })
                         @Html.DisplayNameFor(x => x.Food)
                         <div id="rate_4">

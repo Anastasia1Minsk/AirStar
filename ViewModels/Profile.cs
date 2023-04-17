@@ -17,6 +17,8 @@ namespace AirStar.ViewModels
                 .ForMember(dest => dest.TimeZone,
                     opt => opt
                         .MapFrom(src => int.Parse(src.TimeZone)));
+            CreateMap<FlightViewModel, Flight>();
+            CreateMap<RateViewModel, Rate>();
         }
     }
 }

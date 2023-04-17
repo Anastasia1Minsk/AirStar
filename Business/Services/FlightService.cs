@@ -43,7 +43,6 @@ namespace AirStar.Business.Services
             return await SelectOneAsync(predicate: x => x.Id == id,
                     includes: new List<string>() { "Aircraft", "Rates" , "Route", "Route.DepartureAirport", "Route.ArrivalAirport"});
         }
-
-
+        
     }
 }

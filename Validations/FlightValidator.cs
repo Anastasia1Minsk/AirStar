@@ -29,6 +29,16 @@ namespace AirStar.Validations
                 .WithMessage("Non-existing date")
                 .GreaterThan(d => d.DepartureDate)
                 .WithMessage("Less that \"Departure date\"?");
+            /*RuleForEach(x => x.Rates).SetValidator(new RateValidator());*/
+
+            /*RuleForEach(x => x.Rates)
+                .ChildRules(x =>
+                {
+                    x.RuleFor(q => q.Price)
+                        .NotNull()
+                        .NotEmpty()
+                        .WithMessage("qwerty");
+                });*/
         }
     }
 }

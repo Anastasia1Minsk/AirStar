@@ -11,7 +11,6 @@ namespace AirStar.Validations
     {
         public RateValidator()
         {
-
         }
     }
 }

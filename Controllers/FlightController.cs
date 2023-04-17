@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
+using AirStar.Models;
 using AirStar.Models.Enums;
 using AirStar.ViewModels;
 using AutoMapper;
@@ -59,25 +60,49 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(FlightViewModel flightViewModel)
         {
-            var a = flightViewModel;
+            ViewBag.Routes = await ListOfRoutes();
+            ViewBag.Aircrafts = await ListOfAircrafts();
 
             if (!ModelState.IsValid)
             {
-                ViewBag.Routes = await ListOfRoutes();
-                ViewBag.Aircrafts = await ListOfAircrafts();
+                return View(flightViewModel);
+            }
+
+            if (flightViewModel.Luggage && flightViewModel.Rates[3].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[3].Price", "Invalid rate");
+            }
+
+            if (flightViewModel.Food && flightViewModel.Rates[4].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[4].Price", "Invalid rate");
+            }
+
+            var aircraft = await _aircraftService.SelectOneAsync(x => x.Id == flightViewModel.AircraftId);
+            if (aircraft.EconomyClassSeats > 0 && flightViewModel.Rates[0].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[0].Price", "Invalid rate");
+            }
+
+            if (aircraft.BusinessClassSeats > 0 && flightViewModel.Rates[1].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[1].Price", "Invalid rate");
+            }
+
+            if (aircraft.FirstClassSeats > 0 && flightViewModel.Rates[2].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[2].Price", "Invalid rate");
+            }
+
+            if (!ModelState.IsValid)
+            {
                 return View(flightViewModel);
             }
 
 
-            /*if (await _airportService.IsCodeExistsAsync(airportViewModel.Code_IATA))
-            {
-                ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
-                ViewBag.CountryNames = await ListOfCountries();
-                return View(airportViewModel);
-            }
-
-            var airport = _mapper.Map<Airport>(airportViewModel);
-            await _airportService.InsertAsync(airport);*/
+            flightViewModel.Rates.RemoveAll(x => x.Price == 0);
+            var flight = _mapper.Map<Flight>(flightViewModel);
+            await _flightService.InsertAsync(flight);
             
             return RedirectToAction("List", "Flight");
         }
