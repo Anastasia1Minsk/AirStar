@@ -131,9 +131,80 @@ namespace AirStar.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var flight = await _flightService.SelectOneFlightListAsync(id);
+            var flight = await _flightService.SelectOneFlightAsync(id);
             var result = _mapper.Map<FlightViewModel>(flight);
             return View(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.Routes = await ListOfRoutes();
+            ViewBag.Aircrafts = await ListOfAircrafts();
+
+            var flight = await _flightService.SelectOneFlightAsync(id);
+            var result = _mapper.Map<FlightViewModel>(flight);
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(FlightViewModel flightViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(flightViewModel);
+            }
+
+            if (flightViewModel.Luggage && flightViewModel.Rates[3].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[3].Price", "Invalid rate");
+            }
+
+            if (flightViewModel.Food && flightViewModel.Rates[4].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[4].Price", "Invalid rate");
+            }
+
+            var aircraft = await _aircraftService.SelectOneAsync(x => x.Id == flightViewModel.AircraftId);
+            if (aircraft.EconomyClassSeats > 0 && flightViewModel.Rates[0].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[0].Price", "Invalid rate");
+            }
+
+            if (aircraft.BusinessClassSeats > 0 && flightViewModel.Rates[1].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[1].Price", "Invalid rate");
+            }
+
+            if (aircraft.FirstClassSeats > 0 && flightViewModel.Rates[2].Price <= 0)
+            {
+                ModelState.AddModelError("Rates[2].Price", "Invalid rate");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(flightViewModel);
+            }
+
+
+            /*await _routeService.UpdateAsync(route);*/
+
+            return RedirectToAction("List", "Flight");
+        }
+
+        /*[HttpGet]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var route = await _routeService.SelectOneWithAirportsAsync(id);
+            var result = _mapper.Map<RouteViewModel>(route);
+            return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _routeService.DeleteAsync(id);
+            return RedirectToAction("List", "Route");
+        }*/
     }
 }

@@ -38,7 +38,7 @@ namespace AirStar.Business.Services
                 "Route.DepartureAirport", "Route.ArrivalAirport" });
         }
 
-        public async Task<Flight> SelectOneFlightListAsync(int id)
+        public async Task<Flight> SelectOneFlightAsync(int id)
         {
             return await SelectOneAsync(predicate: x => x.Id == id,
                     includes: new List<string>() { "Aircraft", "Rates" , "Route", "Route.DepartureAirport", "Route.ArrivalAirport"});

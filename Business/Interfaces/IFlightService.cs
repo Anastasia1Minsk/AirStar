@@ -12,6 +12,6 @@ namespace AirStar.Business.Interfaces
     {
         public Task<IPagedList<Flight>> FlightSearchAsync(SearchViewModel searchViewModel, int page);
         public Task<IEnumerable<Flight>> SelectFlightsListAsync();
-        public Task<Flight> SelectOneFlightListAsync(int id);
+        public Task<Flight> SelectOneFlightAsync(int id);
     }
 }

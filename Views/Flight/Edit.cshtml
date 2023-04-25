@@ -1,5 +1,93 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model FlightViewModel
+
+@section Scripts{
+    <script src="~/js/CreateFlight.js"></script>
 }
+
+<div class="card">
+    <h3 class="card-header">
+        Edit
+    </h3>
+    <div class="card-body">
+        <form action="/Flight/Edit" method="post" enctype="multipart/form-data">
+            @Html.HiddenFor(x => x.Id)
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.RouteId)
+                        @Html.DropDownListFor(x => x.RouteId, (SelectList)ViewBag.Routes, " ", new { @class = "form-select" })
+                        <span class="text-danger" asp-validation-for="RouteId"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.AircraftId)
+                        @Html.DropDownListFor(x => x.AircraftId, (SelectList)ViewBag.Aircrafts, " ", new { id = "aircraftId", @class = "form-select" })
+                        <span class="text-danger" asp-validation-for="AircraftId"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.DepartureDate)
+                        @Html.TextBoxFor(x => x.DepartureDate, new { id = "DepartureDate" })
+                        <span class="text-danger" asp-validation-for="DepartureDate"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.DisplayNameFor(x => x.ArrivalDate)
+                        @Html.TextBoxFor(x => x.ArrivalDate, new { id = "ArrivalDate" })
+                        <span class="text-danger" asp-validation-for="ArrivalDate"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.HiddenFor(x => x.Rates[3].RateType)
+                        @Html.CheckBoxFor(x => x.Luggage, new { id = "luggage", @class = "form-check-input" })
+                        @Html.DisplayNameFor(x => x.Luggage)
+                        <div id="rate_3">
+                            @Html.TextBoxFor(x => x.Rates[3].Price, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <span class="text-danger" asp-validation-for="Rates[3].Price"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        @Html.HiddenFor(x => x.Rates[4].RateType)
+                        @Html.CheckBoxFor(x => x.Food, new { id = "food", @class = "form-check-input" })
+                        @Html.DisplayNameFor(x => x.Food)
+                        <div id="rate_4">
+                            @Html.TextBoxFor(x => x.Rates[4].Price, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <span class="text-danger" asp-validation-for="Rates[4].Price"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <div id="rate_@(i)" class="col">
+                        <div class="mb-3">
+                            @Html.HiddenFor(x => x.Rates[i].RateType)
+                            @Html.DisplayFor(x => x.Rates[i].RateTypeName, new { id = $"rateTypeName_{i}" })
+                            @Html.TextBoxFor(x => x.Rates[i].Price, htmlAttributes: new { id = $"price_{i}", @class = "form-control" })
+                            <span class="text-danger" asp-validation-for="Rates[i].Price"></span>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">Edit</button>
+                @Html.ActionLink("Back to list", "List", "Flight", htmlAttributes: new { @class = "btn btn-outline-primary" })
+            </div>
+        </form>
+    </div>
+</div>

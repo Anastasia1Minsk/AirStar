@@ -56,6 +56,7 @@
             $('#rate_3').show();
         } else {
             $('#rate_3').hide();
+            $('#rate_3').children().val(0);
         }
     }
 
@@ -64,6 +65,7 @@
             $('#rate_4').show();
         } else {
             $('#rate_4').hide();
+            $('#rate_4').children().val(0);
         }
     }
 
@@ -72,18 +74,21 @@
             $('#rate_0').show();
         } else {
             $('#rate_0').hide();
+            $('#rate_0 input').val(0);
         }
 
         if (aircraft.businessClassSeats > 0) {
             $('#rate_1').show();
         } else {
             $('#rate_1').hide();
+            $('#rate_1 input').val(0);
         }
 
         if (aircraft.firstClassSeats > 0) {
             $('#rate_2').show();
         } else {
             $('#rate_2').hide();
+            $('#rate_2 input').val(0);
         }
     }
 });
