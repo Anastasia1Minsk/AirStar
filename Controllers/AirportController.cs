@@ -43,16 +43,16 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AirportViewModel airportViewModel)
         {
+            ViewBag.CountryNames = await ListOfCountries();
+
             if (!ModelState.IsValid)
             {
-                ViewBag.CountryNames = await ListOfCountries();
                 return View(airportViewModel);
             }
 
             if (await _airportService.IsCodeExistsAsync(airportViewModel.Code_IATA))
             {
                 ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
-                ViewBag.CountryNames = await ListOfCountries();
                 return View(airportViewModel);
             }
 
@@ -90,16 +90,16 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(AirportViewModel airportViewModel)
         {
+            ViewBag.CountryNames = await ListOfCountries();
+
             if (!ModelState.IsValid)
             {
-                ViewBag.CountryNames = await ListOfCountries();
                 return View(airportViewModel);
             }
 
             if (await _airportService.IsCodeUpdatesAsync(airportViewModel.Id, airportViewModel.Code_IATA))
             {
                 ModelState.AddModelError("Code_IATA", "\"Code IATA\" isn't unique");
-                ViewBag.CountryNames = await ListOfCountries();
                 return View(airportViewModel);
             }
 

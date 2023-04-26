@@ -196,6 +196,9 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(FlightViewModel flightViewModel)
         {
+            ViewBag.Routes = await ListOfRoutes();
+            ViewBag.Aircrafts = await ListOfAircrafts();
+
             if (!ModelState.IsValid)
             {
                 return View(flightViewModel);

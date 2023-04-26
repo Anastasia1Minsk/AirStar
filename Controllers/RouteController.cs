@@ -42,23 +42,22 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Route route)
         {
+            ViewBag.Airports = await ListOfAirports();
+
             if (!ModelState.IsValid)
             {
-                ViewBag.Airports = await ListOfAirports();
                 return View(route);
             }
 
             if (route.DepartureAirport_ID == route.ArrivalAirport_ID)
             {
                 ModelState.AddModelError("ArrivalAirport_ID", "Seems like obseesed");
-                ViewBag.Airports = await ListOfAirports();
                 return View(route);
             }
 
             if (await _routeService.IsRouteExistsAsync(route.DepartureAirport_ID, route.ArrivalAirport_ID))
             {
                 ModelState.AddModelError("ArrivalAirport_ID", "Such route exists");
-                ViewBag.Airports = await ListOfAirports();
                 return View(route);
             }
 
@@ -94,23 +93,22 @@ namespace AirStar.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Route route)
         {
-            if(!ModelState.IsValid)
+            ViewBag.Airports = await ListOfAirports();
+
+            if (!ModelState.IsValid)
             {
-                ViewBag.Airports = await ListOfAirports();
                 return View(route);
             }
 
             if (route.DepartureAirport_ID == route.ArrivalAirport_ID)
             {
                 ModelState.AddModelError("ArrivalAirport_ID", "Seems like obseesed");
-                ViewBag.Airports = await ListOfAirports();
                 return View(route);
             }
 
             if (await _routeService.IsRouteUpdatesAsync(route.DepartureAirport_ID, route.ArrivalAirport_ID, route.Id))
             {
                 ModelState.AddModelError("ArrivalAirport_ID", "Such route exists");
-                ViewBag.Airports = await ListOfAirports();
                 return View(route);
             }
             
