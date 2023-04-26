@@ -99,9 +99,14 @@ namespace AirStar.Controllers
                 return View(flightViewModel);
             }
 
-
-            flightViewModel.Rates.RemoveAll(x => x.Price == 0);
             var flight = _mapper.Map<Flight>(flightViewModel);
+            if (await _flightService.IsFlightExistsAsync(flight))
+            {
+                ModelState.AddModelError("RouteId", "Such flight exists");
+                return View(flightViewModel);
+            }
+
+            flight.Rates = DeleteNullRatesAsync(flight.Rates);
             await _flightService.InsertAsync(flight);
             
             return RedirectToAction("List", "Flight");
@@ -124,6 +129,13 @@ namespace AirStar.Controllers
             return aircraftsNames;
         }
 
+        private ICollection<Rate> DeleteNullRatesAsync(ICollection<Rate> rates)
+        {
+            var list = rates.ToList();
+            list.RemoveAll(x => x.Price == 0);
+            return list;
+        }
+
         public async Task<JsonResult> JsonAircraftClasses()
         {
             return Json((await _aircraftService.SelectAsync()).ToList());
@@ -144,6 +156,40 @@ namespace AirStar.Controllers
 
             var flight = await _flightService.SelectOneFlightAsync(id);
             var result = _mapper.Map<FlightViewModel>(flight);
+            if (result.Rates.Count < 5)
+            {
+                var tempRatesList = new List<RateViewModel>();
+                tempRatesList.AddRange(new List<RateViewModel>{
+                    new RateViewModel{RateType = RateTypes.AdultEconomyFlight},
+                    new RateViewModel{RateType = RateTypes.AdultBusinessFlight},
+                    new RateViewModel{RateType = RateTypes.AdultFirstFlight},
+                    new RateViewModel{RateType = RateTypes.Luggage},
+                    new RateViewModel{RateType = RateTypes.Food}
+                });
+                foreach (var rate in result.Rates)
+                {
+                    switch (rate.RateType)
+                    {
+                        case RateTypes.AdultEconomyFlight: 
+                            tempRatesList[0].Price = rate.Price;
+                            break;
+                        case RateTypes.AdultBusinessFlight:
+                            tempRatesList[1].Price = rate.Price;
+                            break;
+                        case RateTypes.AdultFirstFlight:
+                            tempRatesList[2].Price = rate.Price;
+                            break;
+                        case RateTypes.Luggage:
+                            tempRatesList[3].Price = rate.Price;
+                            break;
+                        case RateTypes.Food:
+                            tempRatesList[4].Price = rate.Price;
+                            break;
+                    }
+
+                    result.Rates = tempRatesList;
+                }
+            }
             return View(result);
         }
 
@@ -186,8 +232,17 @@ namespace AirStar.Controllers
                 return View(flightViewModel);
             }
 
+            var flight = _mapper.Map<Flight>(flightViewModel);
+            if (await _flightService.IsFlightUpdatesAsync(flight))
+            {
+                ModelState.AddModelError("RouteId", "Such flight exists");
+                return View(flightViewModel);
+            }
 
-            /*await _routeService.UpdateAsync(route);*/
+            flight.Rates = DeleteNullRatesAsync(flight.Rates);
+            var existingRates = await _rateService.SelectAsync(x => x.FlightID == flight.Id);
+            await _rateService.DeleteAsync(existingRates);
+            await _flightService.UpdateAsync(flight);
 
             return RedirectToAction("List", "Flight");
         }
