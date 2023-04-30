@@ -64,5 +64,10 @@ namespace AirStar.Business.Services
                                                     includes: new List<string>() { "Aircraft", "Route"});
             return result != null;
         }
+
+        public async void DeleteFlightAndRatesAsync(int id)
+        {
+            /*await DeleteAsync()*/
+        }
     }
 }

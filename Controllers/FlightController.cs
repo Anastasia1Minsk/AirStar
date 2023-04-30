@@ -250,19 +250,21 @@ namespace AirStar.Controllers
             return RedirectToAction("List", "Flight");
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var route = await _routeService.SelectOneWithAirportsAsync(id);
-            var result = _mapper.Map<RouteViewModel>(route);
+            var flight = await _flightService.SelectOneFlightAsync(id);
+            var result = _mapper.Map<FlightViewModel>(flight);
             return View(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            await _routeService.DeleteAsync(id);
-            return RedirectToAction("List", "Route");
-        }*/
+            var rates =  await _rateService.SelectAsync(x => x.FlightID == id);
+            await _rateService.DeleteAsync(rates);
+            await _flightService.DeleteAsync(id);
+            return RedirectToAction("List", "Flight");
+        }
     }
 }

@@ -1,5 +1,79 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model FlightViewModel
+
+<div class="card mb-5">
+    <h3 class="card-header">
+        Delete
+    </h3>
+    <div class="card-body">
+        <div class="alert alert-danger" role="alert">
+            Are you sure you want to delete this?
+        </div>
+
+        <div class="col text-center">
+            @Html.ActionLink("Delete", "Delete", "Flight", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("Back to list", "List", "Flight", htmlAttributes: new { @class = "btn btn-outline-primary" })
+        </div>
+
+        <div class="row">
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.DepartureAirport)
+                @Html.TextBoxFor(x => x.DepartureAirport, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.ArrivalAirport)
+                @Html.TextBoxFor(x => x.ArrivalAirport, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Aircraft)
+                @Html.TextBoxFor(x => x.Aircraft, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.DepartureDate)
+                @Html.TextBoxFor(x => x.DepartureDate, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.ArrivalDate)
+                @Html.TextBoxFor(x => x.ArrivalDate, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Duration)
+                @Html.TextBoxFor(x => x.Duration, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Distance)
+                @Html.TextBoxFor(x => x.Distance, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Food)
+                @Html.TextBoxFor(x => x.Food, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Luggage)
+                @Html.TextBoxFor(x => x.Luggage, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table">
+                <tbody>
+                    @foreach (var item in Model.Rates)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.RateTypeName)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
