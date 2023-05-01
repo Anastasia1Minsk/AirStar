@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AirStar.Models;
+﻿using AirStar.Models;
 using AirStar.Validations;
 using AirStar.ViewModels;
 using FluentValidation;
@@ -24,6 +20,8 @@ namespace AirStar.Infrastructure.Extension
             services.AddTransient<IValidator<AircraftViewModel>, AircraftValidator>();
             services.AddTransient<IValidator<AirportViewModel>, AirportValidator>();
             services.AddTransient<IValidator<Route>, RouteValidator>();
+            services.AddTransient<IValidator<FlightViewModel>, FlightValidator>();
+            services.AddTransient<IValidator<RateViewModel>, RateValidator>();
 
             services.AddTransient<IValidator<SearchViewModel>, SearchValidator>();
 
@@ -32,6 +30,8 @@ namespace AirStar.Infrastructure.Extension
             services.AddTransient<IValidator<Passenger>, PassengerValidator>();
 
             services.AddTransient<IValidator<PaymentViewModel>, PaymentValidator>();
+
+            
         }
     }
 }

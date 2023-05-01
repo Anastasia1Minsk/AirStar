@@ -19,7 +19,7 @@ namespace AirStar.Business.Services
             _repository = repository;
         }
 
-        public async Task<IPagedList<Flight>> FlightSearch(SearchViewModel searchViewModel, int page)
+        public async Task<IPagedList<Flight>> FlightSearchAsync(SearchViewModel searchViewModel, int page)
         {
             var suitableFlights = await SelectPageAsync(
                 predicate: flight => flight.Route.DepartureAirport.Id == searchViewModel.DepartureAirportID
@@ -28,8 +28,41 @@ namespace AirStar.Business.Services
                                      && ((flight.Aircraft.EconomyClassSeats >= searchViewModel.NumberOfPassengers)
                                           || (flight.Aircraft.BusinessClassSeats >= searchViewModel.NumberOfPassengers)
                                           || (flight.Aircraft.FirstClassSeats >= searchViewModel.NumberOfPassengers)),
-                includes: (new List<string>() { "Aircraft", "Rates", "Route", "Route.DepartureAirport", "Route.ArrivalAirport" }));
+                includes: new List<string>() { "Aircraft", "Rates", "Route", "Route.DepartureAirport", "Route.ArrivalAirport" });
             return suitableFlights;
+        }
+
+        public async Task<IEnumerable<Flight>> SelectFlightsListAsync()
+        {
+            return await SelectAsync(includes: new List<string>() { "Aircraft", "Route",
+                "Route.DepartureAirport", "Route.ArrivalAirport" });
+        }
+
+        public async Task<Flight> SelectOneFlightAsync(int id)
+        {
+            return await SelectOneAsync(predicate: x => x.Id == id,
+                    includes: new List<string>() { "Aircraft", "Rates", "Route", "Route.DepartureAirport", "Route.ArrivalAirport"});
+        }
+
+        public async Task<bool> IsFlightExistsAsync(Flight flight)
+        {
+            var result = await SelectOneAsync(predicate: x => x.AircraftID == flight.AircraftID
+                                                              && x.RouteID == flight.RouteID
+                                                              && x.DepartureDate == flight.DepartureDate
+                                                              && x.ArrivalDate == flight.ArrivalDate,
+                                                    includes: new List<string>() { "Aircraft", "Route"});
+            return result != null;
+        }
+
+        public async Task<bool> IsFlightUpdatesAsync(Flight flight)
+        {
+            var result = await SelectOneAsync(predicate: x => x.AircraftID == flight.AircraftID
+                                                              && x.RouteID == flight.RouteID
+                                                              && x.DepartureDate == flight.DepartureDate
+                                                              && x.ArrivalDate == flight.ArrivalDate
+                                                              && x.Id != flight.Id,
+                                                    includes: new List<string>() { "Aircraft", "Route"});
+            return result != null;
         }
     }
 }

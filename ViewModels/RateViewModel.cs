@@ -7,7 +7,7 @@ using AirStar.Infrastructure.Extension;
 
 namespace AirStar.ViewModels
 {
-    public class RatesViewModel
+    public class RateViewModel
     {
         public int Id { get; set; }
         public RateTypes RateType { get; set; }
