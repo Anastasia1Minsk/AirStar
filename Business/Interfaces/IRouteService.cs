@@ -13,5 +13,6 @@ namespace AirStar.Business.Interfaces
         public Task<Route> SelectOneWithAirportsAsync(int id);
         public Task<bool> IsRouteExistsAsync(int DepartureAirport_ID, int ArrivalAirport_ID);
         public Task<bool> IsRouteUpdatesAsync(int DepartureAirport_ID, int ArrivalAirport_ID, int routeId);
+        public Task<bool> RouteHasDependenciesAsync(int id);
     }
 }

@@ -79,10 +79,26 @@ namespace AirStar.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> DeleteConfirm(int id)
+        public async Task<IActionResult> DeleteConfirm(int id, bool? impossibleToDelete = false)
         {
+            if (impossibleToDelete.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] = "Delete failed. The aircraft operates flights";
+            }
+            
             var result = await _service.GetByIdAsync(id);
             return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> TryDelete(int id)
+        {
+            if (await _service.AircraftHasDependenciesAsync(id))
+            {
+                return RedirectToAction("DeleteConfirm", "Aircraft", new { id = id, impossibleToDelete = true });
+            }
+
+            return RedirectToAction("Delete", "Aircraft", new { id = id });
         }
 
         [HttpGet]

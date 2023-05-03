@@ -64,5 +64,12 @@ namespace AirStar.Business.Services
                                                     includes: new List<string>() { "Aircraft", "Route"});
             return result != null;
         }
+
+        public async Task<bool> FlightHasDependenciesAsync(int id)
+        {
+            var result = await SelectOneAsync(predicate: x => x.Id == id,
+                                                    includes: new List<string>() {"Reservations"});
+            return result.Reservations.Any();
+        }
     }
 }

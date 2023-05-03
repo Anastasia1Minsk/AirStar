@@ -28,5 +28,12 @@ namespace AirStar.Business.Services
             var result = await SelectOneAsync(x => x.Name == name && x.Id != id);
             return result != null;
         }
+
+        public async Task<bool> CountryHasDependenciesAsync(int id)
+        {
+            var country = await SelectOneAsync(predicate: x => x.Id == id,
+                                                includes: new List<string>() {"Airports"});
+            return country.Airports.Any();
+        }
     }
 }

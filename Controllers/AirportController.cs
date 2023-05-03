@@ -110,11 +110,27 @@ namespace AirStar.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteConfirm(int id)
+        public async Task<IActionResult> DeleteConfirm(int id, bool? impossibleToDelete = false)
         {
+            if (impossibleToDelete.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] = "Delete failed. The airport operates routes";
+            }
+
             var airport = await _airportService.SelectOneWithCountiesAsync(id);
             var result = _mapper.Map<AirportViewModel>(airport);
             return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> TryDelete(int id)
+        {
+            if (await _airportService.AirportHasDependenciesAsync(id))
+            {
+                return RedirectToAction("DeleteConfirm", "Airport", new { id = id, impossibleToDelete = true });
+            }
+
+            return RedirectToAction("Delete", "Airport", new { id = id });
         }
 
         [HttpGet]

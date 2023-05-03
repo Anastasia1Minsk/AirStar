@@ -11,5 +11,6 @@ namespace AirStar.Business.Interfaces
     {
         public Task<bool> IsCountryExistsAsync(string name);
         public Task<bool> IsCountryUpdatesAsync(string name, int id);
+        public Task<bool> CountryHasDependenciesAsync(int id);
     }
 }
