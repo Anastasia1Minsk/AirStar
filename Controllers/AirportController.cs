@@ -130,7 +130,7 @@ namespace AirStar.Controllers
                 return RedirectToAction("DeleteConfirm", "Airport", new { id = id, impossibleToDelete = true });
             }
 
-            return RedirectToAction("Delete", "Airport");
+            return RedirectToAction("Delete", "Airport", new { id = id });
         }
 
         [HttpGet]
