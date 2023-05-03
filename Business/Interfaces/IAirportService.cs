@@ -14,5 +14,6 @@ namespace AirStar.Business.Interfaces
         public Task<Airport> SelectOneWithCountiesAsync(int id);
         public Task<bool> IsCodeExistsAsync(string code);
         public Task<bool> IsCodeUpdatesAsync(int airportId, string code);
+        public Task<bool> AirportHasDependenciesAsync(int id);
     }
 }

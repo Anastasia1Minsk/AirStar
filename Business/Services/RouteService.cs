@@ -42,5 +42,12 @@ namespace AirStar.Business.Services
                                                               && x.Id != routeId);
             return result != null;
         }
+
+        public async Task<bool> RouteHasDependenciesAsync(int id)
+        {
+            var route = await SelectOneAsync(predicate: x => x.Id == id,
+                                            includes: new List<string>() {"Flights"});
+            return route.Flights.Any();
+        }
     }
 }

@@ -41,5 +41,13 @@ namespace AirStar.Business.Services
             var result = await SelectOneAsync(predicate: airport => airport.Code_IATA == code && airport.Id != airportId);
             return result != null;
         }
+
+        public async Task<bool> AirportHasDependenciesAsync(int id)
+        {
+            var airport = await SelectOneAsync(predicate: x => x.Id == id,
+                                                includes: new List<string>() {"DepartureRoutes", "ArrivalRoutes"});
+            var result = airport.DepartureRoutes.Any() || airport.ArrivalRoutes.Any();
+            return result;
+        }
     }
 }

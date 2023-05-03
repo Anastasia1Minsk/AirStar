@@ -65,7 +65,7 @@ namespace AirStar.Business.Services
             return result != null;
         }
 
-        public async Task<bool> FlightHasDependencies(int id)
+        public async Task<bool> FlightHasDependenciesAsync(int id)
         {
             var result = await SelectOneAsync(predicate: x => x.Id == id,
                                                     includes: new List<string>() {"Reservations"});

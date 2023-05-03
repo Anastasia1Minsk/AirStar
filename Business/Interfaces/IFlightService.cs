@@ -15,6 +15,6 @@ namespace AirStar.Business.Interfaces
         public Task<Flight> SelectOneFlightAsync(int id);
         public Task<bool> IsFlightExistsAsync(Flight flight);
         public Task<bool> IsFlightUpdatesAsync(Flight flight);
-        public Task<bool> FlightHasDependencies(int id);
+        public Task<bool> FlightHasDependenciesAsync(int id);
     }
 }

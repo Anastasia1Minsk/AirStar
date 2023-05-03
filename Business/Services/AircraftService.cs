@@ -71,5 +71,12 @@ namespace AirStar.Business.Services
 
             return true;
         }
+
+        public async Task<bool> AircraftHasDependenciesAsync(int id)
+        {
+            var aircraft = await SelectOneAsync(predicate: x => x.Id == id,
+                                                        includes: new List<string>() {"Flights"});
+            return aircraft.Flights.Any();
+        }
     }
 }

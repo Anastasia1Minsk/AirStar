@@ -10,9 +10,11 @@
         </div>
 
         <div class="col text-center">
-            @Html.ActionLink("Delete", "Delete", "Airport", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "TryDelete", "Airport", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
             @Html.ActionLink("Back to list", "List", "Airport", htmlAttributes: new { @class = "btn btn-outline-primary" })
         </div>
+
+        <p class="text-danger">@ViewData["ErrorMessage"]</p>
 
         <div class="row">
             <div class="col-4 mb-3">

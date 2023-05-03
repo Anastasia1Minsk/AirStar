@@ -11,9 +11,12 @@
 
         <div clas="row">
             <div class="col text-center">
-                @Html.ActionLink("Delete", "Delete", "Country", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "TryDelete", "Country", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
                 @Html.ActionLink("Back to list", "List", "Country", htmlAttributes: new { @class = "btn btn-outline-primary" })
             </div>
+
+            <p class="text-danger">@ViewData["ErrorMessage"]</p>
+
             <div class="mb-3 row">
                 @Html.DisplayNameFor(x => x.Name)
                 <div class="col-sm-10">

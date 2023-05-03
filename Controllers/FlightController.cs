@@ -266,7 +266,7 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> TryDelete(int id)
         {
-            if (await _flightService.FlightHasDependencies(id))
+            if (await _flightService.FlightHasDependenciesAsync(id))
             {
                 return RedirectToAction("DeleteConfirm", "Flight", new { id = id, impossibleToDelete = true });
             }
