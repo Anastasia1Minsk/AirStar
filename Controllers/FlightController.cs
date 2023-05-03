@@ -251,11 +251,27 @@ namespace AirStar.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteConfirm(int id)
+        public async Task<IActionResult> DeleteConfirm(int id, bool? impossibleToDelete = false)
         {
+            if (impossibleToDelete.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] = "Delete failed. The flight has reservations";
+            }
+            
             var flight = await _flightService.SelectOneFlightAsync(id);
             var result = _mapper.Map<FlightViewModel>(flight);
             return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> TryDelete(int id)
+        {
+            if (await _flightService.FlightHasDependencies(id))
+            {
+                return RedirectToAction("DeleteConfirm", "Flight", new { id = id, impossibleToDelete = true });
+            }
+
+            return RedirectToAction("Delete", "Flight");
         }
 
         [HttpGet]
