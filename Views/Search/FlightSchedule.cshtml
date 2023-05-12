@@ -1,0 +1,10 @@
+﻿@model IEnumerable<FlightInScheduleViewModel>
+
+@{
+    var firstItem = Model.First();
+}
+<div class="card">
+    <h3>
+        Flight schedule for @firstItem.DepartureDate.DayOfWeek, @firstItem.DepartureDate.Date
+    </h3>
+</div>

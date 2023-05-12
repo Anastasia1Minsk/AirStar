@@ -88,5 +88,19 @@ namespace AirStar.Controllers
 
             return View(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> FlightSchedule(DateTime? date)
+        {
+            if (date is null)
+            {
+                date = new DateTime(2023, 6, 18);
+                /*DateTime.Now;*/
+            }
+
+            var flights = await _flightService.FlightsForDayAsync(date.GetValueOrDefault());
+            var result = _mapper.Map<List<FlightInScheduleViewModel>>(flights);
+            return View(result);
+        }
     }
 }

@@ -20,18 +20,19 @@
     <nav class="navbar fixed-top navbar-light bg-light">
         <div class="container-fluid">
 
-            @Html.ActionLink("AirStar", "Index", "Home", null, new {@class = "navbar-brand"})
+            @Html.ActionLink("AirStar", "Index", "Home", null, new { @class = "navbar-brand" })
 
-            @Html.ActionLink("Search flight", "SearchForm", "Search", null, new {@class = "nav-link"})
+            @Html.ActionLink("Search flight", "SearchForm", "Search", null, new { @class = "nav-link" })
+            @Html.ActionLink("Flight schedule", "FlightSchedule", "Search", null, new { @class = "nav-link" })
 
             <ul class="nav justify-content-end">
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        @Html.ActionLink("Registration", "Registration", "Auth", null, new {@class = "nav-link"})
+                        @Html.ActionLink("Registration", "Registration", "Auth", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Login", "LogIn", "Auth", null, new {@class = "nav-link"})
+                        @Html.ActionLink("Login", "LogIn", "Auth", null, new { @class = "nav-link" })
                     </li>
                 }
                 else
@@ -43,40 +44,40 @@
                     </li>
 
                     <li class="nav-item">
-                        @Html.ActionLink("My reservations", "Reservations", "User", null, new {@class = "nav-link"})
+                        @Html.ActionLink("My reservations", "Reservations", "User", null, new { @class = "nav-link" })
                     </li>
 
                     @if (User.IsInRole("Admin"))
                     {
                         <!--<div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dictionaries
-                            </a>
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dictionaries
+                    </a>
 
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Aircrafts", "List", "Aircraft", null, new {@class = "nav-link"})
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link"})
-                                </li>
-                                <li lass="nav-item">
-                                    @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link" })
-                                </li>-->
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li class="nav-item">
+                            @Html.ActionLink("Aircrafts", "List", "Aircraft", null, new {@class = "nav-link"})
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link"})
+                        </li>
+                        <li lass="nav-item">
+                            @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link" })
+                        </li>-->
 
-                                @*<li class="nav-item">
-                                    @Html.ActionLink("DB", "Index", "Seed", null, new { @class = "nav-link" })
-                                </li>*@
-                            <!--</ul>
-                        </div>-->
+                        @*<li class="nav-item">
+                        @Html.ActionLink("DB", "Index", "Seed", null, new { @class = "nav-link" })
+                    </li>*@
+                        <!--</ul>
+                </div>-->
 
                         <li class="nav-item">
-                            @Html.ActionLink("Dictionaries", "List", "Dictionary", null, new {@class = "nav-link"})
+                            @Html.ActionLink("Dictionaries", "List", "Dictionary", null, new { @class = "nav-link" })
                         </li>
                     }
 
                     <li class="nav-item">
-                        @Html.ActionLink("Log off", "LogOff", "Auth", null, new {@class = "nav-link"})
+                        @Html.ActionLink("Log off", "LogOff", "Auth", null, new { @class = "nav-link" })
                     </li>
                 }
 
