@@ -13,5 +13,11 @@ namespace AirStar.ViewModels
         public int? MaxEconomySeats { get; set; }
         public int? MaxBusinessSeats { get; set; }
         public int? MaxFirstSeats { get; set; }
+
+        public string DepartureTime => DepartureDate.ToString("t");
+        public string DepartureDay => DepartureDate.ToString("MM.dd.yyyy");
+        public string ArrivalTime => ArrivalDate.ToString("t");
+        public string DurationTime => Duration.ToString("t");
+
     }
 }

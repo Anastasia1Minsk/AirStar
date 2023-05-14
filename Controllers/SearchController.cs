@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
 using AirStar.Infrastructure.Bases;
+using AirStar.Models;
 using AirStar.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -92,13 +93,14 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> FlightSchedule(DateTime? date)
         {
-            if (date is null)
-            {
-                date = new DateTime(2023, 6, 18);
-                /*DateTime.Now;*/
-            }
+            date ??= DateTime.Now;//new DateTime(2023, 6, 18);
 
             var flights = await _flightService.FlightsForDayAsync(date.GetValueOrDefault());
+            if (!flights.Any())
+            {
+                flights.Add(new Flight(){DepartureDate = date.GetValueOrDefault()});
+            }
+
             var result = _mapper.Map<List<FlightInScheduleViewModel>>(flights);
             return View(result);
         }
