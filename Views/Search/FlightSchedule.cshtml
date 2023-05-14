@@ -1,0 +1,102 @@
+﻿@model IEnumerable<FlightInScheduleViewModel>
+
+@section Scripts{
+    <script src="~/js/Schedule.js"></script>
+}
+
+@{
+    var firstItem = Model.First();
+    var nextDay = firstItem.DepartureDate.AddDays(1).Date;
+    var previousDay = firstItem.DepartureDate.AddDays(-1).Date;
+    var today = DateTime.Today;
+}
+<div class="card">
+    <div class="col text-center">
+        @if (previousDay >= today)
+        {
+            @Html.ActionLink("<=", "FlightSchedule", "Search", new { date = @previousDay }, htmlAttributes: new { @class = "btn btn-primary" })
+        }
+        <input type="text" class="form-control" id="DepartureDate" name="DepartureDate">
+        @Html.ActionLink("=>", "FlightSchedule", "Search", new { date = @nextDay }, htmlAttributes: new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="col text-center">
+        <h5>
+            Flight schedule for @firstItem.DepartureDate.DayOfWeek, @firstItem.DepartureDate.Date.ToString("dd.MM.yyyy")
+        </h5>
+    </div>
+
+    @if (firstItem.Id != 0)
+    {
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Departure
+                    </th>
+                    <th></th>
+                    <th>
+                        Arrival
+                    </th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>
+                            Reservations
+                        </th>
+                    }
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.DepartureTime)<br />
+                            @Html.DisplayFor(modelItem => item.DepartureAirport)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.DurationTime) /
+                            @Html.DisplayFor(modelItem => item.Aircraft)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.ArrivalTime)<br />
+                            @Html.DisplayFor(modelItem => item.ArrivalAirport)
+                        </td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                Count of ticked sold:<br />
+
+                                Economy
+                                @Html.DisplayFor(modelItem => item.EconomySoldSeats) /
+                                @Html.DisplayFor(modelItem => item.MaxEconomySeats)<br />
+
+                                Business
+                                @Html.DisplayFor(modelItem => item.BusinessSoldSeats) /
+                                @Html.DisplayFor(modelItem => item.MaxBusinessSeats)<br />
+
+                                First
+                                @Html.DisplayFor(modelItem => item.FirstSoldSeats) /
+                                @Html.DisplayFor(modelItem => item.MaxFirstSeats)<br />
+                            </td>
+                        }
+
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            Sorry, no flights will be produced
+        </div>
+    }
+</div>
+
+<script>
+    var currentDate = '@firstItem.DepartureDay';
+</script>

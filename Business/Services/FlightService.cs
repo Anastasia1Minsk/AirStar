@@ -71,5 +71,15 @@ namespace AirStar.Business.Services
                                                     includes: new List<string>() {"Reservations"});
             return result.Reservations.Any();
         }
+
+        public async Task<List<Flight>> FlightsForDayAsync(DateTime date)
+        {
+            var flights = await SelectAsync(predicate: x => x.DepartureDate.Date == date.Date,
+                includes: new List<string>()
+                    {"Reservations", "Reservations.Passengers", "Reservations.Prices", "Aircraft", 
+                        "Route", "Route.DepartureAirport", "Route.ArrivalAirport"},
+                customOrderStrategy: list=> list.OrderBy(x => x.DepartureDate));
+            return flights.ToList();
+        }
     }
 }

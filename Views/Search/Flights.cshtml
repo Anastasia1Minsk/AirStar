@@ -65,20 +65,23 @@
             <tbody>
             @foreach (var item in Model.Flights.Data) 
             {
+
+                int rowSpan = item.Rates.Count() + 1;
+                
                 <tr>
-                    <td rowspan="6" class="align-middle">
+                    <td rowspan="@rowSpan" class="align-middle">
                         @Html.DisplayFor(modelItem => item.DepartureDate)
                     </td>
-                    <td rowspan="6" class="align-middle">
+                    <td rowspan="@rowSpan" class="align-middle">
                         @Html.DisplayFor(modelItem => item.ArrivalDate)
                     </td>
-                    <td rowspan="6" class="align-middle">
+                    <td rowspan="@rowSpan" class="align-middle">
                         @Html.DisplayFor(modelItem => item.Duration)
                     </td>
-                    <td rowspan="6" class="align-middle">
+                    <td rowspan="@rowSpan" class="align-middle">
                         @Html.DisplayFor(modelItem => item.Distance)
                     </td>
-                    <td rowspan="6" class="align-middle">
+                    <td rowspan="@rowSpan" class="align-middle">
                         @Html.DisplayFor(modelItem => item.Aircraft)
                     </td>
                 </tr>
