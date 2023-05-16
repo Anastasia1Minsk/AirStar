@@ -1,0 +1,14 @@
+﻿@model PeriodViewModel
+
+<div class="nav justify-content-center">
+    Period: last 3 month (@Html.DisplayFor(x => x.ThreeMonths))
+</div>
+
+<div>
+    All routes & flights
+    @*@Html.ActionLink("Aircrafts", "List", "Aircraft", null, new { @class = "nav-link" })*@
+</div>
+
+<div>
+    @Html.ActionLink("Each route", "RouteList", "Prediction", null, new { @class = "nav-link" })
+</div>

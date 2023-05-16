@@ -22,8 +22,14 @@
 
             @Html.ActionLink("AirStar", "Index", "Home", null, new { @class = "navbar-brand" })
 
-            @Html.ActionLink("Search flight", "SearchForm", "Search", null, new { @class = "nav-link" })
-            @Html.ActionLink("Flight schedule", "FlightSchedule", "Search", null, new { @class = "nav-link" })
+            <div class="nav justify-content-center">
+                @Html.ActionLink("Search flight", "SearchForm", "Search", null, new { @class = "nav-link" })
+                @Html.ActionLink("Flight schedule", "FlightSchedule", "Search", null, new { @class = "nav-link" })
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Prediction", "Common", "Statistics", null, new { @class = "nav-link" })
+                }
+            </div>
 
             <ul class="nav justify-content-end">
                 @if (!User.Identity.IsAuthenticated)
@@ -49,28 +55,6 @@
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <!--<div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dictionaries
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li class="nav-item">
-                            @Html.ActionLink("Aircrafts", "List", "Aircraft", null, new {@class = "nav-link"})
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link"})
-                        </li>
-                        <li lass="nav-item">
-                            @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link" })
-                        </li>-->
-
-                        @*<li class="nav-item">
-                        @Html.ActionLink("DB", "Index", "Seed", null, new { @class = "nav-link" })
-                    </li>*@
-                        <!--</ul>
-                </div>-->
-
                         <li class="nav-item">
                             @Html.ActionLink("Dictionaries", "List", "Dictionary", null, new { @class = "nav-link" })
                         </li>
