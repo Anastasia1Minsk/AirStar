@@ -1,1 +1,32 @@
-﻿
+﻿@model IEnumerable<Route>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    Routes
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.DepartureAirport.Code_IATA) => 
+                        @Html.DisplayFor(modelItem => item.ArrivalAirport.Code_IATA)
+                    </td>
+
+                    <td class="align-middle text-end">
+                        @Html.ActionLink("More", "PerfomanceIndicators", "Prediction", new { id = item.Id }, new { @class = "btn btn-link" })
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

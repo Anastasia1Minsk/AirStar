@@ -15,7 +15,7 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> Common()
         {
-            var text = String.Empty;
+            var text = string.Empty;
             var culture = CultureInfo.CreateSpecificCulture("en-US");
 
             for (var i = -3; i < 0; i++)
