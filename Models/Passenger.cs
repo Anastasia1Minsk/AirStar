@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AirStar.Models.Enums;
+﻿using AirStar.Models.Enums;
 
 namespace AirStar.Models
 {
@@ -15,6 +11,7 @@ namespace AirStar.Models
         public AgeСategories AgeStatus { get; set; }
         public bool Food { get; set; }
         public bool Luggage { get; set; }
+        public bool Used { get; set; }
 
         public Reservation Reservation { get; set; }
     }

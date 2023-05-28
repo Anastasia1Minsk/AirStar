@@ -106,7 +106,7 @@ namespace AirStar.Controllers
                 return View(flightViewModel);
             }
 
-            flight.Rates = DeleteNullRatesAsync(flight.Rates);
+            flight.Rates = DeleteNullableRatesAsync(flight.Rates);
             await _flightService.InsertAsync(flight);
             
             return RedirectToAction("List", "Flight");
@@ -129,7 +129,7 @@ namespace AirStar.Controllers
             return aircraftsNames;
         }
 
-        private ICollection<Rate> DeleteNullRatesAsync(ICollection<Rate> rates)
+        private ICollection<Rate> DeleteNullableRatesAsync(ICollection<Rate> rates)
         {
             var list = rates.ToList();
             list.RemoveAll(x => x.Price == 0);
@@ -242,7 +242,7 @@ namespace AirStar.Controllers
                 return View(flightViewModel);
             }
 
-            flight.Rates = DeleteNullRatesAsync(flight.Rates);
+            flight.Rates = DeleteNullableRatesAsync(flight.Rates);
             var existingRates = await _rateService.SelectAsync(x => x.FlightID == flight.Id);
             await _rateService.DeleteAsync(existingRates);
             await _flightService.UpdateAsync(flight);

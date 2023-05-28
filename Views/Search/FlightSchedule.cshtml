@@ -11,16 +11,26 @@
     var today = DateTime.Today;
 }
 <div class="card">
-    <div class="col text-center">
-        @if (previousDay >= today)
-        {
-            @Html.ActionLink("<=", "FlightSchedule", "Search", new { date = @previousDay }, htmlAttributes: new { @class = "btn btn-primary" })
-        }
-        <input type="text" class="form-control" id="DepartureDate" name="DepartureDate">
-        @Html.ActionLink("=>", "FlightSchedule", "Search", new { date = @nextDay }, htmlAttributes: new { @class = "btn btn-primary" })
+    <div class="row mt-2 mb-2">
+        <div class="col-5 text-end">
+            @if (previousDay >= today)
+            {
+                @Html.ActionLink("<=", "FlightSchedule", "Search", new {date = @previousDay}, htmlAttributes: new {@class = "btn btn-primary"})
+            }
+        </div>
+
+        <div class="col-2">
+            <input type="text" class="form-control" id="DepartureDate" name="DepartureDate">
+        </div>
+
+        <div class="col-5">
+            @Html.ActionLink("=>", "FlightSchedule", "Search", new {date = @nextDay}, htmlAttributes: new {@class = "btn btn-primary"})
+            @Html.ActionLink("Download", "FlightSchedule", "Search", new {date = @today}, htmlAttributes: new {@class = "btn btn-primary"})
+
+        </div>
     </div>
 
-    <div class="col text-center">
+    <div class="col-12 text-center">
         <h5>
             Flight schedule for @firstItem.DepartureDate.DayOfWeek, @firstItem.DepartureDate.Date.ToString("dd.MM.yyyy")
         </h5>
@@ -53,7 +63,7 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.DepartureTime)<br />
+                            @Html.DisplayFor(modelItem => item.DepartureTime)<br/>
                             @Html.DisplayFor(modelItem => item.DepartureAirport)
                         </td>
                         <td class="align-middle">
@@ -61,25 +71,25 @@
                             @Html.DisplayFor(modelItem => item.Aircraft)
                         </td>
                         <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.ArrivalTime)<br />
+                            @Html.DisplayFor(modelItem => item.ArrivalTime)<br/>
                             @Html.DisplayFor(modelItem => item.ArrivalAirport)
                         </td>
                         @if (User.IsInRole("Admin"))
                         {
                             <td>
-                                Count of ticked sold:<br />
+                                Count of ticked sold:<br/>
 
                                 Economy
                                 @Html.DisplayFor(modelItem => item.EconomySoldSeats) /
-                                @Html.DisplayFor(modelItem => item.MaxEconomySeats)<br />
+                                @Html.DisplayFor(modelItem => item.MaxEconomySeats)<br/>
 
                                 Business
                                 @Html.DisplayFor(modelItem => item.BusinessSoldSeats) /
-                                @Html.DisplayFor(modelItem => item.MaxBusinessSeats)<br />
+                                @Html.DisplayFor(modelItem => item.MaxBusinessSeats)<br/>
 
                                 First
                                 @Html.DisplayFor(modelItem => item.FirstSoldSeats) /
-                                @Html.DisplayFor(modelItem => item.MaxFirstSeats)<br />
+                                @Html.DisplayFor(modelItem => item.MaxFirstSeats)<br/>
                             </td>
                         }
 

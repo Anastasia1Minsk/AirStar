@@ -32,6 +32,7 @@ namespace AirStar.ViewModels
         public DateTime ArrivalDate { get; set; }
         public bool Food { get; set; }
         public bool Luggage { get; set; }
+        public bool Canceled { get; set; }
 
         public TimeSpan Duration => ArrivalDate - DepartureDate;
 
