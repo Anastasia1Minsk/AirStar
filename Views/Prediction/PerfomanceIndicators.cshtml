@@ -1,1 +1,71 @@
-﻿
+﻿@model PerfomanceIndicatorsViewModel
+
+@{
+    var flightForDescription = Model.Flights.First();
+}
+<div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="v-pills-main-tab" data-bs-toggle="pill" data-bs-target="#v-pills-main" type="button" role="tab"
+                aria-controls="v-pills-main" aria-selected="true">Main information</button>
+        <button class="nav-link" id="v-pills-efficiencyInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-efficiencyInd" type="button" role="tab"
+                aria-controls="v-pills-efficiencyInd" aria-selected="false">Efficiency indicators</button>
+        <button class="nav-link" id="v-pills-monetaryInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-monetaryInd" type="button" role="tab"
+                aria-controls="v-pills-monetaryInd" aria-selected="false">Monetary indicators</button>
+        <button class="nav-link" id="v-pills-flightInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-flightInd" type="button" role="tab"
+                aria-controls="v-pills-flightInd" aria-selected="false">Flight indicators</button>
+        <button class="nav-link" id="v-pills-flights-tab" data-bs-toggle="pill" data-bs-target="#v-pills-flights" type="button" role="tab"
+                aria-controls="v-pills-flights" aria-selected="false">Flights</button>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-main" role="tabpanel" aria-labelledby="v-pills-main-tab" tabindex="0">
+            .1.
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-efficiencyInd" role="tabpanel" aria-labelledby="v-pills-efficiencyInd-tab" tabindex="0">
+            .2.
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-monetaryInd" role="tabpanel" aria-labelledby="v-pills-monetaryInd-tab" tabindex="0">
+            .3.
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-flightInd" role="tabpanel" aria-labelledby="v-pills-flightInd-tab" tabindex="0">
+            .4.
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-flights" role="tabpanel" aria-labelledby="v-pills-flights-tab" tabindex="0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            DepartureDate
+                        </th>
+                        <th>
+                            ArrivalDate
+                        </th>
+                        <th>
+                            Aircraft
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.Flights)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.DepartureDate)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.ArrivalDate)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Aircraft)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

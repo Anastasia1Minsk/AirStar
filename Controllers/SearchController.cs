@@ -93,7 +93,7 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> FlightSchedule(DateTime? date)
         {
-            date ??= DateTime.Now;//new DateTime(2023, 6, 18);
+            date ??= DateTime.Now;
 
             var flights = await _flightService.FlightsForDayAsync(date.GetValueOrDefault());
             if (!flights.Any())

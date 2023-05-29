@@ -47,18 +47,24 @@ namespace AirStar.Models
                 .ForMember(dest => dest.EconomySoldSeats,
                     opt => opt
                         .MapFrom(src => src.Reservations
-                            .Where(x => x.Prices.Any(p => p.RateType == RateTypes.AdultEconomyFlight))
-                            .Sum(x => x.Passengers.Count)))
+                            .Where(x => x.Paid == true)
+                            .SelectMany(x => x.Prices)
+                            .Where(x => x.RateType == RateTypes.AdultEconomyFlight)
+                            .Sum(x => x.Amount)))
                 .ForMember(dest => dest.BusinessSoldSeats,
                     opt => opt
                         .MapFrom(src => src.Reservations
-                            .Where(x => x.Prices.Any(p => p.RateType == RateTypes.AdultBusinessFlight))
-                            .Sum(x => x.Passengers.Count)))
+                            .Where(x => x.Paid == true)
+                            .SelectMany(x => x.Prices)
+                            .Where(x => x.RateType == RateTypes.AdultBusinessFlight)
+                            .Sum(x => x.Amount)))
                 .ForMember(dest => dest.FirstSoldSeats,
                     opt => opt
                         .MapFrom(src => src.Reservations
-                            .Where(x => x.Prices.Any(p => p.RateType == RateTypes.AdultFirstFlight))
-                            .Sum(x => x.Passengers.Count)))
+                            .Where(x => x.Paid == true)
+                            .SelectMany(x => x.Prices)
+                            .Where(x => x.RateType == RateTypes.AdultFirstFlight)
+                            .Sum(x => x.Amount)))
 
                 .ForMember(dest => dest.RouteId,
                     opt => opt
