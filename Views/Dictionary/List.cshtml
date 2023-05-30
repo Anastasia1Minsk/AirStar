@@ -1,19 +1,52 @@
-﻿<div>
-    @Html.ActionLink("Aircrafts", "List", "Aircraft", null, new {@class = "nav-link"})
+﻿<h3 class="mt-4 text-center">
+    Dictionaries
+</h3>
+
+<div class="d-flex flex-row justify-content-around">
+    <div class="dictionatyBlock">
+        @Html.ActionLink("Aircrafts", "List", "Aircraft", null, new {@class = "nav-link dictionaryText"})
+    </div>
+
+    <div class="dictionatyBlock pastelOrangeColor">
+        @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link dictionaryText" })
+    </div>
+
+    <div class="dictionatyBlock pastelColor">
+        @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link dictionaryText" })
+    </div>
+
+    <div class="dictionatyBlock pastelBlueColor">
+        @Html.ActionLink("Flights", "List", "Flight", null, new { @class = "nav-link dictionaryText" })
+    </div>
+
+    <div class="dictionatyBlock originBlueColor">
+        @Html.ActionLink("Routes", "List", "Route", null, new { @class = "nav-link dictionaryText" })
+    </div>
 </div>
 
-<div>
-    @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link" })
-</div>
+<style>
+    .dictionatyBlock {
+        text-align: center;
+        line-height: 200px;
+        width: 200px;
+        height: 200px;
+        padding: 0;
+        background-color: #ea6901;
+    }
+    .pastelOrangeColor {
+        background-color: #E8931E;
+    }
+    .pastelColor {
+        background-color: #F5E1AE;
+    }
+    .pastelBlueColor {
+        background-color: #A0CBDE;
+    }
+    .originBlueColor {
+        background-color: #006efd;
+    }
 
-<div>
-    @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link"})
-</div>
-
-<div>
-    @Html.ActionLink("Flights", "List", "Flight", null, new { @class = "nav-link" })
-</div>
-
-<div>
-    @Html.ActionLink("Routes", "List", "Route", null, new { @class = "nav-link" })
-</div>
+    .dictionaryText {
+        color: white;
+    }
+</style>

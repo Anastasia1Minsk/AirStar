@@ -1,7 +1,7 @@
 ﻿@model PerfomanceIndicatorsViewModel
 
 @{
-    var flightForDescription = Model.Flights.First();
+    var statusText = "was done";
 }
 <div class="d-flex align-items-start">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -22,7 +22,26 @@
         </div>
 
         <div class="tab-pane fade" id="v-pills-efficiencyInd" role="tabpanel" aria-labelledby="v-pills-efficiencyInd-tab" tabindex="0">
-            .2.
+            <div>
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTraffic, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+                /
+                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTrafficMax, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+
+            <div>
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTurnover)
+                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+                /
+                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+
+            <div>
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTurnover)
+                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+                /
+                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
         </div>
 
         <div class="tab-pane fade" id="v-pills-monetaryInd" role="tabpanel" aria-labelledby="v-pills-monetaryInd-tab" tabindex="0">
@@ -46,23 +65,36 @@
                         <th>
                             Aircraft
                         </th>
+                        <th></th>
+                        <th>
+                            Status
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach (var item in Model.Flights)
                     {
-                        <tr>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.DepartureDate)
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.ArrivalDate)
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.Aircraft)
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.DepartureDate)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.ArrivalDate)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Aircraft)
+                        </td>
+                        <td></td>
+                        <td class="align-middle">
+                            @if (item.Canceled)
+                            {
+                                statusText = "was canceled";
+                            }
+
+                            @statusText
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
