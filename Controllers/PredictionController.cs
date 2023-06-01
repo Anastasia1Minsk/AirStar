@@ -38,21 +38,35 @@ namespace AirStar.Controllers
             var flights = await _predictionService.SelectFlightsByRouteAndTime(routeId, threeMonthAgo);
             var listOfFlights = _mapper.Map<IEnumerable<FlightViewModel>>(flights).ToList();
 
-            var efficiencyIndicators = new EfficiencyIndicatorsViewModel();
-            efficiencyIndicators.PassengerTraffic = await _predictionService.GetPassengerTraffic(flights);
+            var efInd = new EfficiencyIndicatorsViewModel();
 
-            efficiencyIndicators.PassengerTrafficMax = 44100;
-            efficiencyIndicators.PassengerTurnover = efficiencyIndicators.PassengerTraffic * 3030;
-            efficiencyIndicators.PassengerTurnoverMax = efficiencyIndicators.PassengerTrafficMax * 3030;
-            efficiencyIndicators.LoadFactor = efficiencyIndicators.PassengerTrafficPercent;
-            efficiencyIndicators.PartPassengerTraffic = 100;
-            efficiencyIndicators.UnusedProportion = 5.1;
-            efficiencyIndicators.Tonnage = 3030 * efficiencyIndicators.PassengerTraffic * (90 + 32);
+            efInd.PassengerTraffic = await _predictionService.GetPassengerTraffic(flights);
+
+            efInd.PassengerTrafficMax = (108 + 80 + 8) * flights.Count();
+            efInd.PassengerTurnover = efInd.PassengerTraffic * 3030;
+            efInd.PassengerTurnoverMax = efInd.PassengerTrafficMax * 3030;
+            efInd.LoadFactor = efInd.PassengerTrafficPercent;
+            efInd.PartPassengerTraffic = 100;
+            efInd.UnusedProportion = 8.84;
+            efInd.Tonnage = (ulong)(efInd.PassengerTraffic * (90 + 32));
+            efInd.TonnageMax = (ulong)(efInd.PassengerTrafficMax * (90 + 32));
+
+            efInd.Luggage = true;
+            efInd.Food = true;
+            efInd.BusinessAndFirstClasses = true;
+            efInd.LongDuration = false;
+            efInd.ToHub = false;
+
+            var temp = efInd.UnusedProportion * 10 * 2;
+            
+            efInd.Score = Convert.ToInt32(efInd.PassengerTrafficPercent + efInd.LoadFactor + temp + efInd.TonnagePercent);
+            efInd.Score += 10 + 10 + 40;
+            efInd.ScoreMax = 600;
 
             var model = new PerfomanceIndicatorsViewModel()
             {
                 Flights = listOfFlights,
-                EfficiencyIndicators = efficiencyIndicators
+                EfficiencyIndicators = efInd
             };
 
             return View(model);

@@ -12,19 +12,20 @@ namespace AirStar.ViewModels
         public int PassengerTraffic { get; set; }//пассажиропоток
         [Display(Name = "Max possible passenger traffic")]
         public int PassengerTrafficMax { get; set; }
-        public double PassengerTrafficPercent => PassengerTraffic * PassengerTrafficMax / 100;
+        public double PassengerTrafficPercent => PassengerTraffic * 100 / PassengerTrafficMax;
 
         [Display(Name = "Passenger turnover")]
         public int PassengerTurnover { get; set; }//пассажирооборот
         [Display(Name = "Max possible passenger turnover")]
         public int PassengerTurnoverMax { get; set; }
-        public double PassengerTurnoverPercent => PassengerTurnover * PassengerTurnoverMax / 100;
+        public double PassengerTurnoverPercent => PassengerTurnover * 100 / PassengerTurnoverMax;
 
         [Display(Name = "Load factor")]
         public double LoadFactor { get; set; }//коэффициент загрузки бортов
         [Display(Name = "Max possible load factor")]
         public int LoadFactorMax { get; set; }
-        public double LoadFactorPercent => LoadFactor * LoadFactorMax / 100;
+
+        public double LoadFactorPercent => LoadFactor * 100 / LoadFactorMax;
 
         [Display(Name = "Part passenger traffic")]
         public double PartPassengerTraffic { get; set; }//доля пассажиропотока отн всех маршрутов
@@ -33,10 +34,10 @@ namespace AirStar.ViewModels
         public double UnusedProportion { get; set; }//соотношение бронирования и реального полета(сколько % не пришли)
 
         [Display(Name = "Tonnage")]
-        public int Tonnage { get; set; }//тоннометраж
+        public ulong Tonnage { get; set; }//тоннометраж
         [Display(Name = "Max possible tonnage")]
-        public int TonnageMax { get; set; }
-        public double TonnagePercent => LoadFactor * LoadFactorMax / 100;
+        public ulong TonnageMax { get; set; }
+        public double TonnagePercent => Tonnage * 100 / TonnageMax;
 
         [Display(Name = "Option luggage")]
         public bool Luggage { get; set; }

@@ -2,6 +2,7 @@
 
 @{
     var statusText = "was done";
+    var flight = Model.Flights.First();
 }
 <div class="d-flex align-items-start">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -21,27 +22,103 @@
             .1.
         </div>
 
-        <div class="tab-pane fade" id="v-pills-efficiencyInd" role="tabpanel" aria-labelledby="v-pills-efficiencyInd-tab" tabindex="0">
-            <div>
-                @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTraffic)
-                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTraffic, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                /
-                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTrafficMax, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+        <div class="tab-pane fade flex-row" id="v-pills-efficiencyInd" role="tabpanel" aria-labelledby="v-pills-efficiencyInd-tab" tabindex="0">
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+
+            <div class="flex-column">
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTrafficMax)
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTurnover)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTurnover)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTurnoverMax)
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.LoadFactor)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.LoadFactor) %
+                    </div>
+                </div>
+
+                <div class="flex-column pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PartPassengerTraffic)
+                    <div class="form-control-plaintext pastelBlueColor">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PartPassengerTraffic) %
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.UnusedProportion)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.UnusedProportion) %
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.Tonnage)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.Tonnage)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.TonnageMax)
+                    </div>
+                    <br/>
+                </div>
+            </div>
+
+            <div class="flex-column">
+                @Html.DisplayFor(x => x.EfficiencyIndicators.Luggage)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.Luggage)
             </div>
 
             <div>
-                @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTurnover)
-                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                /
-                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+                @Html.DisplayFor(x => x.EfficiencyIndicators.Food)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.Food)
             </div>
 
             <div>
-                @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTurnover)
-                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                /
-                @Html.TextBoxFor(x => x.EfficiencyIndicators.PassengerTurnover, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+                @Html.DisplayFor(x => x.EfficiencyIndicators.BusinessAndFirstClasses)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.BusinessAndFirstClasses)
             </div>
+
+            <div>
+                @Html.DisplayFor(x => x.EfficiencyIndicators.LongDuration)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.LongDuration)
+            </div>
+
+            <div>
+                @Html.DisplayFor(x => x.EfficiencyIndicators.ToHub)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.ToHub)
+            </div>
+
+            <br/>
+
+            <div class="flex-column">
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.Score)
+                <div class="form-control-plaintext">
+                    @Html.DisplayTextFor(x => x.EfficiencyIndicators.Score)
+                    /
+                    @Html.DisplayTextFor(x => x.EfficiencyIndicators.ScoreMax)
+                </div>
+                <div class="OrangeColor">
+                    Flights along the route recouped themselves and covered depreciation charges
+                    This route should be developed further
+                </div>
+
+            </div>
+
         </div>
 
         <div class="tab-pane fade" id="v-pills-monetaryInd" role="tabpanel" aria-labelledby="v-pills-monetaryInd-tab" tabindex="0">
@@ -55,26 +132,26 @@
         <div class="tab-pane fade" id="v-pills-flights" role="tabpanel" aria-labelledby="v-pills-flights-tab" tabindex="0">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>
-                            DepartureDate
-                        </th>
-                        <th>
-                            ArrivalDate
-                        </th>
-                        <th>
-                            Aircraft
-                        </th>
-                        <th></th>
-                        <th>
-                            Status
-                        </th>
-                    </tr>
+                <tr>
+                    <th>
+                        DepartureDate
+                    </th>
+                    <th>
+                        ArrivalDate
+                    </th>
+                    <th>
+                        Aircraft
+                    </th>
+                    <th></th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
                 </thead>
 
                 <tbody>
-                    @foreach (var item in Model.Flights)
-                    {
+                @foreach (var item in Model.Flights)
+                {
                     <tr>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.DepartureDate)
@@ -95,9 +172,18 @@
                             @statusText
                         </td>
                     </tr>
-                    }
+                }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<style>
+    .pastelBlueColor {
+        color: #A0CBDE;
+    }
+    .OrangeColor {
+        color: #ea6901;
+    }
+</style>

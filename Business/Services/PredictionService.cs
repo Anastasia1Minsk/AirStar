@@ -27,7 +27,8 @@ namespace AirStar.Business.Services
             var currentMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             var flights = await _flightService
                 .SelectAsync(x => x.Route.Id == routeId && x.DepartureDate >= minDepartureDate && x.DepartureDate < currentMonth,
-                new List<string>() {"Aircraft", "Route", "Reservations", "Reservations.Passengers", "Reservations.Prices" });
+                new List<string>() {"Aircraft", "Route", "Route.DepartureAirport", "Route.ArrivalAirport", "Reservations", 
+                    "Reservations.Passengers", "Reservations.Prices" });
             return flights;
         }
 
