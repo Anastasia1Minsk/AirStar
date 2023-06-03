@@ -1,14 +1,34 @@
 ﻿@model PeriodViewModel
 
-<div class="nav justify-content-center">
+<h3 class="mt-4 text-center">
     Period: last 3 month (@Html.DisplayFor(x => x.ThreeMonths))
+</h3>
+
+<div class="d-flex flex-row justify-content-center">
+    <div class="dictionatyBlock m-2">
+        @Html.ActionLink("All routes & flights", "PeriodStatistic", "Statistics", null, new { @class = "nav-link dictionaryText" })
+    </div>
+
+    <div class="dictionatyBlock originBlueColor m-2">
+        @Html.ActionLink("Each route", "RouteList", "Prediction", null, new { @class = "nav-link dictionaryText" })
+    </div>
 </div>
 
-<div>
-    All routes & flights
-    @*@Html.ActionLink("Aircrafts", "List", "Aircraft", null, new { @class = "nav-link" })*@
-</div>
+<style>
+    .dictionatyBlock {
+        text-align: center;
+        line-height: 200px;
+        width: 200px;
+        height: 200px;
+        padding: 0;
+        background-color: #ea6901;
+    }
 
-<div>
-    @Html.ActionLink("Each route", "RouteList", "Prediction", null, new { @class = "nav-link" })
-</div>
+    .originBlueColor {
+        background-color: #006efd;
+    }
+
+    .dictionaryText {
+        color: white;
+    }
+</style>

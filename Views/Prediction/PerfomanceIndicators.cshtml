@@ -122,11 +122,54 @@
         </div>
 
         <div class="tab-pane fade" id="v-pills-monetaryInd" role="tabpanel" aria-labelledby="v-pills-monetaryInd-tab" tabindex="0">
-            .3.
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+            
+            <div class="flex-column">
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.Profit)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.MonetaryIndicators.Profit)
+                        /
+                        @Html.DisplayTextFor(x => x.MonetaryIndicators.ProfitMax)
+                    </div>
+                </div>
+
+                <div>
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageFee)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageFee)
+                </div>
+                <br />
+
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageEconomyCost)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageEconomyCost)
+                </div>
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageBusinessCost)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageBusinessCost)
+                </div>
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageFirstCost)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageFirstCost)
+                </div>
+            </div>
         </div>
 
         <div class="tab-pane fade" id="v-pills-flightInd" role="tabpanel" aria-labelledby="v-pills-flightInd-tab" tabindex="0">
-            .4.
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+            
+            <div class="flex-column">
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.LoadFactor)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.LoadFactor) %
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="tab-pane fade" id="v-pills-flights" role="tabpanel" aria-labelledby="v-pills-flights-tab" tabindex="0">

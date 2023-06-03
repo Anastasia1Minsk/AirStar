@@ -56,9 +56,11 @@ namespace AirStar.Business.Services
             var threeMonthAgo = firstDayOfCurrentMonth.AddMonths(-3);
 
             var routes = await SelectAsync(predicate: x => x.Flights
-                                                                                .Any(f => f.DepartureDate >= threeMonthAgo && 
-                                                                                    f.DepartureDate < firstDayOfCurrentMonth),
+                                                                                .Any(f => f.DepartureDate >= threeMonthAgo 
+                                                                                    && f.DepartureDate < firstDayOfCurrentMonth
+                                                                                    && f.Canceled == false),
                 includes: new List<string>() {"DepartureAirport", "ArrivalAirport", "Flights" });
+            
             return routes;
         }
     }

@@ -30,5 +30,11 @@ namespace AirStar.Controllers
             var result = new PeriodViewModel{ ThreeMonths = text};
             return View(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> PeriodStatistic()
+        {
+            return View();
+        }
     }
 }
