@@ -1,1 +1,96 @@
-﻿
+﻿@model StatisticViewModel
+
+@if (Model.ThreeMonthDuration == true)
+{
+    <h3 class="mt-4 text-center">
+        Period: last 3 month
+    </h3>
+}
+else
+{
+    <h3 class="mt-4 text-center">
+        Month (@Html.DisplayTextFor(x => x.MonthText))
+    </h3>
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="nav nav-pills card-header-pills flex-row">
+            @*<h5 class="text-center m-1">
+                Period
+            </h5>*@
+
+            @*@foreach (var item in Model.Period.Months)
+        {
+            <div class="col-2 text-end">
+                @Html.ActionLink(item, "PeriodStatistic", "Statistics",
+                    new { startPeriod = Model.Period.StartThreeMonthPeriod, threeMonthDuration = false },
+                    new { @class = "nav-link dictionaryText" })
+            </div>
+        }*@
+
+            <div class="m-1">
+                @Html.ActionLink("March", "PeriodStatistic", "Statistics",
+                    new { startPeriod = Model.Period.StartFirstMonth, monthOrderInPeriod = 1 },
+                    new { @class = "btn btn-primary" })
+            </div>
+            <div class="m-1">
+                @Html.ActionLink("April", "PeriodStatistic", "Statistics",
+                    new { startPeriod = Model.Period.StartSecondMonth, monthOrderInPeriod = 2 },
+                    new { @class = "btn btn-primary" })
+            </div>
+            <div class="m-1">
+                @Html.ActionLink("May", "PeriodStatistic", "Statistics",
+                    new { startPeriod = Model.Period.StartThirdMonth, monthOrderInPeriod = 3 },
+                    new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+    <div class="card-body flex-row">
+        <div>
+            <div class="originBlueColor">
+                @Html.DisplayNameFor(x => x.FlightCount)
+            </div>     
+            @Html.DisplayFor(x => x.FlightCount)
+        </div>
+        <br />
+
+        <div>
+            <div class="originBlueColor">
+                @Html.DisplayNameFor(x => x.RouteCount)
+            </div>
+            @Html.DisplayFor(x => x.RouteCount)
+        </div>
+        <br />
+
+        <div>
+            <div class="originBlueColor">
+                @Html.DisplayNameFor(x => x.PassengerTraffic)
+            </div>
+            @Html.DisplayFor(x => x.PassengerTraffic)
+        </div>
+        <br />
+
+        <div>
+            <div class="originBlueColor">
+                @Html.DisplayNameFor(x => x.AverageRange)
+            </div>
+            @Html.DisplayFor(x => x.AverageRange)
+        </div>
+        <br />
+
+        <div>
+            <div class="originBlueColor">
+                @Html.DisplayNameFor(x => x.IncomeRate)
+            </div>
+            @Html.DisplayFor(x => x.IncomeRate)
+        </div>
+    </div>
+</div>
+
+<style>
+    .originBlueColor {
+        font-weight: bold;
+        color: #006efd;
+    }
+</style>

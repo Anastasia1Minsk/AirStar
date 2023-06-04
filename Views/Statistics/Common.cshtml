@@ -6,7 +6,9 @@
 
 <div class="d-flex flex-row justify-content-center">
     <div class="dictionatyBlock m-2">
-        @Html.ActionLink("All routes & flights", "PeriodStatistic", "Statistics", null, new { @class = "nav-link dictionaryText" })
+        @Html.ActionLink("All routes & flights", "PeriodStatistic", "Statistics", 
+            new { startPeriod = Model.StartThreeMonthPeriod, threeMonthDuration = true}, 
+            new { @class = "nav-link dictionaryText" })
     </div>
 
     <div class="dictionatyBlock originBlueColor m-2">

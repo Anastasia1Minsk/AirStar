@@ -53,10 +53,6 @@ namespace AirStar.Business.Services
             decimal sum = 0;
 
             sum += GetPrices(flights).Sum(price => price.Amount * price.Cost);
-            /*foreach (var price in GetPrices(flights))
-            {
-                sum += price.Amount * price.Cost;
-            }*/
 
             return sum;
         }

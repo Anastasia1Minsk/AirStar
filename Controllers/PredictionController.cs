@@ -104,10 +104,6 @@ namespace AirStar.Controllers
             flInd.LoadFactor = loadFactor;
             flInd.Aircrafts = new List<string>() {"Boeing B777-300ER (E/B/F)"};
 
-            /*var economyTraffic = _predictionService.GetPassengerTraffic(flights, RateTypes.AdultEconomyFlight);
-            flInd.EconomyPercent = GetPercent(economyTraffic, passengers);
-            flInd.EconomyLoadFactor = GetPercent(economyTraffic,
-                                                _predictionService.GetClassSeatsCount(flights, RateTypes.AdultEconomyFlight));*/
             GetClassParameters(flights, flInd, RateTypes.AdultEconomyFlight, passengers);
             GetClassParameters(flights, flInd, RateTypes.AdultBusinessFlight, passengers);
             GetClassParameters(flights, flInd, RateTypes.AdultFirstFlight, passengers);
