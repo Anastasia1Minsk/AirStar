@@ -11,9 +11,10 @@ namespace AirStar.Business.Interfaces
     {
         public Task<IEnumerable<Route>> SelectRoutesForLastThreeMonthsAsync();
         public Task<IEnumerable<Flight>> SelectFlightsByRouteAndTime(int routeId, DateTime minDepartureDate);
-        public int GetPassengerTraffic(IEnumerable<Flight> flights);
+        public int GetPassengerTraffic(IEnumerable<Flight> flights, RateTypes? type = null);
         public decimal GetProfit(IEnumerable<Flight> flights);
         public decimal GetMaxProfit(IEnumerable<Flight> flights);
         public decimal GetAverageCost(IEnumerable<Flight> flights, RateTypes type);
+        public int GetClassSeatsCount(IEnumerable<Flight> flights, RateTypes type);
     }
 }

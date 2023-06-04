@@ -97,14 +97,48 @@ namespace AirStar.Controllers
             return mInd;
         }
 
-        private FlightIndicatorsViewModel GetFlightIndicators(IEnumerable<Flight> flights, decimal LoadFactor, int passengers)
+        private FlightIndicatorsViewModel GetFlightIndicators(IEnumerable<Flight> flights, decimal loadFactor, int passengers)
         {
             var flInd = new FlightIndicatorsViewModel();
-            flInd.Aircrafts = new List<string>() {"Boeing B777-300ER"};
 
+            flInd.LoadFactor = loadFactor;
+            flInd.Aircrafts = new List<string>() {"Boeing B777-300ER (E/B/F)"};
 
+            /*var economyTraffic = _predictionService.GetPassengerTraffic(flights, RateTypes.AdultEconomyFlight);
+            flInd.EconomyPercent = GetPercent(economyTraffic, passengers);
+            flInd.EconomyLoadFactor = GetPercent(economyTraffic,
+                                                _predictionService.GetClassSeatsCount(flights, RateTypes.AdultEconomyFlight));*/
+            GetClassParameters(flights, flInd, RateTypes.AdultEconomyFlight, passengers);
+            GetClassParameters(flights, flInd, RateTypes.AdultBusinessFlight, passengers);
+            GetClassParameters(flights, flInd, RateTypes.AdultFirstFlight, passengers);
 
             return flInd;
         }
+
+        private void GetClassParameters(IEnumerable<Flight> flights, FlightIndicatorsViewModel viewModel, RateTypes type, int passengers)
+        {
+            var trafficForClass = _predictionService.GetPassengerTraffic(flights, type);
+
+            var parameterPercent = GetPercent(trafficForClass, passengers);
+            var parameterLoadFactor = GetPercent(trafficForClass, _predictionService.GetClassSeatsCount(flights, type));
+
+            _ = type switch
+            {
+                RateTypes.AdultEconomyFlight => viewModel.EconomyPercent = parameterPercent,
+                RateTypes.AdultBusinessFlight => viewModel.BusinessPercent = parameterPercent,
+                RateTypes.AdultFirstFlight => viewModel.FirstPercent = parameterPercent,
+                _ => throw new NotImplementedException()
+            };
+
+            _ = type switch
+            {
+                RateTypes.AdultEconomyFlight => viewModel.EconomyLoadFactor = parameterLoadFactor,
+                RateTypes.AdultBusinessFlight => viewModel.BusinessLoadFactor = parameterLoadFactor,
+                RateTypes.AdultFirstFlight => viewModel.FirstLoadFactor = parameterLoadFactor,
+                _ => throw new NotImplementedException()
+            };
+        }
+
+        private decimal GetPercent(int part, int whole) => (decimal)part * 100 / whole;
     }
 }

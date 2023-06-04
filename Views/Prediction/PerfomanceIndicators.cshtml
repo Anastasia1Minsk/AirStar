@@ -19,7 +19,40 @@
     </div>
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-main" role="tabpanel" aria-labelledby="v-pills-main-tab" tabindex="0">
-            .1.
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+            <div class="pastelColor">
+                Duration @flight.Duration
+            </div>
+            <div class="pastelColor">
+                Duration @flight.Duration
+            </div>
+
+            <div class="flex-column">
+                <div>
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTrafficMax)
+                    </div>
+                </div>
+
+                <div class="flex-column pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PartPassengerTraffic)
+                    <div class="form-control-plaintext pastelBlueColor">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PartPassengerTraffic) %
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.LoadFactor)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.LoadFactor) %
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="tab-pane fade flex-row" id="v-pills-efficiencyInd" role="tabpanel" aria-labelledby="v-pills-efficiencyInd-tab" tabindex="0">
@@ -164,10 +197,47 @@
             
             <div class="flex-column">
                 <div class="flex-column">
-                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.LoadFactor)
+                    @Html.DisplayNameFor(x => x.FlightIndicators.LoadFactor)
                     <div class="form-control-plaintext">
-                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.LoadFactor) %
+                        @Html.DisplayTextFor(x => x.FlightIndicators.LoadFactor) %
                     </div>
+                </div>
+
+                <div>
+                    @Html.DisplayNameFor(x => x.FlightIndicators.Aircrafts)
+                    <div class="form-control-plaintext">
+                        @foreach (var item in Model.FlightIndicators.Aircrafts)
+                        {
+                            @Html.DisplayTextFor(modelItem => item)
+                        }
+                    </div>
+                </div>
+
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.EconomyPercent)
+                    @Html.DisplayFor(x => x.FlightIndicators.EconomyPercent) %
+                </div>
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.EconomyLoadFactor)
+                    @Html.DisplayFor(x => x.FlightIndicators.EconomyLoadFactor) %
+                </div>
+
+                <div class="pastelColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.BusinessPercent)
+                    @Html.DisplayFor(x => x.FlightIndicators.BusinessPercent) %
+                </div>
+                <div class="pastelColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.BusinessLoadFactor)
+                    @Html.DisplayFor(x => x.FlightIndicators.BusinessLoadFactor) %
+                </div>
+
+                <div class="OrangeColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.FirstPercent)
+                    @Html.DisplayFor(x => x.FlightIndicators.FirstPercent) %
+                </div>
+                <div class="OrangeColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.FirstLoadFactor)
+                    @Html.DisplayFor(x => x.FlightIndicators.FirstLoadFactor) %
                 </div>
             </div>
         </div>
@@ -228,5 +298,8 @@
     }
     .OrangeColor {
         color: #ea6901;
+    }
+    .pastelColor {
+        color: #F5E1AE;
     }
 </style>

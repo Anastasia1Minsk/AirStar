@@ -32,13 +32,17 @@ namespace AirStar.Business.Services
             return flights;
         }
 
-        public int GetPassengerTraffic(IEnumerable<Flight> flights)
+        public int GetPassengerTraffic(IEnumerable<Flight> flights, RateTypes? type = null)
         {
             var sum = 0;
 
-            foreach (var price in GetPrices(flights))
+            if (type != null)
             {
-                sum += price.Amount;
+                sum += GetPrices(flights).Where(x => x.RateType == type).Sum(price => price.Amount);
+            }
+            else
+            {
+                sum += GetPrices(flights).Sum(price => price.Amount);
             }
 
             return sum;
@@ -48,10 +52,11 @@ namespace AirStar.Business.Services
         {
             decimal sum = 0;
 
-            foreach (var price in GetPrices(flights))
+            sum += GetPrices(flights).Sum(price => price.Amount * price.Cost);
+            /*foreach (var price in GetPrices(flights))
             {
                 sum += price.Amount * price.Cost;
-            }
+            }*/
 
             return sum;
         }
@@ -123,6 +128,26 @@ namespace AirStar.Business.Services
             }
 
             return sumCost / seats;
+        }
+
+        public int GetClassSeatsCount(IEnumerable<Flight> flights, RateTypes type)
+        {
+            var count = 0;
+
+            foreach (var f in flights)
+            {
+                var aircraftSeats = type switch
+                {
+                    RateTypes.AdultEconomyFlight => f.Aircraft.EconomyClassSeats,
+                    RateTypes.AdultBusinessFlight => f.Aircraft.BusinessClassSeats.GetValueOrDefault(),
+                    RateTypes.AdultFirstFlight => f.Aircraft.FirstClassSeats.GetValueOrDefault(),
+                    _ => throw new NotImplementedException()
+                };
+
+                count += aircraftSeats;
+            }
+
+            return count;
         }
     }
 }
