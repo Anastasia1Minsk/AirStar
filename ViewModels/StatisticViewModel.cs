@@ -25,6 +25,9 @@ namespace AirStar.ViewModels
         [Display(Name = "Passenger traffic")]
         public int PassengerTraffic { get; set; }
 
+        [Display(Name = "Passenger turnover")]
+        public int PassengerTurnover { get; set; }//пассажирооборот
+
         [Display(Name = "Average range")]
         public decimal AverageRange { get; set; }//средняя дальность
 

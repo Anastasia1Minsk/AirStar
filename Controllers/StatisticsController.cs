@@ -58,6 +58,7 @@ namespace AirStar.Controllers
             viewModel.FlightCount = 170;
             viewModel.RouteCount = 1;
             viewModel.PassengerTraffic = 28856;
+            viewModel.PassengerTurnover = 87433680;
             viewModel.AverageRange = 3030;
             viewModel.IncomeRate = 37102700;
 

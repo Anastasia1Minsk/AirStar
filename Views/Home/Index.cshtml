@@ -10,6 +10,17 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 
-<div class="text-center">
-    @Html.ActionLink("Search flight", "SearchForm", "Search", null,new { @class = "button-on-page" })
+<div class="text-center m-5">
+    @Html.ActionLink("Begin journey", "SearchForm", "Search", null,new { @class = "button-on-page" })
 </div>
+
+<div class="text-center m-5">
+    @Html.ActionLink("Check flight schedule", "FlightSchedule", "Search", null, new { @class = "button-on-page" })
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="text-center m-5">
+        @Html.ActionLink("View prediction", "Common", "Statistics", null, new { @class = "button-on-page" })
+    </div>
+}
