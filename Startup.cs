@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AirStar.Attributes;
 using AirStar.Data;
+using AirStar.Infrastructure;
 using AirStar.Infrastructure.Extension;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +34,12 @@ namespace AirStar
             services.ConfigureValidators();
 
             services.AddControllersWithViews();
+            /*services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add<CultureAttribute>();
+            });*/
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +64,8 @@ namespace AirStar
 
             app.UseAuthentication();    // аутентификация/кто пользователь
             app.UseAuthorization();     // авторизация/какие права в системе имеет пользователь
+
+            app.UseMiddleware<LocaliseMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

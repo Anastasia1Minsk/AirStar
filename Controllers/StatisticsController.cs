@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using AirStar.Business.Interfaces;
 using AirStar.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
@@ -12,6 +13,13 @@ namespace AirStar.Controllers
     [Authorize]
     public class StatisticsController : Controller
     {
+        private readonly IStatisticsService _statisticsService;
+
+        public StatisticsController(IStatisticsService statisticsService)
+        {
+            _statisticsService = statisticsService;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Common()
         {
@@ -55,12 +63,25 @@ namespace AirStar.Controllers
                 viewModel.Month = startPeriod;
             }
 
-            viewModel.FlightCount = 170;
+            if (monthOrderInPeriod == 1)
+            {
+                var flights = await _statisticsService.SelectFlightsByRouteAndTime(1, startPeriod, true);
+                viewModel.FlightCount = flights.Count();
+                viewModel.PassengerTraffic = _statisticsService.GetPassengerTraffic(flights);
+                viewModel.PassengerTurnover = viewModel.PassengerTraffic * 3030;
+                viewModel.IncomeRate = _statisticsService.GetProfit(flights);
+            }
+
+            if (threeMonthDuration.GetValueOrDefault())
+            {
+                viewModel.FlightCount = 170;
+                viewModel.PassengerTraffic = 28856;
+                viewModel.PassengerTurnover = 87433680;
+                viewModel.IncomeRate = 37102700;
+            }
+
             viewModel.RouteCount = 1;
-            viewModel.PassengerTraffic = 28856;
-            viewModel.PassengerTurnover = 87433680;
             viewModel.AverageRange = 3030;
-            viewModel.IncomeRate = 37102700;
 
             return View(viewModel);
         }
