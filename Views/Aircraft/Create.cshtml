@@ -1,8 +1,9 @@
-﻿@model AircraftViewModel
+﻿@using Resources
+@model AircraftViewModel
 
 <div class="card">
     <h3 class="card-header">
-        Create
+        @Dictionary.Creating
     </h3>
     <div class="card-body">
         <form action="/Aircraft/Create" method="post" enctype="multipart/form-data">
@@ -47,15 +48,15 @@
                     <span class="text-danger" asp-validation-for="MaxFlightRange"></span>
                 </div>
                 <div class="col-8 mb-3">
-                    <label class="form-label">Picture</label>
+                    @Html.DisplayNameFor(x => x.PictureFile)
                     <input type="file" name="@nameof(AircraftViewModel.PictureFile)" class="form-control" />
                     <span class="text-danger" asp-validation-for="PictureFile"></span>
                 </div>
             </div>
 
             <div class="col text-center">
-                <button class="btn btn-primary" type="submit">Create</button>
-                @Html.ActionLink("Back to list", "List", "Aircraft", htmlAttributes: new { @class = "btn btn-outline-primary" })
+                <button class="btn btn-primary" type="submit">@Dictionary.Create</button>
+                @Html.ActionLink(@Dictionary.BackToList, "List", "Aircraft", htmlAttributes: new { @class = "btn btn-outline-primary" })
             </div>
         </form>
     </div>

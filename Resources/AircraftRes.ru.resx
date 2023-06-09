@@ -117,22 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BeginJourney" xml:space="preserve">
-    <value>Begin journey</value>
+  <data name="AddNewAircraft" xml:space="preserve">
+    <value>Добавить новый самолет</value>
   </data>
-  <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change language</value>
+  <data name="Brand" xml:space="preserve">
+    <value>Бренд</value>
   </data>
-  <data name="CheckFlightSchedule" xml:space="preserve">
-    <value>Check flight schedule</value>
+  <data name="BrandValidationCharacters" xml:space="preserve">
+    <value>"Бренд" не должен содержать специальных символов</value>
   </data>
-  <data name="ViewDictionaries" xml:space="preserve">
-    <value>View dictionaries</value>
+  <data name="BrandValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Бренд"</value>
   </data>
-  <data name="ViewPrediction" xml:space="preserve">
-    <value>View prediction</value>
+  <data name="BrandValidationLenght" xml:space="preserve">
+    <value>Длина должна быть от 2 до 50 символов</value>
   </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+  <data name="BusinessClassSeats" xml:space="preserve">
+    <value>Места бизнес класса</value>
+  </data>
+  <data name="BusinessValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Места бизнес класса"</value>
+  </data>
+  <data name="EconomyClassSeats" xml:space="preserve">
+    <value>Места эконом класса</value>
+  </data>
+  <data name="EconomyValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Места эконом класса"</value>
+  </data>
+  <data name="EconomyValidationGreater" xml:space="preserve">
+    <value>Невозможно создать такой самолет</value>
+  </data>
+  <data name="ErrorMessege" xml:space="preserve">
+    <value>Удаление невозможно. Самолет обслуживает рейсы</value>
+  </data>
+  <data name="FirstClassSeats" xml:space="preserve">
+    <value>Места первого класса</value>
+  </data>
+  <data name="FirstValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Места первого класса"</value>
+  </data>
+  <data name="MaxFlightRange" xml:space="preserve">
+    <value>Макс дальность полета</value>
+  </data>
+  <data name="MaxFlightRangeValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Макс дальность полета"</value>
+  </data>
+  <data name="MaxFlightRangeValidationGreater" xml:space="preserve">
+    <value>Невозможно создать такой самолет</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Модель</value>
+  </data>
+  <data name="ModelValidationCharacters" xml:space="preserve">
+    <value>"Модель" не должна содержать специальных символов</value>
+  </data>
+  <data name="ModelValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Модель"</value>
+  </data>
+  <data name="ModelValidationLenght" xml:space="preserve">
+    <value>Длина должна быть от 2 до 50 символов</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="PictureFileValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Фото"</value>
+  </data>
+  <data name="YearOfBuild" xml:space="preserve">
+    <value>Год выпуска</value>
+  </data>
+  <data name="YearOfBuildValidationEmpty" xml:space="preserve">
+    <value>Пожалуйста заполните поле "Год выпуска"</value>
+  </data>
+  <data name="YearOfBuiltValidationGreater" xml:space="preserve">
+    <value>Самолет слишком стар</value>
+  </data>
+  <data name="YearOfBuiltValidationLess" xml:space="preserve">
+    <value>Неподходящая дата</value>
   </data>
 </root>

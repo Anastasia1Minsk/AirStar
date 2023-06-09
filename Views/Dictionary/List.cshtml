@@ -1,26 +1,28 @@
-﻿<h3 class="mt-4 text-center">
-    Dictionaries
+﻿@using Resources
+
+<h3 class="mt-4 text-center">
+    @Dictionary.Dictionaries
 </h3>
 
 <div class="d-flex flex-row justify-content-around">
     <div class="dictionatyBlock">
-        @Html.ActionLink("Aircrafts", "List", "Aircraft", null, new {@class = "nav-link dictionaryText"})
+        @Html.ActionLink(@Dictionary.Aircrafts, "List", "Aircraft", null, new {@class = "nav-link dictionaryText"})
     </div>
 
     <div class="dictionatyBlock pastelOrangeColor">
-        @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link dictionaryText" })
+        @Html.ActionLink(@Dictionary.Airports, "List","Airport", null, new { @class = "nav-link dictionaryText" })
     </div>
 
     <div class="dictionatyBlock pastelColor">
-        @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link dictionaryText" })
+        @Html.ActionLink(@Dictionary.Countries, "List", "Country", null, new {@class = "nav-link dictionaryText" })
     </div>
 
     <div class="dictionatyBlock pastelBlueColor">
-        @Html.ActionLink("Flights", "List", "Flight", null, new { @class = "nav-link dictionaryText" })
+        @Html.ActionLink(@Dictionary.Flights, "List", "Flight", null, new { @class = "nav-link dictionaryText" })
     </div>
 
     <div class="dictionatyBlock originBlueColor">
-        @Html.ActionLink("Routes", "List", "Route", null, new { @class = "nav-link dictionaryText" })
+        @Html.ActionLink(@Dictionary.Routes, "List", "Route", null, new { @class = "nav-link dictionaryText" })
     </div>
 </div>
 

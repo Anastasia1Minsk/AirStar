@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AirStar.Attributes;
-using AirStar.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using AirStar.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Net.Http.Headers;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AirStar.Controllers
 {
@@ -37,7 +29,6 @@ namespace AirStar.Controllers
                 cultureName = Request.Cookies["lang"];
             }
            
-
             if (!cultures.Contains(cultureName))
             {
                 cultureName = cultures[1];

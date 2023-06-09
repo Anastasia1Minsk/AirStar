@@ -117,22 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BeginJourney" xml:space="preserve">
-    <value>Begin journey</value>
+  <data name="Aircrafts" xml:space="preserve">
+    <value>Самолеты</value>
   </data>
-  <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change language</value>
+  <data name="Airports" xml:space="preserve">
+    <value>Аэропорты</value>
   </data>
-  <data name="CheckFlightSchedule" xml:space="preserve">
-    <value>Check flight schedule</value>
+  <data name="BackToList" xml:space="preserve">
+    <value>Вернуться</value>
   </data>
-  <data name="ViewDictionaries" xml:space="preserve">
-    <value>View dictionaries</value>
+  <data name="Countries" xml:space="preserve">
+    <value>Страны</value>
   </data>
-  <data name="ViewPrediction" xml:space="preserve">
-    <value>View prediction</value>
+  <data name="Create" xml:space="preserve">
+    <value>Создать</value>
   </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+  <data name="Creating" xml:space="preserve">
+    <value>Создание</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Удаление</value>
+  </data>
+  <data name="DeletingMessege" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить?</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="DetailsView" xml:space="preserve">
+    <value>Детальная информация</value>
+  </data>
+  <data name="Dictionaries" xml:space="preserve">
+    <value>Справочники</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Редактирование</value>
+  </data>
+  <data name="Flights" xml:space="preserve">
+    <value>Перелеты</value>
+  </data>
+  <data name="Routes" xml:space="preserve">
+    <value>Маршруты</value>
   </data>
 </root>

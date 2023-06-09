@@ -1,45 +1,46 @@
-﻿@model IEnumerable<Aircraft>
+﻿@using Resources
+@model IEnumerable<Aircraft>
 
 <div class="card">
     <div class="card-header">
         <ul class="nav nav-pills card-header-pills">
             <li class="nav-item">
-                @Html.ActionLink("Add new aircraft", "Create", "Aircraft",  htmlAttributes: new { @class= "nav-link active" })
+                @Html.ActionLink(@AircraftRes.AddNewAircraft, "Create", "Aircraft", htmlAttributes: new { @class = "nav-link active" })
             </li>
         </ul>
     </div>
     <div class="card-body">
         <table class="table">
             <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Model)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Brand)
-                </th>
-                <th></th>
-            </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Brand)
+                    </th>
+                    <th></th>
+                </tr>
             </thead>
 
             <tbody>
-            @foreach (var item in Model) 
-            {
-                <tr>
-                    <td class="align-middle">
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td class="align-middle">
-                        @Html.DisplayFor(modelItem => item.Brand)
-                    </td>
-                
-                    <td class="align-middle text-end">
-                        @Html.ActionLink("Details", "Details", "Aircraft", new { id = item.Id }, new { @class= "btn btn-link" }) |
-                        @Html.ActionLink("Edit", "Edit", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" }) |
-                        @Html.ActionLink("Delete", "DeleteConfirm", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" })
-                    </td>
-                </tr>
-            }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Brand)
+                        </td>
+
+                        <td class="align-middle text-end">
+                            @Html.ActionLink(@Dictionary.Details, "Details", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                            @Html.ActionLink(@Dictionary.Edit, "Edit", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" }) |
+                            @Html.ActionLink(@Dictionary.Delete, "DeleteConfirm", "Aircraft", new { id = item.Id }, new { @class = "btn btn-link" })
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

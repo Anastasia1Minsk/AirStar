@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Home {
+    public class Menu {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Home() {
+        internal Menu() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AirStar.Resources.Home", typeof(Home).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AirStar.Resources.Menu", typeof(Menu).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,74 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Begin journey.
+        ///   Looks up a localized string similar to Dictionaries.
         /// </summary>
-        public static string BeginJourney {
+        public static string Dictionaries {
             get {
-                return ResourceManager.GetString("BeginJourney", resourceCulture);
+                return ResourceManager.GetString("Dictionaries", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change language.
+        ///   Looks up a localized string similar to Flight schedule.
         /// </summary>
-        public static string ChangeLanguage {
+        public static string FlightSchedule {
             get {
-                return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+                return ResourceManager.GetString("FlightSchedule", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check flight schedule.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
-        public static string CheckFlightSchedule {
+        public static string Login {
             get {
-                return ResourceManager.GetString("CheckFlightSchedule", resourceCulture);
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View dictionaries.
+        ///   Looks up a localized string similar to Log off.
         /// </summary>
-        public static string ViewDictionaries {
+        public static string LogOff {
             get {
-                return ResourceManager.GetString("ViewDictionaries", resourceCulture);
+                return ResourceManager.GetString("LogOff", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View prediction.
+        ///   Looks up a localized string similar to My reservations.
         /// </summary>
-        public static string ViewPrediction {
+        public static string MyReservations {
             get {
-                return ResourceManager.GetString("ViewPrediction", resourceCulture);
+                return ResourceManager.GetString("MyReservations", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome.
+        ///   Looks up a localized string similar to Prediction.
         /// </summary>
-        public static string Welcome {
+        public static string Prediction {
             get {
-                return ResourceManager.GetString("Welcome", resourceCulture);
+                return ResourceManager.GetString("Prediction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        public static string Registration {
+            get {
+                return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search flight.
+        /// </summary>
+        public static string SearchFlight {
+            get {
+                return ResourceManager.GetString("SearchFlight", resourceCulture);
             }
         }
     }

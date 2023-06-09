@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SearchFlight" xml:space="preserve">
-    <value>Подбор рейса</value>
+  <data name="BeginJourney" xml:space="preserve">
+    <value>Начать путешествие</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Сменить язык</value>
+  </data>
+  <data name="CheckFlightSchedule" xml:space="preserve">
+    <value>Посмотреть летную программу</value>
+  </data>
+  <data name="ViewDictionaries" xml:space="preserve">
+    <value>Ведение справочников</value>
+  </data>
+  <data name="ViewPrediction" xml:space="preserve">
+    <value>Посмотреть прогнозирование</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Добро пожаловать</value>
   </data>
 </root>

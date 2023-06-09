@@ -117,22 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BeginJourney" xml:space="preserve">
-    <value>Begin journey</value>
+  <data name="Dictionaries" xml:space="preserve">
+    <value>Dictionaries</value>
   </data>
-  <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change language</value>
+  <data name="FlightSchedule" xml:space="preserve">
+    <value>Flight schedule</value>
   </data>
-  <data name="CheckFlightSchedule" xml:space="preserve">
-    <value>Check flight schedule</value>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="ViewDictionaries" xml:space="preserve">
-    <value>View dictionaries</value>
+  <data name="LogOff" xml:space="preserve">
+    <value>Log off</value>
   </data>
-  <data name="ViewPrediction" xml:space="preserve">
-    <value>View prediction</value>
+  <data name="MyReservations" xml:space="preserve">
+    <value>My reservations</value>
   </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+  <data name="Prediction" xml:space="preserve">
+    <value>Prediction</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="SearchFlight" xml:space="preserve">
+    <value>Search flight</value>
   </data>
 </root>

@@ -1,4 +1,6 @@
-﻿@section Scripts{
+﻿@using Resources
+
+@section Scripts{
     <link rel="stylesheet" href="~/css/registrationLogin.css" />
 }
 
@@ -7,24 +9,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">@Home.Welcome</h1>
 </div>
 
 <div class="text-center m-5">
-    @Html.ActionLink("Begin journey", "SearchForm", "Search", null,new { @class = "button-on-page" })
+    @Html.ActionLink(@Home.BeginJourney, "SearchForm", "Search", null, new { @class = "button-on-page" })
 </div>
 
 <div class="text-center m-5">
-    @Html.ActionLink("Check flight schedule", "FlightSchedule", "Search", null, new { @class = "button-on-page" })
+    @Html.ActionLink(@Home.CheckFlightSchedule, "FlightSchedule", "Search", null, new { @class = "button-on-page" })
 </div>
 
 @if (User.IsInRole("Admin"))
 {
     <div class="text-center m-5">
-        @Html.ActionLink("View prediction", "Common", "Statistics", null, new { @class = "button-on-page" })
+        @Html.ActionLink(@Home.ViewDictionaries, "List", "Dictionary", null, new { @class = "button-on-page" })
+    </div>
+
+    <div class="text-center m-5">
+        @Html.ActionLink(@Home.ViewPrediction, "Common", "Statistics", null, new { @class = "button-on-page" })
     </div>
 }
 
 <div class="text-center m-5">
-    @Html.ActionLink("Change language", "Language", "Home", null, new { @class = "button-on-page" })
+    @Html.ActionLink(@Home.ChangeLanguage, "Language", "Home", null, new { @class = "button-on-page" })
 </div>
