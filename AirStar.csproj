@@ -38,6 +38,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Dictionary.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\FlightRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FlightRes.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Home.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -52,6 +57,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\PredictionRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PredictionRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Search.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Search.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -83,6 +98,15 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\FlightRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FlightRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\FlightRes.ru.resx">
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Home.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Home.Designer.cs</LastGenOutput>
@@ -101,6 +125,24 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>Resources</CustomToolNamespace>
       <LastGenOutput>Menu.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PredictionRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PredictionRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PredictionRes.ru.resx">
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Search.resx">
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Search.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Search.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
 

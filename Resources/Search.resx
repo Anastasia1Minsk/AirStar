@@ -117,55 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Aircrafts" xml:space="preserve">
-    <value>Aircrafts</value>
+  <data name="Arrival" xml:space="preserve">
+    <value>Arrival</value>
   </data>
-  <data name="Airports" xml:space="preserve">
-    <value>Airports</value>
+  <data name="Business" xml:space="preserve">
+    <value>Business</value>
   </data>
-  <data name="BackToList" xml:space="preserve">
-    <value>Back to list</value>
+  <data name="CountOfTickesSold" xml:space="preserve">
+    <value>Count of tickes sold</value>
   </data>
-  <data name="Countries" xml:space="preserve">
-    <value>Countries</value>
+  <data name="Departure" xml:space="preserve">
+    <value>Departure</value>
   </data>
-  <data name="Create" xml:space="preserve">
-    <value>Create</value>
+  <data name="Economy" xml:space="preserve">
+    <value>Economy</value>
   </data>
-  <data name="Creating" xml:space="preserve">
-    <value>Create</value>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
   </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+  <data name="FlightScheduleFor" xml:space="preserve">
+    <value>Flight schedule for</value>
   </data>
-  <data name="Deleting" xml:space="preserve">
-    <value>Delete</value>
+  <data name="NoFlights" xml:space="preserve">
+    <value>Sorry, no flights will be produced</value>
   </data>
-  <data name="DeletingMessege" xml:space="preserve">
-    <value>Are you sure you want to delete?</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="DetailsView" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="Dictionaries" xml:space="preserve">
-    <value>Dictionaries</value>
-  </data>
-  <data name="Download" xml:space="preserve">
-    <value>Download</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Editing" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Flights" xml:space="preserve">
-    <value>Flights</value>
-  </data>
-  <data name="Routes" xml:space="preserve">
-    <value>Routes</value>
+  <data name="Reservations" xml:space="preserve">
+    <value>Reservations</value>
   </data>
 </root>

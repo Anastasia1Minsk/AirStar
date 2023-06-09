@@ -117,55 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Aircrafts" xml:space="preserve">
-    <value>Aircrafts</value>
+  <data name="AddNewFlight" xml:space="preserve">
+    <value>Добавить новый рейс</value>
   </data>
-  <data name="Airports" xml:space="preserve">
-    <value>Airports</value>
+  <data name="Aircraft" xml:space="preserve">
+    <value>Самолет</value>
   </data>
-  <data name="BackToList" xml:space="preserve">
-    <value>Back to list</value>
+  <data name="ArrivalAirport" xml:space="preserve">
+    <value>Аэропорт прибытия</value>
   </data>
-  <data name="Countries" xml:space="preserve">
-    <value>Countries</value>
+  <data name="ArrivalDate" xml:space="preserve">
+    <value>Дата прибытия</value>
   </data>
-  <data name="Create" xml:space="preserve">
-    <value>Create</value>
+  <data name="Canceled" xml:space="preserve">
+    <value>Отменен</value>
   </data>
-  <data name="Creating" xml:space="preserve">
-    <value>Create</value>
+  <data name="DepartureAirport" xml:space="preserve">
+    <value>Аэропорт отправления</value>
   </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+  <data name="DepartureDate" xml:space="preserve">
+    <value>Дата отправления</value>
   </data>
-  <data name="Deleting" xml:space="preserve">
-    <value>Delete</value>
+  <data name="Distance" xml:space="preserve">
+    <value>Растояние</value>
   </data>
-  <data name="DeletingMessege" xml:space="preserve">
-    <value>Are you sure you want to delete?</value>
+  <data name="Duration" xml:space="preserve">
+    <value>Продолжительность</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Details</value>
+  <data name="Food" xml:space="preserve">
+    <value>Питание</value>
   </data>
-  <data name="DetailsView" xml:space="preserve">
-    <value>Details</value>
+  <data name="Luggage" xml:space="preserve">
+    <value>Багаж</value>
   </data>
-  <data name="Dictionaries" xml:space="preserve">
-    <value>Dictionaries</value>
-  </data>
-  <data name="Download" xml:space="preserve">
-    <value>Download</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Editing" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Flights" xml:space="preserve">
-    <value>Flights</value>
-  </data>
-  <data name="Routes" xml:space="preserve">
-    <value>Routes</value>
+  <data name="Route" xml:space="preserve">
+    <value>Маршрут</value>
   </data>
 </root>
