@@ -1,11 +1,11 @@
-﻿@model AirStar.ViewModels.RegistrationViewModel
+﻿@using Resources
+@model AirStar.ViewModels.RegistrationViewModel
 
 @{
     Layout = "_EmptyLayout";
 }
 
 @section Scripts{
-    @*<script src="~/js/galleryCarousel.js"></script>*@
     <link rel="stylesheet" href="~/css/registrationLogin.css" />
 }
 
@@ -14,30 +14,30 @@
         <div class="registration-login-container centering">
             <form action="/Auth/Registration" method="post" autocomplete="off" class="centering">
                 <h1 class="work-text">
-                    Create account
+                    @Auth.CreateAccount
                 </h1>
                 <p class="work-text">
-                    Use your email for registration
+                    @Auth.UseEmail
                 </p>
                 <div>
-                    @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @class = "work-input" })
+                    @Html.TextBoxFor(x => x.Email, new { placeholder = @Auth.Email, @class = "work-input" })
                 </div>
                 <span class="work-text validation-text" asp-validation-for="Email"></span>
                 <div>
-                    @Html.TextBoxFor(x => x.Password, new { placeholder = "Password", @class = "work-input" })
+                    @Html.TextBoxFor(x => x.Password, new { placeholder = @Auth.Password, @class = "work-input" })
                 </div>
                 <span class="work-text validation-text" asp-validation-for="Password"></span>
                 <div>
                     @Html.TextBoxFor(x => x.ConfirmPassword, new
                     {
                         @type = "password",
-                        placeholder = "Confirm password",
+                        placeholder = @Auth.ConfirmPassword,
                         @class = "work-input"
                     })
                 </div>
                 <span class="work-text validation-text" asp-validation-for="ConfirmPassword"></span>
                 <div>
-                    <input type="submit" value="Registration" class="button-on-page" />
+                    <input type="submit" value=@Auth.Registration class="button-on-page" />
                 </div>
             </form>
         </div>
@@ -45,20 +45,20 @@
 
         <div class="decor-container centering">
             <h1 class="decor-text">
-                Already a user?
+                @Auth.AlreadyUser
             </h1>
             <p class="decor-text">
-                Welcome Back!
+                @Auth.WelcomeBack
             </p>
             <p class="decor-text">
-                To keep connected with us please login
+                @Auth.ToKeepConnected
             </p>
             <p>
-                @Html.ActionLink("Log in", "LogIn", "Auth", null, new { @class = "button-on-page button-on-decor" })
+                @Html.ActionLink(@Auth.Login, "LogIn", "Auth", null, new { @class = "button-on-page button-on-decor" })
             </p>
             <p></p>
             <p>
-                @Html.ActionLink("Go to the main page", "Index", "Home", null, new { @class = "button-on-page button-on-decor" })
+                @Html.ActionLink(@Auth.MainPage, "Index", "Home", null, new { @class = "button-on-page button-on-decor" })
             </p>
         </div>
     </div>

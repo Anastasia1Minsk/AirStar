@@ -28,6 +28,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AircraftRes.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Auth.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Auth.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Dictionary.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -59,6 +64,15 @@
     <EmbeddedResource Update="Resources\AircraftRes.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Auth.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Auth.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Auth.ru.resx">
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Dictionary.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
