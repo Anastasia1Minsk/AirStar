@@ -1,14 +1,57 @@
 ﻿@using Resources
 
 @section Scripts{
-    <link rel="stylesheet" href="~/css/registrationLogin.css" />
+    <link rel="stylesheet" href="~/css/homeIndex.css" />
 }
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<div class="full-page-container">
+    <div class="leftBlock">
+        <h1 class="display-4">@Home.Welcome</h1>
+        
+        <div class="col nav justify-content-center">
+            <img src="/images/background/homeAircraft.jpg" class="img-fluid">
+        </div>
+
+        <div class="text-center m-5">
+            @Html.ActionLink(@Menu.Registration, "Registration", "Auth", null, new { @class = "button-on-page-accent" })
+            @Html.ActionLink(@Menu.Login, "LogIn", "Auth", null, new { @class = "button-on-page-accent" })
+        </div>
+
+        <div class="text-center m-5">
+            @Html.ActionLink(@Home.ChangeLanguage, "Language", "Home", null, new { @class = "button-on-page" })
+        </div>
+    </div>
+
+    <div class="rightBlock">
+        <div class="divBorder">
+            <div class="text-center m-5">
+                @Html.ActionLink(@Home.BeginJourney, "SearchForm", "Search", null, new { @class = "button-on-page" })
+            </div>
+
+            <div class="text-center m-5">
+                @Html.ActionLink(@Home.CheckFlightSchedule, "FlightSchedule", "Search", null, new { @class = "button-on-page" })
+            </div>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="text-center m-5">
+                    @Html.ActionLink(@Home.ViewDictionaries, "List", "Dictionary", null, new { @class = "button-on-page" })
+                </div>
+
+                <div class="text-center m-5">
+                    @Html.ActionLink(@Home.ViewPrediction, "Common", "Statistics", null, new { @class = "button-on-page" })
+                </div>
+            }
+        </div>
+        
+    </div>
+</div>
+
+@*<div class="text-center">
     <h1 class="display-4">@Home.Welcome</h1>
 </div>
 
@@ -33,4 +76,4 @@
 
 <div class="text-center m-5">
     @Html.ActionLink(@Home.ChangeLanguage, "Language", "Home", null, new { @class = "button-on-page" })
-</div>
+</div>*@
