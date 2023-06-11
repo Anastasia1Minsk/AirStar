@@ -20,13 +20,16 @@ namespace AirStar.ViewModels
 
         private List<string> AddMonth()
         {
-            var culture = CultureInfo.CreateSpecificCulture("en-US");
-
+            //var culture = CultureInfo.CreateSpecificCulture("en-US");
+            
             var list = new List<string>();
-            list.Add(StartThreeMonthPeriod.Month.ToString("Y", culture));
+            /*list.Add(StartThreeMonthPeriod.Month.ToString("Y", culture));
             list.Add(StartThreeMonthPeriod.AddMonths(1).Month.ToString("Y", culture));
-            list.Add(StartThreeMonthPeriod.AddMonths(2).Month.ToString("Y", culture));
+            list.Add(StartThreeMonthPeriod.AddMonths(2).Month.ToString("Y", culture));*/
 
+            list.Add(StartThreeMonthPeriod.Month.ToString("Y"));
+            list.Add(StartThreeMonthPeriod.AddMonths(1).Month.ToString("Y"));
+            list.Add(StartThreeMonthPeriod.AddMonths(2).Month.ToString("Y"));
             return list;
         }
     }

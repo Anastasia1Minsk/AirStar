@@ -1,15 +1,16 @@
-﻿@model StatisticViewModel
+﻿@using Resources
+@model StatisticViewModel
 
 @if (Model.ThreeMonthDuration == true)
 {
     <h3 class="mt-4 text-center">
-        Period: last 3 month
+        @PredictionRes.Period
     </h3>
 }
 else
 {
     <h3 class="mt-4 text-center">
-        Month: @Html.DisplayTextFor(x => x.MonthText)
+        @PredictionRes.Month: @Html.DisplayTextFor(x => x.MonthText)
     </h3>
 }
 
@@ -17,21 +18,21 @@ else
     <div class="card-header">
         <div class="nav nav-pills card-header-pills flex-row">
             @*<h5 class="text-center m-1">
-            Period
-        </h5>*@
+                    Period
+                </h5>*@
 
             @*@foreach (var item in Model.Period.Months)
-        {
-            <div class="col-2 text-end">
-                @Html.ActionLink(item, "PeriodStatistic", "Statistics",
-                    new { startPeriod = Model.Period.StartThreeMonthPeriod, threeMonthDuration = false },
-                    new { @class = "nav-link dictionaryText" })
-            </div>
-        }*@
+                {
+                    <div class="col-2 text-end">
+                        @Html.ActionLink(item, "PeriodStatistic", "Statistics",
+                            new { startPeriod = Model.Period.StartThreeMonthPeriod, threeMonthDuration = false },
+                            new { @class = "nav-link dictionaryText" })
+                    </div>
+                }*@
             @if (Model.Month != null)
             {
                 <div class="m-1">
-                    @Html.ActionLink("Whole period", "PeriodStatistic", "Statistics",
+                    @Html.ActionLink(@PredictionRes.WholePeriod, "PeriodStatistic", "Statistics",
                         new { startPeriod = Model.Period.StartFirstMonth, threeMonthDuration = true },
                         new { @class = "btn btn-primary" })
                 </div>

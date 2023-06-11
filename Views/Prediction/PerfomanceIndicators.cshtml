@@ -1,21 +1,32 @@
-﻿@model PerfomanceIndicatorsViewModel
+﻿@using Resources
+@model PerfomanceIndicatorsViewModel
 
 @{
-    var statusText = "was done";
+    var statusText = @PredictionRes.WasDone;
     var flight = Model.Flights.First();
 }
 <div class="d-flex align-items-start">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <button class="nav-link active" id="v-pills-main-tab" data-bs-toggle="pill" data-bs-target="#v-pills-main" type="button" role="tab"
-                aria-controls="v-pills-main" aria-selected="true">Main information</button>
+                aria-controls="v-pills-main" aria-selected="true">
+            @PredictionRes.MainInformation
+        </button>
         <button class="nav-link" id="v-pills-efficiencyInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-efficiencyInd" type="button" role="tab"
-                aria-controls="v-pills-efficiencyInd" aria-selected="false">Efficiency indicators</button>
+                aria-controls="v-pills-efficiencyInd" aria-selected="false">
+            @PredictionRes.EfficiencyIndicators
+        </button>
         <button class="nav-link" id="v-pills-monetaryInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-monetaryInd" type="button" role="tab"
-                aria-controls="v-pills-monetaryInd" aria-selected="false">Monetary indicators</button>
+                aria-controls="v-pills-monetaryInd" aria-selected="false">
+            @PredictionRes.MonetaryIndicators
+        </button>
         <button class="nav-link" id="v-pills-flightInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-flightInd" type="button" role="tab"
-                aria-controls="v-pills-flightInd" aria-selected="false">Flight indicators</button>
+                aria-controls="v-pills-flightInd" aria-selected="false">
+            @PredictionRes.FlightIndicators
+        </button>
         <button class="nav-link" id="v-pills-flights-tab" data-bs-toggle="pill" data-bs-target="#v-pills-flights" type="button" role="tab"
-                aria-controls="v-pills-flights" aria-selected="false">Flights</button>
+                aria-controls="v-pills-flights" aria-selected="false">
+            @PredictionRes.Flights
+        </button>
     </div>
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-main" role="tabpanel" aria-labelledby="v-pills-main-tab" tabindex="0">
@@ -23,10 +34,10 @@
                 @flight.DepartureAirport => @flight.ArrivalAirport
             </div>
             <div class="pastelColor">
-                Duration @flight.Duration
+                @PredictionRes.Duration @flight.Duration
             </div>
             <div class="pastelColor">
-                Duration @flight.Duration
+                @PredictionRes.Distance @flight.Distance km
             </div>
 
             <div class="flex-column">
@@ -107,7 +118,7 @@
                         /
                         @Html.DisplayTextFor(x => x.EfficiencyIndicators.TonnageMax)
                     </div>
-                    <br/>
+                    <br />
                 </div>
             </div>
 
@@ -136,7 +147,7 @@
                 @Html.DisplayNameFor(x => x.EfficiencyIndicators.ToHub)
             </div>
 
-            <br/>
+            <br />
 
             <div class="flex-column">
                 @Html.DisplayNameFor(x => x.EfficiencyIndicators.Score)
@@ -146,8 +157,7 @@
                     @Html.DisplayTextFor(x => x.EfficiencyIndicators.ScoreMax)
                 </div>
                 <div class="OrangeColor">
-                    Flights along the route recouped themselves and covered depreciation charges
-                    This route should be developed further
+                    @PredictionRes.ResultMessage
                 </div>
 
             </div>
@@ -158,7 +168,7 @@
             <div class="OrangeColor">
                 @flight.DepartureAirport => @flight.ArrivalAirport
             </div>
-            
+
             <div class="flex-column">
                 <div class="flex-column">
                     @Html.DisplayNameFor(x => x.MonetaryIndicators.Profit)
@@ -194,7 +204,7 @@
             <div class="OrangeColor">
                 @flight.DepartureAirport => @flight.ArrivalAirport
             </div>
-            
+
             <div class="flex-column">
                 <div class="flex-column">
                     @Html.DisplayNameFor(x => x.FlightIndicators.LoadFactor)
@@ -245,47 +255,47 @@
         <div class="tab-pane fade" id="v-pills-flights" role="tabpanel" aria-labelledby="v-pills-flights-tab" tabindex="0">
             <table class="table">
                 <thead>
-                <tr>
-                    <th>
-                        DepartureDate
-                    </th>
-                    <th>
-                        ArrivalDate
-                    </th>
-                    <th>
-                        Aircraft
-                    </th>
-                    <th></th>
-                    <th>
-                        Status
-                    </th>
-                </tr>
+                    <tr>
+                        <th>
+                            @PredictionRes.DepartureDate
+                        </th>
+                        <th>
+                            @PredictionRes.ArrivalDate
+                        </th>
+                        <th>
+                            @PredictionRes.Aircraft
+                        </th>
+                        <th></th>
+                        <th>
+                            @PredictionRes.Status
+                        </th>
+                    </tr>
                 </thead>
 
                 <tbody>
-                @foreach (var item in Model.Flights)
-                {
-                    <tr>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.DepartureDate)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.ArrivalDate)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Aircraft)
-                        </td>
-                        <td></td>
-                        <td class="align-middle">
-                            @if (item.Canceled)
-                            {
-                                statusText = "was canceled";
-                            }
+                    @foreach (var item in Model.Flights)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.DepartureDate)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.ArrivalDate)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Aircraft)
+                            </td>
+                            <td></td>
+                            <td class="align-middle">
+                                @if (item.Canceled)
+                                {
+                                    statusText = @PredictionRes.WasCanceled;
+                                }
 
-                            @statusText
-                        </td>
-                    </tr>
-                }
+                                @statusText
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -296,9 +306,11 @@
     .pastelBlueColor {
         color: #A0CBDE;
     }
+
     .OrangeColor {
         color: #ea6901;
     }
+
     .pastelColor {
         color: #F5E1AE;
     }

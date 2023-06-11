@@ -8,46 +8,50 @@ namespace AirStar.ViewModels
 {
     public class EfficiencyIndicatorsViewModel
     {
-        [Display(Name = "Passenger traffic")]
+        [Display(Name = "PassengerTraffic", ResourceType = typeof(Resources.PredictionRes))]
         public int PassengerTraffic { get; set; }//пассажиропоток
-        [Display(Name = "Max possible passenger traffic")]
-        public int PassengerTrafficMax { get; set; }
+        
+        public int PassengerTrafficMax { get; set; }//Max possible passenger traffic
 
-        [Display(Name = "Passenger turnover")]
+        [Display(Name = "PassengerTurnover", ResourceType = typeof(Resources.PredictionRes))]
         public int PassengerTurnover { get; set; }//пассажирооборот
-        [Display(Name = "Max possible passenger turnover")]
-        public int PassengerTurnoverMax { get; set; }
+        
+        public int PassengerTurnoverMax { get; set; }//Max possible passenger turnover
         public decimal PassengerTurnoverPercent => PassengerTurnover * 100 / PassengerTurnoverMax;
 
-        [Display(Name = "Load factor")]
+        [Display(Name = "LoadFactor", ResourceType = typeof(Resources.PredictionRes))]
         public decimal LoadFactor => PassengerTraffic * 100 / PassengerTrafficMax;//коэффициент загрузки бортов
 
-        [Display(Name = "Part passenger traffic")]
+        [Display(Name = "PartPassengerTraffic", ResourceType = typeof(Resources.PredictionRes))]
         public decimal PartPassengerTraffic { get; set; }//доля пассажиропотока отн всех маршрутов
 
-        [Display(Name = "Proportion of reservated and unused seats")]
+        [Display(Name = "UnusedProportion", ResourceType = typeof(Resources.PredictionRes))]
         public decimal UnusedProportion { get; set; }//соотношение бронирования и реального полета(сколько % не пришли)
 
-        [Display(Name = "Tonnage")]
+        [Display(Name = "Tonnage", ResourceType = typeof(Resources.PredictionRes))]
         public ulong Tonnage { get; set; }//тоннометраж
         [Display(Name = "Max possible tonnage")]
         public ulong TonnageMax { get; set; }
         public decimal TonnagePercent => Tonnage * 100 / TonnageMax;
 
-        [Display(Name = "Option luggage")]
+        [Display(Name = "Luggage", ResourceType = typeof(Resources.PredictionRes))]
         public bool Luggage { get; set; }
-        [Display(Name = "Option food")]
+
+        [Display(Name = "Food", ResourceType = typeof(Resources.PredictionRes))]
         public bool Food { get; set; }
-        [Display(Name = "Business and first classes")]
+
+        [Display(Name = "BusinessAndFirstClasses", ResourceType = typeof(Resources.PredictionRes))]
         public bool BusinessAndFirstClasses { get; set; }
 
-        [Display(Name = "Flight duration more then 6 hours")]
+        [Display(Name = "LongDuration", ResourceType = typeof(Resources.PredictionRes))]
         public bool LongDuration{ get; set; }
-        [Display(Name = "Arrival airport is hub")]
+
+        [Display(Name = "ToHub", ResourceType = typeof(Resources.PredictionRes))]
         public bool ToHub { get; set; }
 
+        [Display(Name = "Score", ResourceType = typeof(Resources.PredictionRes))]
         public int Score { get; set; }//итого баллов
-        [Display(Name = "Max possible score")]
+        
         public int ScoreMax { get; set; }
         public decimal ScorePercent => Score * ScoreMax / 100;
     }

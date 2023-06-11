@@ -41,9 +41,9 @@ namespace AirStar.Infrastructure
                 ? new CultureInfo("ru-BY")
                 : new CultureInfo("en-US");
 
-
-
-
+            CultureInfo.DefaultThreadCurrentCulture = cultureCookie == "ru-BY"
+                ? new CultureInfo("ru-BY")
+                : new CultureInfo("en-US");
         }
     }
 }

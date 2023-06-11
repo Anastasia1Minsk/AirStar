@@ -59,5 +59,446 @@ namespace Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aircraft.
+        /// </summary>
+        public static string Aircraft {
+            get {
+                return ResourceManager.GetString("Aircraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aircrafts.
+        /// </summary>
+        public static string Aircrafts {
+            get {
+                return ResourceManager.GetString("Aircrafts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All routes &amp; flights.
+        /// </summary>
+        public static string AllRoutesFlights {
+            get {
+                return ResourceManager.GetString("AllRoutesFlights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival date.
+        /// </summary>
+        public static string ArrivalDate {
+            get {
+                return ResourceManager.GetString("ArrivalDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average business cost.
+        /// </summary>
+        public static string AverageBusinessCost {
+            get {
+                return ResourceManager.GetString("AverageBusinessCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average economy cost.
+        /// </summary>
+        public static string AverageEconomyCost {
+            get {
+                return ResourceManager.GetString("AverageEconomyCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average fee.
+        /// </summary>
+        public static string AverageFee {
+            get {
+                return ResourceManager.GetString("AverageFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average first cost.
+        /// </summary>
+        public static string AverageFirstCost {
+            get {
+                return ResourceManager.GetString("AverageFirstCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average range.
+        /// </summary>
+        public static string AverageRange {
+            get {
+                return ResourceManager.GetString("AverageRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Business and first classes.
+        /// </summary>
+        public static string BusinessAndFirstClasses {
+            get {
+                return ResourceManager.GetString("BusinessAndFirstClasses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Business class load factor.
+        /// </summary>
+        public static string BusinessLoadFactor {
+            get {
+                return ResourceManager.GetString("BusinessLoadFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percent of business class passengers.
+        /// </summary>
+        public static string BusinessPercent {
+            get {
+                return ResourceManager.GetString("BusinessPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departure date.
+        /// </summary>
+        public static string DepartureDate {
+            get {
+                return ResourceManager.GetString("DepartureDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance.
+        /// </summary>
+        public static string Distance {
+            get {
+                return ResourceManager.GetString("Distance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        public static string Duration {
+            get {
+                return ResourceManager.GetString("Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each route.
+        /// </summary>
+        public static string EachRoute {
+            get {
+                return ResourceManager.GetString("EachRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Economy class load factor.
+        /// </summary>
+        public static string EconomyLoadFactor {
+            get {
+                return ResourceManager.GetString("EconomyLoadFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percent of economy class passengers.
+        /// </summary>
+        public static string EconomyPercent {
+            get {
+                return ResourceManager.GetString("EconomyPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Efficiency indicators.
+        /// </summary>
+        public static string EfficiencyIndicators {
+            get {
+                return ResourceManager.GetString("EfficiencyIndicators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First class load factor.
+        /// </summary>
+        public static string FirstLoadFactor {
+            get {
+                return ResourceManager.GetString("FirstLoadFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percent of first class passengers.
+        /// </summary>
+        public static string FirstPercent {
+            get {
+                return ResourceManager.GetString("FirstPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed flights count.
+        /// </summary>
+        public static string FlightCount {
+            get {
+                return ResourceManager.GetString("FlightCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flight indicators.
+        /// </summary>
+        public static string FlightIndicators {
+            get {
+                return ResourceManager.GetString("FlightIndicators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flights.
+        /// </summary>
+        public static string Flights {
+            get {
+                return ResourceManager.GetString("Flights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option food.
+        /// </summary>
+        public static string Food {
+            get {
+                return ResourceManager.GetString("Food", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income rate.
+        /// </summary>
+        public static string IncomeRate {
+            get {
+                return ResourceManager.GetString("IncomeRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load factor.
+        /// </summary>
+        public static string LoadFactor {
+            get {
+                return ResourceManager.GetString("LoadFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flight duration more then 6 hours.
+        /// </summary>
+        public static string LongDuration {
+            get {
+                return ResourceManager.GetString("LongDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option luggage.
+        /// </summary>
+        public static string Luggage {
+            get {
+                return ResourceManager.GetString("Luggage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main information.
+        /// </summary>
+        public static string MainInformation {
+            get {
+                return ResourceManager.GetString("MainInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monetary indicators.
+        /// </summary>
+        public static string MonetaryIndicators {
+            get {
+                return ResourceManager.GetString("MonetaryIndicators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Month.
+        /// </summary>
+        public static string Month {
+            get {
+                return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More.
+        /// </summary>
+        public static string More {
+            get {
+                return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Part passenger traffic.
+        /// </summary>
+        public static string PartPassengerTraffic {
+            get {
+                return ResourceManager.GetString("PartPassengerTraffic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passenger traffic.
+        /// </summary>
+        public static string PassengerTraffic {
+            get {
+                return ResourceManager.GetString("PassengerTraffic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passenger turnover.
+        /// </summary>
+        public static string PassengerTurnover {
+            get {
+                return ResourceManager.GetString("PassengerTurnover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Period: last 3 month.
+        /// </summary>
+        public static string Period {
+            get {
+                return ResourceManager.GetString("Period", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total profit.
+        /// </summary>
+        public static string Profit {
+            get {
+                return ResourceManager.GetString("Profit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flights along the route recouped themselves and covered depreciation charges. This route should be developed further.
+        /// </summary>
+        public static string ResultMessage {
+            get {
+                return ResourceManager.GetString("ResultMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Route count.
+        /// </summary>
+        public static string RouteCount {
+            get {
+                return ResourceManager.GetString("RouteCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Routes.
+        /// </summary>
+        public static string Routes {
+            get {
+                return ResourceManager.GetString("Routes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Score.
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival airport is hub.
+        /// </summary>
+        public static string ToHub {
+            get {
+                return ResourceManager.GetString("ToHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tonnage.
+        /// </summary>
+        public static string Tonnage {
+            get {
+                return ResourceManager.GetString("Tonnage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proportion of reservated and unused seats.
+        /// </summary>
+        public static string UnusedProportion {
+            get {
+                return ResourceManager.GetString("UnusedProportion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Was canceled.
+        /// </summary>
+        public static string WasCanceled {
+            get {
+                return ResourceManager.GetString("WasCanceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Was done.
+        /// </summary>
+        public static string WasDone {
+            get {
+                return ResourceManager.GetString("WasDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whole period.
+        /// </summary>
+        public static string WholePeriod {
+            get {
+                return ResourceManager.GetString("WholePeriod", resourceCulture);
+            }
+        }
     }
 }
