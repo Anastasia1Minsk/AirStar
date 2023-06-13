@@ -1,45 +1,21 @@
 ﻿@using Resources
 @model IEnumerable<FlightInScheduleViewModel>
 
-@section Scripts{
-    <script src="~/js/Schedule.js"></script>
-}
-
 @{
+    Layout = "_EmptyLayout";
     var firstItem = Model.First();
-    var nextDay = firstItem.DepartureDate.AddDays(1).Date;
-    var previousDay = firstItem.DepartureDate.AddDays(-1).Date;
-    var today = DateTime.Today;
 }
-<div class="card">
-    <div class="row mt-2 mb-2">
-        <div class="col-5 text-end">
-            @if (previousDay >= today)
-            {
-                @Html.ActionLink("<=", "FlightSchedule", "Search", new { date = @previousDay }, htmlAttributes: new { @class = "btn btn-primary" })
-            }
-        </div>
 
-        <div class="col-2">
-            <input type="text" class="form-control" id="DepartureDate" name="DepartureDate">
-        </div>
-
-        <div class="col-5">
-            @Html.ActionLink("=>", "FlightSchedule", "Search", new { date = @nextDay }, htmlAttributes: new { @class = "btn btn-primary" })
-            @Html.ActionLink(@Dictionary.Download, "PrintSchedule", "Search", new { date = firstItem.DepartureDate }, htmlAttributes: new { @class = "btn btn-primary", target = "_blank" })
-
-        </div>
-    </div>
-
+<div class="tiket-body">
     <div class="col-12 text-center">
-        <h5>
+        <h4>
             @Search.FlightScheduleFor @firstItem.DepartureDate.DayOfWeek, @firstItem.DepartureDate.Date.ToString("dd.MM.yyyy")
-        </h5>
+        </h4>
     </div>
 
     @if (firstItem.Id != 0)
     {
-        <div class="card-body">
+        <div class="section">
             <table class="table">
                 <thead>
                     <tr>
@@ -62,7 +38,7 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr class="section">
                             <td class="align-middle">
                                 @Html.DisplayFor(modelItem => item.DepartureTime)<br />
                                 @Html.DisplayFor(modelItem => item.DepartureAirport)
@@ -108,6 +84,15 @@
     }
 </div>
 
-<script>
-    var currentDate = '@firstItem.DepartureDay';
-</script>
+
+<style>
+    .tiket-body {
+        border: 1px solid gray;
+        font-family: Geneva, Arial, Helvetica, sans-serif;
+        padding: 15px;
+    }
+
+        .tiket-body .section {
+            margin-bottom: 10px;
+        }
+</style>
