@@ -1,4 +1,2 @@
 # AirStar
-Course work (sem6)
-
-My diploma
+My diploma, Course work (sem6)
