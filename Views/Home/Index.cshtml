@@ -11,15 +11,18 @@
 <div class="full-page-container">
     <div class="leftBlock">
         <h1 class="display-4">@Home.Welcome</h1>
-        
+
         <div class="col nav justify-content-center">
             <img src="/images/background/homeAircraft.jpg" class="img-fluid">
         </div>
 
-        <div class="text-center m-5">
-            @Html.ActionLink(@Menu.Registration, "Registration", "Auth", null, new { @class = "button-on-page-accent" })
-            @Html.ActionLink(@Menu.Login, "LogIn", "Auth", null, new { @class = "button-on-page-accent" })
-        </div>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="text-center m-5">
+                @Html.ActionLink(@Menu.Registration, "Registration", "Auth", null, new { @class = "button-on-page-accent" })
+                @Html.ActionLink(@Menu.Login, "LogIn", "Auth", null, new { @class = "button-on-page-accent" })
+            </div>
+        }
 
         <div class="text-center m-5">
             @Html.ActionLink(@Home.ChangeLanguage, "Language", "Home", null, new { @class = "button-on-page" })
