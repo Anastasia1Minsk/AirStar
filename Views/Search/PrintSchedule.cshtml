@@ -1,0 +1,98 @@
+﻿@using Resources
+@model IEnumerable<FlightInScheduleViewModel>
+
+@{
+    Layout = "_EmptyLayout";
+    var firstItem = Model.First();
+}
+
+<div class="tiket-body">
+    <div class="col-12 text-center">
+        <h4>
+            @Search.FlightScheduleFor @firstItem.DepartureDate.DayOfWeek, @firstItem.DepartureDate.Date.ToString("dd.MM.yyyy")
+        </h4>
+    </div>
+
+    @if (firstItem.Id != 0)
+    {
+        <div class="section">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Search.Departure
+                        </th>
+                        <th></th>
+                        <th>
+                            @Search.Arrival
+                        </th>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <th>
+                                @Search.Reservations
+                            </th>
+                        }
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="section">
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.DepartureTime)<br />
+                                @Html.DisplayFor(modelItem => item.DepartureAirport)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.DurationTime) /
+                                @Html.DisplayFor(modelItem => item.Aircraft)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.ArrivalTime)<br />
+                                @Html.DisplayFor(modelItem => item.ArrivalAirport)
+                            </td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    @Search.CountOfTickesSold:<br />
+
+                                    @Search.Economy
+                                    @Html.DisplayFor(modelItem => item.EconomySoldSeats) /
+                                    @Html.DisplayFor(modelItem => item.MaxEconomySeats)<br />
+
+                                    @Search.Business
+                                    @Html.DisplayFor(modelItem => item.BusinessSoldSeats) /
+                                    @Html.DisplayFor(modelItem => item.MaxBusinessSeats)<br />
+
+                                    @Search.First
+                                    @Html.DisplayFor(modelItem => item.FirstSoldSeats) /
+                                    @Html.DisplayFor(modelItem => item.MaxFirstSeats)<br />
+                                </td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            @Search.NoFlights
+        </div>
+    }
+</div>
+
+
+<style>
+    .tiket-body {
+        border: 1px solid gray;
+        font-family: Geneva, Arial, Helvetica, sans-serif;
+        padding: 15px;
+    }
+
+        .tiket-body .section {
+            margin-bottom: 10px;
+        }
+</style>

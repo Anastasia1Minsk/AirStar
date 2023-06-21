@@ -1,55 +1,56 @@
-﻿@model Aircraft
+﻿@using Resources
+@model Aircraft
 
 <div class="card mb-5">
     <h3 class="card-header">
-        Details
+        @Dictionary.DetailsView
     </h3>
     <div class="card-body">
 
-            <div class="row">
-                <div class="col-4 mb-3">
-                    @Html.DisplayNameFor(x => x.Model)
-                    @Html.TextBoxFor(x => x.Model, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                </div>
-                <div class="col-4 mb-3">
-                    @Html.DisplayNameFor(x => x.Brand)
-                    @Html.TextBoxFor(x => x.Brand, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                </div>
-                <div class="col-4 mb-3">
-                    @Html.DisplayNameFor(x => x.YearOfBuild)
-                    @Html.TextBoxFor(x => x.YearOfBuild, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                </div>
+        <div class="row">
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Model)
+                @Html.TextBoxFor(x => x.Model, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
             </div>
-            <div class="row">
-                <div class="col-4 mb-3">
-                    @Html.DisplayNameFor(x => x.EconomyClassSeats)
-                    @Html.TextBoxFor(x => x.EconomyClassSeats, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                </div>
-                <div class="col-4 mb-3">
-                    @Html.DisplayNameFor(x => x.BusinessClassSeats)
-                    @Html.TextBoxFor(x => x.BusinessClassSeats, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                </div>
-                <div class="col-4 mb-3">
-                    @Html.DisplayNameFor(x => x.FirstClassSeats)
-                    @Html.TextBoxFor(x => x.FirstClassSeats, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Brand)
+                @Html.TextBoxFor(x => x.Brand, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
             </div>
-            <div class="row">
-                <div class="col-4 mb-3">
-                    @Html.DisplayNameFor(x => x.MaxFlightRange)
-                    @Html.TextBoxFor(x => x.MaxFlightRange, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
-                </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.YearOfBuild)
+                @Html.TextBoxFor(x => x.YearOfBuild, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <img src="@Model.Picture" class="img-fluid shadow">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.EconomyClassSeats)
+                @Html.TextBoxFor(x => x.EconomyClassSeats, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
             </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.BusinessClassSeats)
+                @Html.TextBoxFor(x => x.BusinessClassSeats, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.FirstClassSeats)
+                @Html.TextBoxFor(x => x.FirstClassSeats, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.MaxFlightRange)
+                @Html.TextBoxFor(x => x.MaxFlightRange, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col nav justify-content-center">
+                <img src="@Model.Picture" class="img-fluid shadow">
+            </div>
+        </div>
 
-            <div class="col text-center">
-                @Html.ActionLink("Edit", "Edit", "Aircraft", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Back to list", "List", "Aircraft", htmlAttributes: new { @class = "btn btn-outline-primary" }) 
-            </div>
+        <div class="col text-center">
+            @Html.ActionLink(@Dictionary.Edit, "Edit", "Aircraft", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink(@Dictionary.BackToList, "List", "Aircraft", htmlAttributes: new { @class = "btn btn-outline-primary" })
+        </div>
 
     </div>
 </div>

@@ -10,25 +10,29 @@ namespace AirStar.ViewModels
     public class AircraftViewModel
     {
         public int Id { get; set; }
+
+        [Display(Name = "Model", ResourceType = typeof(Resources.AircraftRes))]
         public string Model { get; set; }
+
+        [Display(Name = "Brand", ResourceType = typeof(Resources.AircraftRes))]
         public string Brand { get; set; }
 
-        [Display(Name = "Year of build")]
+        [Display(Name = "YearOfBuild", ResourceType = typeof(Resources.AircraftRes))]
         public int YearOfBuild { get; set; }
 
-        [Display(Name = "Economy class seats")]
+        [Display(Name = "EconomyClassSeats", ResourceType = typeof(Resources.AircraftRes))]
         public int EconomyClassSeats { get; set; }
 
-        [Display(Name = "Business class seats")]
+        [Display(Name = "BusinessClassSeats", ResourceType = typeof(Resources.AircraftRes))]
         public int? BusinessClassSeats { get; set; }
 
-        [Display(Name = "First class seats")]
+        [Display(Name = "FirstClassSeats", ResourceType = typeof(Resources.AircraftRes))]
         public int? FirstClassSeats { get; set; }
 
-        [Display(Name = "Maximum flight range")]
+        [Display(Name = "MaxFlightRange", ResourceType = typeof(Resources.AircraftRes))]
         public int MaxFlightRange { get; set; }
 
-        [Display(Name = "Picture")]
+        [Display(Name = "Picture", ResourceType = typeof(Resources.AircraftRes))]
         public IFormFile PictureFile { get; set; }
         public string Picture { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AirStar.Business.Interfaces;
@@ -7,9 +8,11 @@ using AirStar.Infrastructure.Bases;
 using AirStar.Models;
 using AirStar.ViewModels;
 using AutoMapper;
+using iText.Html2pdf;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
+using Razor.Templating.Core;
 
 namespace AirStar.Controllers
 {
@@ -93,16 +96,44 @@ namespace AirStar.Controllers
         [HttpGet]
         public async Task<IActionResult> FlightSchedule(DateTime? date)
         {
-            date ??= DateTime.Now;//new DateTime(2023, 6, 18);
-
-            var flights = await _flightService.FlightsForDayAsync(date.GetValueOrDefault());
+            date ??= DateTime.Now;
+            var result = await FindFlightByDate(date.GetValueOrDefault());
+            /*var flights = await _flightService.FlightsForDayAsync(date.GetValueOrDefault());
             if (!flights.Any())
             {
                 flights.Add(new Flight(){DepartureDate = date.GetValueOrDefault()});
             }
 
-            var result = _mapper.Map<List<FlightInScheduleViewModel>>(flights);
+            var result = _mapper.Map<List<FlightInScheduleViewModel>>(flights);*/
             return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PrintSchedule(DateTime date)
+        {
+            var flights = await FindFlightByDate(date);
+
+            var html = await RazorTemplateEngine.RenderAsync("/Views/Search/PrintSchedule.cshtml", flights);
+
+            using (var stream = new MemoryStream())
+            {
+                var converterProperties = new ConverterProperties();
+                HtmlConverter.ConvertToPdf(html, stream, converterProperties);
+
+                return new FileContentResult(stream.ToArray(), "application/pdf");
+            }
+        }
+
+        private async Task<List<FlightInScheduleViewModel>> FindFlightByDate(DateTime date)
+        {
+            var flights = await _flightService.FlightsForDayAsync(date);
+            if (!flights.Any())
+            {
+                flights.Add(new Flight() { DepartureDate = date});
+            }
+
+            var result = _mapper.Map<List<FlightInScheduleViewModel>>(flights);
+            return result;
         }
     }
 }

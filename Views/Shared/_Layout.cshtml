@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Resources
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,17 +23,23 @@
 
             @Html.ActionLink("AirStar", "Index", "Home", null, new { @class = "navbar-brand" })
 
-            @Html.ActionLink("Search flight", "SearchForm", "Search", null, new { @class = "nav-link" })
-            @Html.ActionLink("Flight schedule", "FlightSchedule", "Search", null, new { @class = "nav-link" })
+            <div class="nav justify-content-center">
+                @Html.ActionLink(@Menu.SearchFlight, "SearchForm", "Search", null, new { @class = "nav-link" })
+                @Html.ActionLink(@Menu.FlightSchedule, "FlightSchedule", "Search", null, new { @class = "nav-link" })
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink(@Menu.Prediction, "Common", "Statistics", null, new { @class = "nav-link" })
+                }
+            </div>
 
             <ul class="nav justify-content-end">
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        @Html.ActionLink("Registration", "Registration", "Auth", null, new { @class = "nav-link" })
+                        @Html.ActionLink(@Menu.Registration, "Registration", "Auth", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Login", "LogIn", "Auth", null, new { @class = "nav-link" })
+                        @Html.ActionLink(@Menu.Login, "LogIn", "Auth", null, new { @class = "nav-link" })
                     </li>
                 }
                 else
@@ -44,40 +51,21 @@
                     </li>
 
                     <li class="nav-item">
-                        @Html.ActionLink("My reservations", "Reservations", "User", null, new { @class = "nav-link" })
+                        @Html.ActionLink(@Menu.MyReservations, "Reservations", "User", null, new { @class = "nav-link" })
                     </li>
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <!--<div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dictionaries
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li class="nav-item">
-                            @Html.ActionLink("Aircrafts", "List", "Aircraft", null, new {@class = "nav-link"})
+                            @Html.ActionLink(@Menu.Dictionaries, "List", "Dictionary", null, new { @class = "nav-link" })
                         </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Countries", "List", "Country", null, new {@class = "nav-link"})
-                        </li>
-                        <li lass="nav-item">
-                            @Html.ActionLink("Airports","List","Airport", null, new { @class = "nav-link" })
-                        </li>-->
-
                         @*<li class="nav-item">
-                        @Html.ActionLink("DB", "Index", "Seed", null, new { @class = "nav-link" })
-                    </li>*@
-                        <!--</ul>
-                </div>-->
-
-                        <li class="nav-item">
-                            @Html.ActionLink("Dictionaries", "List", "Dictionary", null, new { @class = "nav-link" })
-                        </li>
+                                @Html.ActionLink("Seed DB", "Index", "Seed", null, new { @class = "nav-link" })
+                            </li>*@
                     }
 
                     <li class="nav-item">
-                        @Html.ActionLink("Log off", "LogOff", "Auth", null, new { @class = "nav-link" })
+                        @Html.ActionLink(@Menu.LogOff, "LogOff", "Auth", null, new { @class = "nav-link" })
                     </li>
                 }
 
@@ -95,16 +83,16 @@
 
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid">
-            &copy; 2022 - AirStar Airline
+            &copy; 2022 - 2023 AirStar Airline
         </div>
     </nav>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap5/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/lib/calendar/popper.min.js"></script>
-<script src="~/lib/calendar/rome.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/calendar/popper.min.js"></script>
+    <script src="~/lib/calendar/rome.js"></script>
 
-@await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

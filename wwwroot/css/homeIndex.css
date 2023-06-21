@@ -1,0 +1,53 @@
+﻿.full-page-container {
+    display: flex;
+    flex-direction: row;
+    height: 85vh;
+    justify-content: space-between;
+}
+
+.leftBlock {
+    width: 50%;
+    text-align: center;
+}
+
+.rightBlock {
+    width: 50%;
+}
+
+.divBorder {
+    /*border-style: solid;
+    border-block-color: #006efd;
+    border-radius: 10px;*/
+}
+
+.button-on-page {
+    border-radius: 20px;
+    border: 1px solid #E86A0F;
+    background-color: #E86A0F;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    outline: none;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.button-on-page-accent {
+    border-radius: 20px;
+    border: 1px solid #006efd;
+    background-color: #006efd;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    outline: none;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    text-decoration: none;
+    margin-top: 10px;
+}

@@ -40,694 +40,264 @@ namespace AirStar.Controllers
 
         public async Task<IActionResult> Index()
         {
-            /*var countries = new List<Country>();
-            countries.Add(new Country() { Name = "United Arab Emirates" });
-            countries.Add(new Country() { Name = "Turkey" });
-            countries.Add(new Country() { Name = "Great Britain" });
-            countries.Add(new Country() { Name = "Japan" });
-            countries.Add(new Country() { Name = "Sweden" });
-            countries.Add(new Country() { Name = "Egypt" });*/
-            /*await _countryService.InsertAsync(countries);*/
-
-
-            /*var airoports = new List<Airport>();
-            airoports.Add(new Airport()
-            {
-                Code_IATA = "DXB",
-                CountryID = countries.FirstOrDefault(x => x.Name == "United Arab Emirates").Id,
-                City = "Dubai",
-                TimeZone = 4
-            });
-            airoports.Add(new Airport()
-            {
-                Code_IATA = "IST",
-                CountryID = countries.FirstOrDefault(x => x.Name == "Turkey").Id,
-                City = "Istanbul",
-                TimeZone = 3
-            });
-            airoports.Add(new Airport()
-            {
-                Code_IATA = "LHR",
-                CountryID = countries.FirstOrDefault(x => x.Name == "Great Britain").Id,
-                City = "London",
-                TimeZone = 1
-            });
-            airoports.Add(new Airport()
-            {
-                Code_IATA = "NRT",
-                CountryID = countries.FirstOrDefault(x => x.Name == "Japan").Id,
-                City = "Tokyo",
-                TimeZone = 9
-            });
-            airoports.Add(new Airport()
-            {
-                Code_IATA = "ARN",
-                CountryID = countries.FirstOrDefault(x => x.Name == "Sweden").Id,
-                City = "Stockholm",
-                TimeZone = 2
-            });
-            airoports.Add(new Airport()
-            {
-                Code_IATA = "CAI",
-                CountryID = countries.FirstOrDefault(x => x.Name == "Egypt").Id,
-                City = "Cairo",
-                TimeZone = 2
-            });*/
-            /*await _airportService.InsertAsync(airoports);*/
-
-
-            /*var routes = new List<Route>();
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "IST").Id,
-                Distance = 3030
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "IST").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                Distance = 3030
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "LHR").Id,
-                Distance = 5505
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "LHR").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                Distance = 5505
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "NRT").Id,
-                Distance = 7994
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "NRT").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                Distance = 7994
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "ARN").Id,
-                Distance = 4787
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "ARN").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                Distance = 4787
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "CAI").Id,
-                Distance = 2419
-            });
-            routes.Add(new Route()
-            {
-                DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "CAI").Id,
-                ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
-                Distance = 2419
-
-            });*/
-            /*await _routeService.InsertAsync(routes);*/
-
-
-            /*var aircrafts = new List<Aircraft>();
-            aircrafts.Add(new Aircraft()
-            {
-                Model = "A380-800",
-                Brand = "Airbus",
-                YearOfBuild = 2015,
-                EconomyClassSeats = 400,
-                BusinessClassSeats = 76,
-                FirstClassSeats = 16,
-                MaxFlightRange = 15000,
-                Picture = "/images/aircrafts/airbus A380-841.jpg"
-            });
-            aircrafts.Add(new Aircraft()
-            {
-                Model = "B777-300ER",
-                Brand = "Boeing",
-                YearOfBuild = 2019,
-                EconomyClassSeats = 108,
-                BusinessClassSeats = 80,
-                FirstClassSeats = 8,
-                MaxFlightRange = 14900,
-                Picture = "/images/aircrafts/boeing 777-300ER.jpg"
-            });*/
-            /*await _aircraftservice.InsertAsync(aircrafts);*/
-
-            
             var aircrafts = await _aircraftservice.SelectAsync();
             var routes = await _routeService.SelectAsync();
             var airoports = await _airportService.SelectAsync();
 
+            var aircraft = aircrafts.FirstOrDefault(x => x.Model == "B777-300ER");
+            var aircraftID = aircraft.Id;
+            var routeID = routes.FirstOrDefault(x =>
+            {
+                return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
+                       && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "IST").Id;
+            }).Id;
+
+            var startDate = new DateTime(2023, 3, 1);
+            var endDate = new DateTime(2023, 7, 1);
+
+            var morningTime = new DateTime(1, 1, 1, 10, 45, 0);
+            var dayTime = new DateTime(1, 1, 1, 14, 20, 0);
+            var eveningTime = new DateTime(1, 1, 1, 18, 00, 0);
+
             var flights = new List<Flight>();
-            flights.Add( new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "IST").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 23, 10, 45, 0),
-                ArrivalDate = new DateTime(2022, 12, 23, 14, 25, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "IST").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 23, 16, 25, 0),
-                ArrivalDate = new DateTime(2022, 12, 23, 21, 50, 0),
-                Luggage = true,
-                Food = true
-            });
 
-            flights.Add(new Flight()
+            do
             {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
+                flights.Add(new Flight()
                 {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "IST").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 23, 23, 50, 0),
-                ArrivalDate = new DateTime(2022, 12, 24, 4, 30, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "IST").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 24, 6, 30, 0),
-                ArrivalDate = new DateTime(2022, 12, 24, 10, 55, 0),
-                Luggage = true,
-                Food = true
-            });
+                    AircraftID = aircraftID,
+                    RouteID = routeID,
+                    DepartureDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, morningTime.Hour, morningTime.Minute, 0),
+                    ArrivalDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, 14, 25, 0),
+                    Luggage = true,
+                    Food = true
+                });
 
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
+                if (startDate.DayOfWeek == DayOfWeek.Tuesday || startDate.DayOfWeek == DayOfWeek.Friday ||
+                    startDate.DayOfWeek == DayOfWeek.Saturday || startDate.DayOfWeek == DayOfWeek.Sunday)
                 {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "LHR").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 24, 2, 30, 0),
-                ArrivalDate = new DateTime(2022, 12, 24, 7, 5, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "LHR").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 24, 16, 50, 0),
-                ArrivalDate = new DateTime(2022, 12, 25, 2, 45, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "B777-300ER").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "NRT").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 25, 2, 40, 0),
-                ArrivalDate = new DateTime(2022, 12, 25, 17, 35, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "B777-300ER").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "NRT").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 25, 22, 30, 0),
-                ArrivalDate = new DateTime(2022, 12, 26, 4, 50, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "B777-300ER").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "ARN").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 27, 8, 40, 0),
-                ArrivalDate = new DateTime(2022, 12, 27, 13, 10, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "B777-300ER").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "ARN").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 27, 15, 5, 0),
-                ArrivalDate = new DateTime(2022, 12, 27, 23, 20, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "CAI").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 28, 15, 15, 0),
-                ArrivalDate = new DateTime(2022, 12, 28, 17, 5, 0),
-                Luggage = true,
-                Food = true
-            });
-            flights.Add(new Flight()
-            {
-                AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
-                RouteID = routes.FirstOrDefault(x =>
-                {
-                    return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "CAI").Id
-                           && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id;
-                }).Id,
-                DepartureDate = new DateTime(2022, 12, 28, 19, 5, 0),
-                ArrivalDate = new DateTime(2022, 12, 29, 0, 40, 0),
-                Luggage = true,
-                Food = true
-            });
+                    flights.Add(new Flight()
+                    {
+                        AircraftID = aircraftID,
+                        RouteID = routeID,
+                        DepartureDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, dayTime.Hour, dayTime.Minute, 0),
+                        ArrivalDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, 17, 55, 0),
+                        Luggage = true,
+                        Food = true
+                    });
+
+                    if (startDate.DayOfWeek == DayOfWeek.Saturday || startDate.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        flights.Add(new Flight()
+                        {
+                            AircraftID = aircraftID,
+                            RouteID = routeID,
+                            DepartureDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, eveningTime.Hour, eveningTime.Minute, 0),
+                            ArrivalDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, 21, 35, 0),
+                            Luggage = true,
+                            Food = true
+                        });
+                    }
+                }
+
+                startDate = startDate.AddDays(1);
+            } while (startDate < endDate);
+
+            var a = flights;
             await _flightService.InsertAsync(flights);
 
-
             var rates = new List<Rate>();
-            rates.Add(new Rate()
+            foreach (var f in flights)
             {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 10, 45, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 390,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 10, 45, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 2200,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 10, 45, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 4250,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 10, 45, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 10, 45, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 50,
-            });
+                rates.AddRange(AddRates(f.Id));
+            }
 
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 16, 25, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 390,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 16, 25, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 2200,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 16, 25, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 4250,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 16, 25, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 16, 25, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 50,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 23, 50, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 390,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 23, 50, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 2200,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 23, 50, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 4250,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 23, 50, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 23, 50, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 50,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 6, 30, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 390,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 6, 30, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 2200,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 6, 30, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 4250,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 6, 30, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 6, 30, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 50,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 2, 30, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 560,
-            });//3
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 2, 30, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 2610,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 2, 30, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 7680,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 2, 30, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 2, 30, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 70,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 16, 50, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 560,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 16, 50, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 2610,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 16, 50, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 7680,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 16, 50, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 24, 16, 50, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 70,
-            });
-            
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 2, 40, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 1080,
-            });//5
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 2, 40, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 3900,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 2, 40, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 7300,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 2, 40, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 2, 40, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 100,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 22, 30, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 1080,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 22, 30, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 3900,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 22, 30, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 7300,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 22, 30, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 25, 22, 30, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 100,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 8, 40, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 565,
-            });//7
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 8, 40, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 3110,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 8, 40, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 6410,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 8, 40, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 8, 40, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 60,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 15, 5, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 565,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 15, 5, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 3110,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 15, 5, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 6410,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 15, 5, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 27, 15, 5, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 60,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 15, 15, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 260,
-            });//9
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 15, 15, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 1330,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 15, 15, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 3310,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 15, 15, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 15, 15, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 40,
-            });
-
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 19, 5, 0)).Id,
-                RateType = RateTypes.AdultEconomyFlight,
-                Price = 260,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 19, 5, 0)).Id,
-                RateType = RateTypes.AdultBusinessFlight,
-                Price = 1330,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 19, 5, 0)).Id,
-                RateType = RateTypes.AdultFirstFlight,
-                Price = 3310,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 19, 5, 0)).Id,
-                RateType = RateTypes.Luggage,
-                Price = 50,
-            });
-            rates.Add(new Rate()
-            {
-                FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 28, 19, 5, 0)).Id,
-                RateType = RateTypes.Food,
-                Price = 40,
-            });
+            var aa = rates;
             await _rateService.InsertAsync(rates);
+
+
+
+            foreach (var f in flights)
+            {
+                var flightId = f.Id;
+
+                var reservation = new Reservation()
+                {
+                    UserID = 2,
+                    FlightID = flightId,
+                    Paid = true
+                };
+                await _reservationService.InsertAsync(reservation);
+
+                var reservationId = reservation.Id;
+
+                var r = new Random();
+                var occupancy = r.Next(75, 100);
+                var percentageOfOccupancy = (double)occupancy / 100;
+
+                int ecomonyPassengerCount = Convert.ToInt32(aircraft.EconomyClassSeats * percentageOfOccupancy);
+                int businessPassengerCount = Convert.ToInt32(aircraft.BusinessClassSeats * percentageOfOccupancy);
+                int firstPassengerCount = Convert.ToInt32(aircraft.FirstClassSeats * percentageOfOccupancy);
+                int luggageCount = Convert.ToInt32((aircraft.EconomyClassSeats + aircraft.BusinessClassSeats + aircraft.FirstClassSeats) *
+                                                   percentageOfOccupancy);
+
+                var prices = new List<Price>();
+                prices.Add(new Price()
+                {
+                    ReservationID = reservationId,
+                    RateType = RateTypes.AdultEconomyFlight,
+                    Cost = 390,
+                    Amount = ecomonyPassengerCount
+                });
+                prices.Add(new Price()
+                {
+                    ReservationID = reservationId,
+                    RateType = RateTypes.AdultBusinessFlight,
+                    Cost = 2200,
+                    Amount = businessPassengerCount
+                });
+                prices.Add(new Price()
+                {
+                    ReservationID = reservationId,
+                    RateType = RateTypes.AdultFirstFlight,
+                    Cost = 4250,
+                    Amount = firstPassengerCount
+                });
+                prices.Add(new Price()
+                {
+                    ReservationID = reservationId,
+                    RateType = RateTypes.Luggage,
+                    Cost = 50,
+                    Amount = luggageCount
+                });
+
+                await _priceService.InsertAsync(prices);
+            }
 
             return View(true);
         }
+        
+        private List<Rate> AddRates(int flightId)
+        {
+            var rates = new List<Rate>();
+
+            rates.Add(new Rate()
+            {
+                FlightID = flightId,
+                RateType = RateTypes.AdultEconomyFlight,
+                Price = 390
+            });
+            rates.Add(new Rate()
+            {
+                FlightID = flightId,
+                RateType = RateTypes.AdultBusinessFlight,
+                Price = 2200
+            });
+            rates.Add(new Rate()
+            {
+                FlightID = flightId,
+                RateType = RateTypes.AdultFirstFlight,
+                Price = 4250
+            });
+
+            rates.Add(new Rate()
+            {
+                FlightID = flightId,
+                RateType = RateTypes.Food,
+                Price = 50
+            });
+            rates.Add(new Rate()
+            {
+                FlightID = flightId,
+                RateType = RateTypes.Luggage,
+                Price = 50
+            });
+
+            return rates;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*var countries = new List<Country>();
+countries.Add(new Country() { Name = "United Arab Emirates" });
+await _countryService.InsertAsync(countries);*/
+
+/*var airoports = new List<Airport>();
+airoports.Add(new Airport()
+{
+    Code_IATA = "DXB",
+    CountryID = countries.FirstOrDefault(x => x.Name == "United Arab Emirates").Id,
+    City = "Dubai",
+    TimeZone = 4
+});
+/*await _airportService.InsertAsync(airoports);*/
+
+/*var routes = new List<Route>();
+routes.Add(new Route()
+{
+    DepartureAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "DXB").Id,
+    ArrivalAirport_ID = airoports.FirstOrDefault(x => x.Code_IATA == "IST").Id,
+    Distance = 3030
+});
+await _routeService.InsertAsync(routes);*/
+
+
+/*var aircrafts = new List<Aircraft>();
+aircrafts.Add(new Aircraft()
+{
+    Model = "A380-800",
+    Brand = "Airbus",
+    YearOfBuild = 2015,
+    EconomyClassSeats = 400,
+    BusinessClassSeats = 76,
+    FirstClassSeats = 16,
+    MaxFlightRange = 15000,
+    Picture = "/images/aircrafts/airbus A380-841.jpg"
+});
+await _aircraftservice.InsertAsync(aircrafts);*/
+
+/*var flights = new List<Flight>();
+flights.Add( new Flight()
+{
+    AircraftID = aircrafts.FirstOrDefault(x => x.Model == "A380-800").Id,
+    RouteID = routes.FirstOrDefault(x =>
+    {
+        return x.DepartureAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "DXB").Id
+               && x.ArrivalAirport_ID == airoports.FirstOrDefault(y => y.Code_IATA == "IST").Id;
+    }).Id,
+    DepartureDate = new DateTime(2022, 12, 23, 10, 45, 0),
+    ArrivalDate = new DateTime(2022, 12, 23, 14, 25, 0),
+    Luggage = true,
+    Food = true
+});
+await _flightService.InsertAsync(flights);
+
+var rates = new List<Rate>();
+rates.Add(new Rate()
+{
+    FlightID = flights.FirstOrDefault(x => x.DepartureDate == new DateTime(2022, 12, 23, 10, 45, 0)).Id,
+    RateType = RateTypes.AdultEconomyFlight,
+    Price = 390,
+});
+await _rateService.InsertAsync(rates);*/

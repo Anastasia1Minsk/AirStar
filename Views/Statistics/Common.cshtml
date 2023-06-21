@@ -1,0 +1,47 @@
+﻿@using Resources
+@model PeriodViewModel
+
+<h3 class="mt-4 text-center">
+    @PredictionRes.Period (@Html.DisplayFor(x => x.ThreeMonths))
+</h3>
+
+<div class="d-flex flex-row justify-content-center">
+    <div class="dictionatyBlock m-2">
+        <div class="linkBlock">
+            @Html.ActionLink(@PredictionRes.AllRoutesFlights, "PeriodStatistic", "Statistics",
+                new {startPeriod = Model.StartThreeMonthPeriod, threeMonthDuration = true},
+                new {@class = "nav-link dictionaryText"})
+        </div>
+    </div>
+
+    <div class="dictionatyBlock originBlueColor m-2">
+        <div class="linkBlock">
+            @Html.ActionLink(@PredictionRes.EachRoute, "RouteList", "Prediction", null, new { @class = "nav-link dictionaryText" })
+        </div>
+    </div>
+</div>
+
+<style>
+    .dictionatyBlock {
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        padding: 0;
+        background-color: #ea6901;
+    }
+
+    .originBlueColor {
+        background-color: #006efd;
+    }
+
+    .dictionaryText {
+        color: white;
+    }
+
+    .linkBlock {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

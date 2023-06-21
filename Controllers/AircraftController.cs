@@ -10,6 +10,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Resources;
 
 namespace AirStar.Controllers
 {
@@ -83,7 +84,7 @@ namespace AirStar.Controllers
         {
             if (impossibleToDelete.GetValueOrDefault())
             {
-                ViewData["ErrorMessage"] = "Delete failed. The aircraft operates flights";
+                ViewData["ErrorMessage"] = AircraftRes.ErrorMessege;
             }
             
             var result = await _service.GetByIdAsync(id);

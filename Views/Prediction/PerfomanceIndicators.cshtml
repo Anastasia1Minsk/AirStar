@@ -1,0 +1,317 @@
+﻿@using Resources
+@model PerfomanceIndicatorsViewModel
+
+@{
+    var statusText = @PredictionRes.WasDone;
+    var flight = Model.Flights.First();
+}
+<div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="v-pills-main-tab" data-bs-toggle="pill" data-bs-target="#v-pills-main" type="button" role="tab"
+                aria-controls="v-pills-main" aria-selected="true">
+            @PredictionRes.MainInformation
+        </button>
+        <button class="nav-link" id="v-pills-efficiencyInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-efficiencyInd" type="button" role="tab"
+                aria-controls="v-pills-efficiencyInd" aria-selected="false">
+            @PredictionRes.EfficiencyIndicators
+        </button>
+        <button class="nav-link" id="v-pills-monetaryInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-monetaryInd" type="button" role="tab"
+                aria-controls="v-pills-monetaryInd" aria-selected="false">
+            @PredictionRes.MonetaryIndicators
+        </button>
+        <button class="nav-link" id="v-pills-flightInd-tab" data-bs-toggle="pill" data-bs-target="#v-pills-flightInd" type="button" role="tab"
+                aria-controls="v-pills-flightInd" aria-selected="false">
+            @PredictionRes.FlightIndicators
+        </button>
+        <button class="nav-link" id="v-pills-flights-tab" data-bs-toggle="pill" data-bs-target="#v-pills-flights" type="button" role="tab"
+                aria-controls="v-pills-flights" aria-selected="false">
+            @PredictionRes.Flights
+        </button>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-main" role="tabpanel" aria-labelledby="v-pills-main-tab" tabindex="0">
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+            <div class="pastelColor">
+                @PredictionRes.Duration @flight.Duration
+            </div>
+            <div class="pastelColor">
+                @PredictionRes.Distance @flight.Distance km
+            </div>
+
+            <div class="flex-column">
+                <div>
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTrafficMax)
+                    </div>
+                </div>
+
+                <div class="flex-column pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PartPassengerTraffic)
+                    <div class="form-control-plaintext pastelBlueColor">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PartPassengerTraffic) %
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.LoadFactor)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.LoadFactor) %
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade flex-row" id="v-pills-efficiencyInd" role="tabpanel" aria-labelledby="v-pills-efficiencyInd-tab" tabindex="0">
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+
+            <div class="flex-column">
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTraffic)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTrafficMax)
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PassengerTurnover)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTurnover)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PassengerTurnoverMax)
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.LoadFactor)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.LoadFactor) %
+                    </div>
+                </div>
+
+                <div class="flex-column pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.PartPassengerTraffic)
+                    <div class="form-control-plaintext pastelBlueColor">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.PartPassengerTraffic) %
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.UnusedProportion)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.UnusedProportion) %
+                    </div>
+                </div>
+
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.EfficiencyIndicators.Tonnage)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.Tonnage)
+                        /
+                        @Html.DisplayTextFor(x => x.EfficiencyIndicators.TonnageMax)
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <div class="flex-column">
+                @Html.DisplayFor(x => x.EfficiencyIndicators.Luggage)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.Luggage)
+            </div>
+
+            <div>
+                @Html.DisplayFor(x => x.EfficiencyIndicators.Food)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.Food)
+            </div>
+
+            <div>
+                @Html.DisplayFor(x => x.EfficiencyIndicators.BusinessAndFirstClasses)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.BusinessAndFirstClasses)
+            </div>
+
+            <div>
+                @Html.DisplayFor(x => x.EfficiencyIndicators.LongDuration)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.LongDuration)
+            </div>
+
+            <div>
+                @Html.DisplayFor(x => x.EfficiencyIndicators.ToHub)
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.ToHub)
+            </div>
+
+            <br />
+
+            <div class="flex-column">
+                @Html.DisplayNameFor(x => x.EfficiencyIndicators.Score)
+                <div class="form-control-plaintext">
+                    @Html.DisplayTextFor(x => x.EfficiencyIndicators.Score)
+                    /
+                    @Html.DisplayTextFor(x => x.EfficiencyIndicators.ScoreMax)
+                </div>
+                <div class="OrangeColor">
+                    @PredictionRes.ResultMessage
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-monetaryInd" role="tabpanel" aria-labelledby="v-pills-monetaryInd-tab" tabindex="0">
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+
+            <div class="flex-column">
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.Profit)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.MonetaryIndicators.Profit)
+                        /
+                        @Html.DisplayTextFor(x => x.MonetaryIndicators.ProfitMax)
+                    </div>
+                </div>
+
+                <div>
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageFee)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageFee)
+                </div>
+                <br />
+
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageEconomyCost)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageEconomyCost)
+                </div>
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageBusinessCost)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageBusinessCost)
+                </div>
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.MonetaryIndicators.AverageFirstCost)
+                    @Html.DisplayFor(x => x.MonetaryIndicators.AverageFirstCost)
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-flightInd" role="tabpanel" aria-labelledby="v-pills-flightInd-tab" tabindex="0">
+            <div class="OrangeColor">
+                @flight.DepartureAirport => @flight.ArrivalAirport
+            </div>
+
+            <div class="flex-column">
+                <div class="flex-column">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.LoadFactor)
+                    <div class="form-control-plaintext">
+                        @Html.DisplayTextFor(x => x.FlightIndicators.LoadFactor) %
+                    </div>
+                </div>
+
+                <div>
+                    @Html.DisplayNameFor(x => x.FlightIndicators.Aircrafts)
+                    <div class="form-control-plaintext">
+                        @foreach (var item in Model.FlightIndicators.Aircrafts)
+                        {
+                            @Html.DisplayTextFor(modelItem => item)
+                        }
+                    </div>
+                </div>
+
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.EconomyPercent)
+                    @Html.DisplayFor(x => x.FlightIndicators.EconomyPercent) %
+                </div>
+                <div class="pastelBlueColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.EconomyLoadFactor)
+                    @Html.DisplayFor(x => x.FlightIndicators.EconomyLoadFactor) %
+                </div>
+
+                <div class="pastelColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.BusinessPercent)
+                    @Html.DisplayFor(x => x.FlightIndicators.BusinessPercent) %
+                </div>
+                <div class="pastelColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.BusinessLoadFactor)
+                    @Html.DisplayFor(x => x.FlightIndicators.BusinessLoadFactor) %
+                </div>
+
+                <div class="OrangeColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.FirstPercent)
+                    @Html.DisplayFor(x => x.FlightIndicators.FirstPercent) %
+                </div>
+                <div class="OrangeColor">
+                    @Html.DisplayNameFor(x => x.FlightIndicators.FirstLoadFactor)
+                    @Html.DisplayFor(x => x.FlightIndicators.FirstLoadFactor) %
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-flights" role="tabpanel" aria-labelledby="v-pills-flights-tab" tabindex="0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @PredictionRes.DepartureDate
+                        </th>
+                        <th>
+                            @PredictionRes.ArrivalDate
+                        </th>
+                        <th>
+                            @PredictionRes.Aircraft
+                        </th>
+                        <th></th>
+                        <th>
+                            @PredictionRes.Status
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.Flights)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.DepartureDate)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.ArrivalDate)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Aircraft)
+                            </td>
+                            <td></td>
+                            <td class="align-middle">
+                                @if (item.Canceled)
+                                {
+                                    statusText = @PredictionRes.WasCanceled;
+                                }
+
+                                @statusText
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .pastelBlueColor {
+        color: #A0CBDE;
+    }
+
+    .OrangeColor {
+        color: #ea6901;
+    }
+
+    .pastelColor {
+        color: #F5E1AE;
+    }
+</style>

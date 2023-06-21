@@ -49,5 +49,19 @@ namespace AirStar.Business.Services
                                             includes: new List<string>() {"Flights"});
             return route.Flights.Any();
         }
+
+        public async Task<IEnumerable<Route>> SelectForLastThreeMonthsAsync()
+        {
+            var firstDayOfCurrentMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var threeMonthAgo = firstDayOfCurrentMonth.AddMonths(-3);
+
+            var routes = await SelectAsync(predicate: x => x.Flights
+                                                                                .Any(f => f.DepartureDate >= threeMonthAgo 
+                                                                                    && f.DepartureDate < firstDayOfCurrentMonth
+                                                                                    && f.Canceled == false),
+                includes: new List<string>() {"DepartureAirport", "ArrivalAirport", "Flights" });
+            
+            return routes;
+        }
     }
 }

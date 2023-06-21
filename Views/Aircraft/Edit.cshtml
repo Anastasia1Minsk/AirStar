@@ -1,8 +1,9 @@
-﻿@model AircraftViewModel
+﻿@using Resources
+@model AircraftViewModel
 
 <div class="card">
     <h3 class="card-header">
-        Edit
+        @Dictionary.Editing
     </h3>
     <div class="card-body">
         <form action="/Aircraft/Edit" method="post" enctype="multipart/form-data">
@@ -55,8 +56,8 @@
             </div>
 
             <div class="col text-center">
-                <button class="btn btn-primary" type="submit">Edit</button>
-                @Html.ActionLink("Back to list", "List", "Aircraft", htmlAttributes: new { @class = "btn btn-outline-primary" })
+                <button class="btn btn-primary" type="submit">@Dictionary.Edit</button>
+                @Html.ActionLink(@Dictionary.BackToList, "List", "Aircraft", htmlAttributes: new { @class = "btn btn-outline-primary" })
             </div>
         </form>
     </div>

@@ -41,11 +41,15 @@
             </div>
             <div class="col-4 mb-3">
                 @Html.DisplayNameFor(x => x.Food)
-                @Html.TextBoxFor(x => x.Food, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+                @Html.DisplayFor(x => x.Food)
             </div>
             <div class="col-4 mb-3">
                 @Html.DisplayNameFor(x => x.Luggage)
-                @Html.TextBoxFor(x => x.Luggage, htmlAttributes: new { @class = "form-control-plaintext", @readonly = "readonly" })
+                @Html.DisplayFor(x => x.Luggage)
+            </div>
+            <div class="col-4 mb-3">
+                @Html.DisplayNameFor(x => x.Canceled)
+                @Html.DisplayFor(x => x.Canceled)
             </div>
         </div>
 

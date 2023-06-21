@@ -48,6 +48,15 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
+                        @Html.CheckBoxFor(x => x.Canceled, new { id = "Canceled", @class = "form-check-input" })
+                        @Html.DisplayNameFor(x => x.Canceled)
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
                         @Html.HiddenFor(x => x.Rates[3].RateType)
                         @Html.CheckBoxFor(x => x.Luggage, new { id = "luggage", @class = "form-check-input" })
                         @Html.DisplayNameFor(x => x.Luggage)

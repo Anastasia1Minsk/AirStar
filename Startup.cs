@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AirStar.Data;
+using AirStar.Infrastructure;
 using AirStar.Infrastructure.Extension;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -56,6 +50,8 @@ namespace AirStar
 
             app.UseAuthentication();    // аутентификация/кто пользователь
             app.UseAuthorization();     // авторизация/какие права в системе имеет пользователь
+
+            app.UseMiddleware<LocaliseMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
